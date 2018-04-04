@@ -46,6 +46,8 @@ public class EventInfo {
             TextView txt_publisher = (TextView)view.findViewById(R.id.TXT_event_info_publisher);
             RatingBar ratingBar = (RatingBar)view.findViewById(R.id.rating_event_info_user);
             ratingBar.setRating(3.5f);
+
+            /**I'm testing if github it's detecting changes**/
             /**
              *
              * Here we get each element that we want to display
