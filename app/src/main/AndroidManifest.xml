@@ -60,10 +60,9 @@
             android:configChanges="keyboard|keyboardHidden|screenSize|screenLayout|orientation"
             android:label="@string/title_activity_lines"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ActivityStations"
-            android:label="@string/title_activity_stations"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ActivityStations" android:label="@string/title_activity_stations"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -173,6 +173,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
                 window.setStatusBarColor(Color.parseColor(getString(R.string.L12)));
                 collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L12)));
                 break;
+                //Hola mundo :'v'
         }
     }
 

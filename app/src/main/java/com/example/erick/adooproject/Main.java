@@ -50,21 +50,6 @@ public class Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        try {
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-
-
-        } catch (Exception e) {
-            Log.e(TAG, "onCreate: ", e);
-        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -130,6 +115,10 @@ public class Main extends AppCompatActivity
         } else if(id == R.id.nav_lines_subway){
             Log.i(TAG, "onNavigationItemSelected: ");
             justForTesting();
+        } else if(id == R.id.nav_lines_metro_bus){
+            Log.i(TAG, "onNavigationItemSelected: ");
+            justForTesting();
+
         }
         lastId = id;
 
