@@ -59,7 +59,7 @@ public class Main extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        new EventInfo(Main.this).showDialog();
+        //new EventInfo(Main.this).showDialog();
         /**We go to show the Fragment that contains our google map**/
         fragmentManager = getFragmentManager();
         lastId = R.id.nav_map_main;

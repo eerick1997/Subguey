@@ -29,13 +29,13 @@
         <menu>
             <item
                 android:id="@+id/nav_lines_subway"
-                android:icon="@mipmap/ic_subway"
+                android:icon="@drawable/ic_subway"
                 android:title="@string/navigation_drawer_lines_subway" />
 
             <item
                 android:id="@+id/nav_lines_metro_bus"
-                android:icon="@mipmap/ic_metro_bus"
+                android:icon="@drawable/ic_metro_bus"
                 android:title="@string/navigation_drawer_lines_metro_bus"/>
         </menu>
-    </item>>
+    </item>
 </menu>
