@@ -17,7 +17,7 @@ public class Line implements Parcelable, Serializable {
     private ArrayList<Station> stations;
 
     //Constructor
-    public Line(String whichLine, ArrayList<Station> stations) {
+    public Line(String id, String whichLine, ArrayList<Station> stations) {
         //Initializing out global variables
         this.id = id;
         this.whichLine = whichLine;

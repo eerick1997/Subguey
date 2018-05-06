@@ -165,10 +165,10 @@ public class Main extends AppCompatActivity
 
 
         for(int i = 1; i <= 9; i++)
-            lines.add(new Line(String.valueOf(i), stations));
-        lines.add(new Line("A", stations));
-        lines.add(new Line("B", stations));
-        lines.add(new Line("12", stations));
+            lines.add(new Line("ABC", String.valueOf(i), stations));
+        lines.add(new Line("CDE","A", stations));
+        lines.add(new Line("EFG","B", stations));
+        lines.add(new Line("HIJ","12", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);

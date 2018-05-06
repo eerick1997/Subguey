@@ -35,4 +35,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     //To make a circle image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //To download images
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
 }

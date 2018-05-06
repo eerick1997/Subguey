@@ -40,8 +40,8 @@ public class DBLines extends SQLiteOpenHelper{
             ContentValues contentValues = new ContentValues();
             //We put the id
             contentValues.put(DB_LINES_ID, line.getId());
-            //
             contentValues.put(DB_LINES_nameLine, line.getWhichLine());
+
 
         } catch (Exception e){
             Log.e(TAG, "insert: ", e);

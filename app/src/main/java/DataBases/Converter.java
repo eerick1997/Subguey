@@ -13,7 +13,7 @@ import java.io.ObjectOutputStream;
 public class Converter {
     //Constants
     private static final String TAG = "Converter.java";
-    
+
     /**This method convert an object into a byte array
      * this method receive just an argument type Object
      * and returns an array of bytes**/

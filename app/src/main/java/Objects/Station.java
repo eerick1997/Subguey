@@ -42,54 +42,19 @@ public class Station implements Parcelable, Serializable {
 
     //Constructor
     public Station(String name, String line, LatLng position,
-                   ArrayList<Service> services, ArrayList<Exit> exits) {
-        Log.d(TAG, "Station() called with: name = [" + name + "], line = [" + line + "]," +
-                " position = [" + position + "], services = [" + services + "], exits = [" + exits + "]");
+                   ArrayList<Service> services, ArrayList<Exit> exits,
+                   ArrayList<LatLng> next, ArrayList<LatLng> previous) {
+        Log.d(TAG, "Station() called with: name = [" + name + "], " +
+                "line = [" + line + "], position = [" + position + "], " +
+                "services = [" + services + "], exits = [" + exits + "], " +
+                "next = [" + next + "], previous = [" + previous + "]");
         this.name = name;
         this.line = line;
         this.position = position;
         this.services = services;
         this.exits = exits;
-        Log.d(TAG, "Station() called with: name = [" + this.name + "], line = [" + this.line + "]," +
-                " position = [" + this.position + "], services = [" + this.services + "], exits = [" + this.exits + "]");
-
-        byte[] yourBytes = null;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutput out = null;
-        try {
-            out = new ObjectOutputStream(bos);
-            out.writeObject(services);
-            out.flush();
-            yourBytes = bos.toByteArray();
-            Log.i(TAG, "Station-> " + yourBytes);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                bos.close();
-            } catch (IOException ex) {
-                // ignore close exception
-            }
-        }
-
-        ByteArrayInputStream bis = new ByteArrayInputStream(yourBytes);
-        ObjectInput in = null;
-        try {
-            in = new ObjectInputStream(bis);
-            ArrayList<Service> o = (ArrayList<Service>) in.readObject();
-            Log.i(TAG, "Station--> " + o);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException ex) {
-                // ignore close exception
-            }
-        }
+        this.next = next;
+        this.previous = previous;
     }
 
     /**
@@ -129,6 +94,16 @@ public class Station implements Parcelable, Serializable {
     public ArrayList<ElementAdapter> getElements() {
         Log.d(TAG, "getElements() called");
         return fillElement();
+    }
+
+    public ArrayList<LatLng> getNext(){
+        Log.d(TAG, "getNext() called");
+        return this.next;
+    }
+
+    public ArrayList<LatLng> getPrevious() {
+        Log.d(TAG, "getPrevious() called");
+        return previous;
     }
 
     /**
