@@ -42,6 +42,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import MapUtilities.PermissionUtils;
+import UIElements.customMarkerEvent;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
@@ -90,8 +91,8 @@ public class FrameGMap extends Fragment implements LocationListener,
                 .addConnectionCallbacks(this)//We indicate that in this activity the interface ConnectionCallbacks has been implemented
                 .addOnConnectionFailedListener(this) //We indicate that OnConnectionFailedListener has been implemented
                 .build();//We make the GoogleApiClient
-
         startLocationUpdates();
+
 
     }
 
@@ -138,6 +139,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 20));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
+        new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
         enableMyLocation();
     }
 

@@ -1,8 +1,15 @@
 package UIElements;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 
+import com.example.erick.adooproject.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -23,11 +30,27 @@ public class customMarkerEvent {
         this.googleMap = googleMap;
     }
 
-    public void set(){
+    public void set(LatLng position){
+
+        Bitmap.Config b_config = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = Bitmap.createBitmap(80,80,b_config);
+        Canvas canvas = new Canvas(bitmap);
+        Paint color = new Paint();
+        color.setTextSize(35);
+        color.setColor(Color.BLACK);
+
+        canvas.drawBitmap(BitmapFactory.decodeResource(context.getResources(),
+                R.drawable.nav_subway), 0,0, color);
+        canvas.drawText("User Name!", 30, 40, color);
+
 
         Marker marker = googleMap.addMarker(new MarkerOptions()
-        .position(new LatLng(latitude, longitude))
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable)))
+            .position(position)
+            .title("Somewhere")
+            .snippet("Something")
+            .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
+            .anchor(0.5f, 1));
+
     }
 
 }
