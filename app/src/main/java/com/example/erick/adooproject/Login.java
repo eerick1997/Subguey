@@ -23,9 +23,11 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
 import Preferences.Utilities;
+import UIElements.EventInfo;
 
 import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.NAME_USER;
@@ -46,6 +48,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00"));
         //We need to verify if the user has already signed so we invoke the method changeActivity
         changeActivity();
         //If the user wan't signed

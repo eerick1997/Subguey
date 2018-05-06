@@ -86,4 +86,3 @@ public class AdapterLines extends Adapter<AdapterLines.LinesViewHolder> {
     }
 
 }
-

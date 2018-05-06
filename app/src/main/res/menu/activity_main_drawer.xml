@@ -3,33 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_map_main"
-            android:icon="@drawable/ic_map"
-            android:title="@string/navigation_drawer_map" />
+    <!--<item android:title="Mapas">
+        <menu>-->
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_map_main"
+                    android:icon="@drawable/ic_map"
+                    android:title="@string/navigation_drawer_map" />
+                <!--item
+                    android:id="@+id/nav_gallery"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="Gallery" />
+                <item
+                    android:id="@+id/nav_slideshow"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="Slideshow" />
+                <item
+                    android:id="@+id/nav_manage"
+                    android:icon="@drawable/ic_menu_manage"
+                    android:title="Tools" /-->
+            </group>
+        <!--</menu>
+    </item>-->
+    <item android:title="Lineas">
+        <menu>
+            <item
+                android:id="@+id/nav_lines_subway"
+                android:icon="@drawable/ic_subway"
+                android:title="@string/navigation_drawer_lines_subway" />
 
-        <item
-            android:id="@+id/nav_lines_subway"
-            android:icon="@mipmap/ic_subway"
-            android:title="@string/navigation_drawer_lines_subway" />
-
-        <item
-            android:id="@+id/nav_lines_metro_bus"
-            android:icon="@mipmap/ic_metro_bus"
-            android:title="@string/navigation_drawer_lines_metro_bus"/>
-        <!--item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" /-->
-    </group>
-
+            <item
+                android:id="@+id/nav_lines_metro_bus"
+                android:icon="@drawable/ic_metro_bus"
+                android:title="@string/navigation_drawer_lines_metro_bus"/>
+        </menu>
+    </item>
 </menu>

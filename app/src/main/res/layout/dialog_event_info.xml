@@ -1,52 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <!-- Here we have all the interface to create our custom alert dialog -->
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_header_height"
+            android:background="@drawable/nav_subway"
+            android:paddingTop="@dimen/nav_header_vertical_spacing" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_header_height">
+
+            <TextView
+                android:id="@+id/TXT_dialog_event_hour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|right"
+                android:paddingBottom="2dp"
+                android:paddingRight="5dp"
+                android:text="12:00" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/linear_layout_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints">
-
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <TextView
-            android:id="@+id/TXT_event_info_title"
+            android:id="@+id/TXT_dialog_event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here we have the title" />
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="Type event" />
 
         <TextView
-            android:id="@+id/TXT_event_info_publisher"
+            android:id="@+id/TXT_dialog_event_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here we can put info about the publisher" />
-
-        <RatingBar
-            android:id="@+id/rating_event_info_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="0" />
+            android:text="User name" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/TXT_dialog_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="TextView" />
+            android:text="An event has occurred in a station"/>
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/BTN_alert_dialog_i_got_it"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right|bottom"
+                android:text="@string/got_it" />
+        </LinearLayout>
 
 
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
