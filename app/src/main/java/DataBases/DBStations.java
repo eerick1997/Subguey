@@ -75,20 +75,45 @@ public class DBStations extends SQLiteOpenHelper{
         database.close();
     }
 
-   /** public ArrayList<Station> getAll(){
+    public ArrayList<Station> getAll(){
         Log.d(TAG, "getAll: ");
-        String query = "SELECT FROM";
+
+        String query = "SELECT " + DB_STATIONS_ID + ", " +
+                DB_STATIONS_Name + ", " +
+                DB_STATIONS_Line + ", " +
+                DB_STATIONS_exits + ", " +
+                DB_STATIONS_services + ", " +
+                DB_STATIONS_next + ", " +
+                DB_STATIONS_previous + " FROM " +
+                DB_STATIONS_tbl;
         SQLiteDatabase database = this.getReadableDatabase();
         ArrayList<Station> stations = new ArrayList<>();
-        //Cursor cursor = database
-     //           .rawQuery("");
-    }**/
+        Cursor cursor = database
+                .rawQuery(query, null);
+        try{
+            if(cursor.moveToFirst()){
+                do{
+
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e){
+            Log.e(TAG, "getAll: ", e);
+        }
+        return stations;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate() called with: db = [" + db + "]");
         String query = "CREATE TABLE " + DB_STATIONS_tbl + "(" +
-                DB_STATIONS_ID + "  ";
+                DB_STATIONS_ID + " TEXT, " +
+                DB_STATIONS_Name + " TEXT, " +
+                DB_STATIONS_Line + " TEXT, " +
+                DB_STATIONS_exits + " BLOB, " +
+                DB_STATIONS_services + " BLOB, " +
+                DB_STATIONS_next + " BLOB, " +
+                DB_STATIONS_previous + " BLOB)";
+        db.execSQL(query);
     }
 
     @Override
