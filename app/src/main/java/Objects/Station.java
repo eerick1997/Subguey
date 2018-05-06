@@ -7,7 +7,15 @@ import android.util.Log;
 import com.example.erick.adooproject.R;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import android.R.string;
@@ -26,6 +34,11 @@ public class Station implements Parcelable, Serializable {
     private ArrayList<Service> services;
     //Here we store information about different exits into each station
     private ArrayList<Exit> exits;
+    /*Here we store information about different the points of the path to go to the
+    next station*/
+
+    private ArrayList<LatLng> next;
+    private ArrayList<LatLng> previous;
 
     //Constructor
     public Station(String name, String line, LatLng position,
@@ -39,6 +52,44 @@ public class Station implements Parcelable, Serializable {
         this.exits = exits;
         Log.d(TAG, "Station() called with: name = [" + this.name + "], line = [" + this.line + "]," +
                 " position = [" + this.position + "], services = [" + this.services + "], exits = [" + this.exits + "]");
+
+        byte[] yourBytes = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutput out = null;
+        try {
+            out = new ObjectOutputStream(bos);
+            out.writeObject(services);
+            out.flush();
+            yourBytes = bos.toByteArray();
+            Log.i(TAG, "Station-> " + yourBytes);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bos.close();
+            } catch (IOException ex) {
+                // ignore close exception
+            }
+        }
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(yourBytes);
+        ObjectInput in = null;
+        try {
+            in = new ObjectInputStream(bis);
+            ArrayList<Service> o = (ArrayList<Service>) in.readObject();
+            Log.i(TAG, "Station--> " + o);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException ex) {
+                // ignore close exception
+            }
+        }
     }
 
     /**

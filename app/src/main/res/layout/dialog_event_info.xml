@@ -1,89 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/nav_header_height"
-            android:background="@drawable/nav_subway"
-            android:paddingTop="@dimen/nav_header_vertical_spacing" />
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nav_header_height"
+                android:background="@drawable/nav_subway"
+                android:paddingTop="@dimen/nav_header_vertical_spacing" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nav_header_height"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TXT_dialog_event_hour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="5dp"
+                    android:text="12:00" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/linear_layout_content"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/nav_header_height">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
             <TextView
-                android:id="@+id/TXT_dialog_event_hour"
+                android:id="@+id/TXT_dialog_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Type event"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/TXT_dialog_event_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User name" />
+
+            <TextView
+                android:id="@+id/TXT_dialog_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="An event has occurred in a station" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom|right"
-                android:paddingBottom="2dp"
-                android:paddingRight="5dp"
-                android:text="12:00" />
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/BTN_alert_dialog_i_got_it"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|bottom"
+                    android:text="@string/got_it" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_layout_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-        <TextView
-            android:id="@+id/TXT_dialog_event_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:text="Type event" />
-
-        <TextView
-            android:id="@+id/TXT_dialog_event_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User name" />
-
-        <TextView
-            android:id="@+id/TXT_dialog_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="An event has occurred in a station"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/BTN_alert_dialog_i_got_it"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right|bottom"
-                android:text="@string/got_it" />
-        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 
-    </LinearLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/IMG_alert_dialog_user_profile"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_subway"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+</RelativeLayout>

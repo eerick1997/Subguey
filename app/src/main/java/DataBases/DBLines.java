@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import Objects.Line;
 
 import static DataBases.Utilities.*;
@@ -30,9 +32,16 @@ public class DBLines extends SQLiteOpenHelper{
      * Returns: nothing                                         **/
     public void insert(Line line){
         Log.d(TAG, "insert() called with: line = [" + line + "]");
+        ArrayList<String> list = new ArrayList<>();
+
         try{
+            //We gonna write in our database
             SQLiteDatabase database = this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
+            //We put the id
+            contentValues.put(DB_LINES_ID, line.getId());
+            //
+            contentValues.put(DB_LINES_nameLine, line.getWhichLine());
 
         } catch (Exception e){
             Log.e(TAG, "insert: ", e);

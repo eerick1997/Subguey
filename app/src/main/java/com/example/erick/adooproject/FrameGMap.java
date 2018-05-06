@@ -296,10 +296,15 @@ public class FrameGMap extends Fragment implements LocationListener,
         Log.d(TAG, "onConnectionFailed() called with: connectionResult = [" + connectionResult + "]");
     }
 
+    /**This method gets a marker and we can display information about this
+     * if we get the ID of the marker or something like that**/
     @Override
     public boolean onMarkerClick(Marker marker) {
         Log.d(TAG, "onMarkerClick() called with: marker = [" + marker + "]");
-        return false;
+
+
+        marker.hideInfoWindow();
+        return true;
     }
 
     @Override

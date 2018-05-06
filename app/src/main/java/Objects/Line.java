@@ -12,13 +12,14 @@ public class Line implements Parcelable, Serializable {
     //Constanta
     private static final String TAG = "Line.java";
     //Variables
-    private String whichLine;
+    private String whichLine, id;
     //As we know each line contains stations, so
     private ArrayList<Station> stations;
 
     //Constructor
     public Line(String whichLine, ArrayList<Station> stations) {
         //Initializing out global variables
+        this.id = id;
         this.whichLine = whichLine;
         this.stations = stations;
     }
@@ -37,6 +38,12 @@ public class Line implements Parcelable, Serializable {
         Log.d(TAG, "getStations() called");
         Log.d(TAG, "getStations() returned: " + this.stations);
         return this.stations;
+    }
+
+    public String getId(){
+        Log.d(TAG, "getId() called");
+        Log.d(TAG, "getId() returned: " + this.id);
+        return this.id;
     }
 
     /**

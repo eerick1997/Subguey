@@ -6,20 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.example.erick.adooproject.Login">
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/g_sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center" />
 
-    <Button
-        android:id="@+id/BTN_revoke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Revoke access"
-        app:layout_constraintTop_toBottomOf="@+id/g_sign_in_button"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:paddingTop="5dp"
+            android:id="@+id/IMG_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_header_height"
+            android:src="@drawable/nav_subway"
+            />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/g_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"/>
+
+        <Button
+            android:id="@+id/BTN_revoke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Revoke access"/>
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
