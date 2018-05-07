@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -34,10 +37,12 @@ import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -95,6 +100,14 @@ public class FrameGMap extends Fragment implements LocationListener,
         dbStations = new DBStations(getActivity(), "", null, 1);
 
 
+        int imageRes = getActivity().getResources()
+                .getIdentifier("@drawable/ic_close", null, getActivity().getPackageName());
+
+        Drawable drawable = getActivity().getResources().getDrawable(imageRes);
+        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+        Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
+            .title("losreyeslinea1")
+            .icon(BitmapDescriptorFactory.fromBitmap(bitmap)));
     }
 
     //This method is called just when the view hasn't been created

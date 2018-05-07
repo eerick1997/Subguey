@@ -58,8 +58,6 @@ public class Main extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        final String imgUrl = "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg";
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View view = navigationView.getHeaderView(0);
         TextView user_name = (TextView) view.findViewById(R.id.TXT_nav_header_name);
@@ -70,21 +68,12 @@ public class Main extends AppCompatActivity
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.ic_default_profile)
                 .override(250,250)
                 .centerCrop()
                 .into(user_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        //image.setBackgroundResource(R.drawable.ic_close);
-        //Glide.with(Main.this).load(imgUrl).into(image)    ;
-        /**try {
-         //setProfileIMG();
-         user_name.setText(preferences.getNameUser());
-         } catch (Exception e) {
-         Log.e(TAG, "onCreate: ", e);
-         }**/
-        /**We go to show the Fragment that contains our google map**/
         fragmentManager = getFragmentManager();
         lastId = R.id.nav_map_main;
         fragmentManager.beginTransaction().replace(R.id.content_frame, new FrameGMap()).commit();
