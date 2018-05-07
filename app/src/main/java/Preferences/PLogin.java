@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import java.util.logging.LogManager;
+
 import Preferences.Utilities;
 
 import static Preferences.Utilities.EMAIL;
+import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_PREFERENCES;
 import static Preferences.Utilities.NAME_USER;
 import static Preferences.Utilities.SIGNED;
@@ -60,19 +63,28 @@ public class PLogin {
 
     /**--------------- GETTERS ---------------**/
     public String getNameUser(){
+        Log.d(TAG, "getNameUser() called");
         sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
         return sharedPreferences.getString(NAME_USER, "");
     }
 
     public String getEmail(){
+        Log.d(TAG, "getEmail() called");
         sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
         return sharedPreferences.getString(EMAIL, "");
     }
 
+    public String getProfileURIIMG(){
+        Log.d(TAG, "getProfileURIIMG() called");
+        sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(IMG_PROFILE, "");
+    }
     public Boolean getIsSigned(){
+        Log.d(TAG, "getIsSigned() called");
         sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(SIGNED, false);
     }
+
     /**--------------- END GETTERS ---------------**/
 
     /**cleanPreferences method

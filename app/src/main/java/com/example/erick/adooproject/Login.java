@@ -26,14 +26,14 @@ import com.google.android.gms.tasks.Task;
 import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
-import Preferences.Utilities;
 import UIElements.EventInfo;
 
 import static Preferences.Utilities.EMAIL;
+import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_USER;
 import static Preferences.Utilities.SIGNED;
 
-public class Login extends AppCompatActivity implements OnConnectionFailedListener{
+public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
     private static final String TAG = "Login.java";
     private static final int RC_SIGN_IN = 9001;
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 .build();
 
         /*We create a GoogleSignInClient to set different options already
-        * specified in the googleSignInOptions object*/
+         * specified in the googleSignInOptions object*/
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         /*Setting dimensions of the sign-in button*/
@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         });
 
         /*We create a Button to revoke access*/
-        Button button = (Button)findViewById(R.id.BTN_revoke);
+        Button button = (Button) findViewById(R.id.BTN_revoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +94,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     protected void onStart() {
         super.onStart();
         /*Here we check if an user is already signed in our app.
-        * if someone is already signed the GoogleSignInAccount will be non-null*/
+         * if someone is already signed the GoogleSignInAccount will be non-null*/
         GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
 
         /**
@@ -123,7 +123,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             /*This object (GoogleSignInAccount) contains information about the
-            * signed user*/
+             * signed user*/
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             /**Signed in successfully we can update the UI**/
             if (account != null) {
@@ -141,10 +141,11 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 //To save the last state
                 preferences.savePreference(SIGNED, true);
                 //To save the name of this user
-                preferences.savePreference(NAME_USER, user_name + " "  + user_given_name);
+                preferences.savePreference(NAME_USER, user_name + " " + user_given_name);
                 //To save the email
                 preferences.savePreference(EMAIL, user_email);
 
+                preferences.savePreference(IMG_PROFILE, user_photo.toString());
                 //Now we go to the next activity
                 changeActivity();
             } else {
@@ -185,17 +186,19 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         Toast.makeText(getApplicationContext(), getString(R.id.no_connection), Toast.LENGTH_LONG).show();
     }
 
-    /**changeActivity method
+    /**
+     * changeActivity method
      * Description: Verify if the user has already signed
-     * Returns: Nothing                     **/
-    private void changeActivity(){
+     * Returns: Nothing
+     **/
+    private void changeActivity() {
 
-        try{
-            if(preferences.getIsSigned()){
+        try {
+            if (preferences.getIsSigned()) {
                 Intent intent = new Intent(this, Main.class);
                 startActivity(intent);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "changeActivity: ", e);
             preferences.cleanPreferences();
         }

@@ -3,9 +3,7 @@ package com.example.erick.adooproject;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,18 +15,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-import Preferences.PLogin;
-import UIElements.EventInfo;
 import Objects.Exit;
 import Objects.Line;
 import Objects.Service;
 import Objects.Station;
+import Preferences.PLogin;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,7 +49,6 @@ public class Main extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferences = new PLogin(Main.this);
-        TextView user_name = (TextView)findViewById(R.id.TXT_nav_header_name);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,14 +58,32 @@ public class Main extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        final String imgUrl = "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg";
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view = navigationView.getHeaderView(0);
+        TextView user_name = (TextView) view.findViewById(R.id.TXT_nav_header_name);
+        CircleImageView user_profile = (CircleImageView) view.findViewById(R.id.IMG_nav_header_user_profile);
+        Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
+        user_name.setText("");
+        user_name.setText(getString(R.string.hello_user) + " " + preferences.getNameUser());
+        Glide.with(Main.this)
+                .load(preferences.getProfileURIIMG())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(250,250)
+                .centerCrop()
+                .into(user_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
-        try {
-            user_name.setText(preferences.getNameUser());
-        } catch (Exception e) {
-            Log.e(TAG, "onCreate: ", e);
-        }
+
+        //image.setBackgroundResource(R.drawable.ic_close);
+        //Glide.with(Main.this).load(imgUrl).into(image)    ;
+        /**try {
+         //setProfileIMG();
+         user_name.setText(preferences.getNameUser());
+         } catch (Exception e) {
+         Log.e(TAG, "onCreate: ", e);
+         }**/
         /**We go to show the Fragment that contains our google map**/
         fragmentManager = getFragmentManager();
         lastId = R.id.nav_map_main;
@@ -121,10 +136,10 @@ public class Main extends AppCompatActivity
         if (id == R.id.nav_map_main && lastId != R.id.nav_map_main) {
             Log.i(TAG, "onNavigationItemSelected: id " + id);
             fragmentManager.beginTransaction().replace(R.id.content_frame, new FrameGMap()).commit();
-        } else if(id == R.id.nav_lines_subway){
+        } else if (id == R.id.nav_lines_subway) {
             Log.i(TAG, "onNavigationItemSelected: ");
             justForTesting();
-        } else if(id == R.id.nav_lines_metro_bus){
+        } else if (id == R.id.nav_lines_metro_bus) {
             Log.i(TAG, "onNavigationItemSelected: ");
             justForTesting();
 
@@ -136,7 +151,7 @@ public class Main extends AppCompatActivity
         return true;
     }
 
-    private void justForTesting(){
+    private void justForTesting() {
         ArrayList<Line> lines = new ArrayList<>();
         /***************************THIS CODE IS JUST FOR TESTING*********************************/
 
@@ -169,20 +184,20 @@ public class Main extends AppCompatActivity
         Double lat = 19.3982121;
         Double lng = -99.2005697;
 
-        for(int i = 0; i < 5; i++)
-        positions.add(new LatLng(lat+=0.05, lng+=0.05));
+        for (int i = 0; i < 5; i++)
+            positions.add(new LatLng(lat += 0.05, lng += 0.05));
         //for(int i = 1; i <= 9; i++)
-            stations.add(new Station("Observatorio 1", "1", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
-            stations.add(new Station("Observatorio 2", "2", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
-            stations.add(new Station("Observatorio 3", "3", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
-       // ArrayList<Station> stations = new ArrayList<>();
+        stations.add(new Station("Observatorio 1", "1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        // ArrayList<Station> stations = new ArrayList<>();
 
 
-        for(int i = 1; i <= 9; i++)
+        for (int i = 1; i <= 9; i++)
             lines.add(new Line("ABC", String.valueOf(i), stations));
-        lines.add(new Line("CDE","A", stations));
-        lines.add(new Line("EFG","B", stations));
-        lines.add(new Line("HIJ","12", stations));
+        lines.add(new Line("CDE", "A", stations));
+        lines.add(new Line("EFG", "B", stations));
+        lines.add(new Line("HIJ", "12", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);
@@ -191,4 +206,19 @@ public class Main extends AppCompatActivity
         /******************************* END JUST FOR TESTING ******************************************/
     }
 
+    /**private void setProfileIMG() {
+     Log.d(TAG, "setProfileIMG() called");
+     /**CircleImageView circleImageView;
+     circleImageView = (CircleImageView) findViewById(R.id.IMG_nav_header_user_profile);**/
+    /**final String imgUrl = "https://api.androidhive.info/images/glide/medium/deadpool.jpg";
+     final ImageView imageView = (ImageView)findViewById(R.id.IMG_nav_bar_profile);
+     try {
+     PLogin pref = new PLogin(Main.this);
+     Glide.with(Main.this)
+     .load(imgUrl)
+     .into(imageView);
+     } catch (Exception e) {
+     Log.e(TAG, "setProfileIMG: ", e);
+     }
+     }**/
 }
