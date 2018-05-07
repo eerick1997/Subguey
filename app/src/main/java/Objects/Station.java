@@ -4,21 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.example.erick.adooproject.R;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-import android.R.string;
 
 /**
  * This object contains information about an Station
@@ -96,7 +85,7 @@ public class Station implements Parcelable, Serializable {
         return fillElement();
     }
 
-    public ArrayList<LatLng> getNext(){
+    public ArrayList<LatLng> getNext() {
         Log.d(TAG, "getNext() called");
         return this.next;
     }
@@ -120,19 +109,19 @@ public class Station implements Parcelable, Serializable {
         for (int i = 0; i < services.size(); i++) {
             String description = "";
 
-            if(!services.get(i).getUbication().isEmpty())
+            if (!services.get(i).getUbication().isEmpty())
                 description += "Ubicación: \n\n" + services.get(i).getUbication();
 
             if (!description.isEmpty())
                 description += " \n\n ";
 
-            if(!services.get(i).getSchedule().isEmpty())
+            if (!services.get(i).getSchedule().isEmpty())
                 description += "Horario: \n\n" + services.get(i).getSchedule();
 
             if (!description.isEmpty())
                 description += " \n\n ";
 
-            if(!services.get(i).getContact().isEmpty())
+            if (!services.get(i).getContact().isEmpty())
                 description += "Contacto: \n\n" + services.get(i).getContact();
 
             elements.add(new ElementAdapter(services.get(i).getName(), description));

@@ -15,11 +15,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
+import Preferences.PLogin;
 import UIElements.EventInfo;
 import Objects.Exit;
 import Objects.Line;
@@ -40,13 +44,14 @@ public class Main extends AppCompatActivity
     //This variable contains the las id
     private int lastId = 0;
 
-    //private ArrayList<Line> lines = new ArrayList<>();
-
+    private PLogin preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        preferences = new PLogin(Main.this);
+        TextView user_name = (TextView)findViewById(R.id.TXT_nav_header_name);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -59,7 +64,11 @@ public class Main extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //new EventInfo(Main.this).showDialog();
+        try {
+            user_name.setText(preferences.getNameUser());
+        } catch (Exception e) {
+            Log.e(TAG, "onCreate: ", e);
+        }
         /**We go to show the Fragment that contains our google map**/
         fragmentManager = getFragmentManager();
         lastId = R.id.nav_map_main;
@@ -156,11 +165,16 @@ public class Main extends AppCompatActivity
         exits.add(new Exit("Surponiente", "Real del Monte, Colonia Pino Suárez"));
 
         ArrayList<Station> stations = new ArrayList<>();
+        ArrayList<LatLng> positions = new ArrayList<>();
+        Double lat = 19.3982121;
+        Double lng = -99.2005697;
 
+        for(int i = 0; i < 5; i++)
+        positions.add(new LatLng(lat+=0.05, lng+=0.05));
         //for(int i = 1; i <= 9; i++)
-            stations.add(new Station("Observatorio 1", "1", new LatLng(19.3982121,-99.2005697), services, exits));
-            stations.add(new Station("Observatorio 2", "2", new LatLng(19.3982121,-99.2005697), services, exits));
-            stations.add(new Station("Observatorio 3", "3", new LatLng(19.3982121,-99.2005697), services, exits));
+            stations.add(new Station("Observatorio 1", "1", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
+            stations.add(new Station("Observatorio 2", "2", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
+            stations.add(new Station("Observatorio 3", "3", new LatLng(19.3982121,-99.2005697), services, exits, positions, positions));
        // ArrayList<Station> stations = new ArrayList<>();
 
 

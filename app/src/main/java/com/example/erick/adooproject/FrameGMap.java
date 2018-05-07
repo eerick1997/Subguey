@@ -41,6 +41,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import DataBases.DBStations;
 import MapUtilities.PermissionUtils;
 import UIElements.customMarkerEvent;
 
@@ -58,7 +59,6 @@ public class FrameGMap extends Fragment implements LocationListener,
     //Constants
     private static final String TAG = "FrameGMap.java";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
-    private static final int LOCATION_CONFIGURATION_REQUEST_CODE = 201;
     //Each 5 seconds the location is updated
     private static final int TIME_UPDATE = 5000;
     //Each second the location is update (if the user is moving too fast)
@@ -71,7 +71,7 @@ public class FrameGMap extends Fragment implements LocationListener,
     private boolean mPermissionDenied = false;
 
     private LocationRequest locationRequest;
-    private LocationCallback locationCallback;
+    private DBStations dbStations;
 
     //We need to limit the map
     private LatLngBounds CDMX = new LatLngBounds(
@@ -92,6 +92,7 @@ public class FrameGMap extends Fragment implements LocationListener,
                 .addOnConnectionFailedListener(this) //We indicate that OnConnectionFailedListener has been implemented
                 .build();//We make the GoogleApiClient
         startLocationUpdates();
+        dbStations = new DBStations(getActivity(), "", null, 1);
 
 
     }
