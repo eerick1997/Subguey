@@ -68,7 +68,6 @@ public class Main extends AppCompatActivity
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.ic_default_profile)
                 .override(250,250)
                 .centerCrop()
                 .into(user_profile);

@@ -53,6 +53,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import DataBases.DBStations;
 import MapUtilities.PermissionUtils;
+import UIElements.MyImages;
 import UIElements.customMarkerEvent;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -61,7 +62,6 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
  * This class contains the code to manipulate a google map
  * which we go to show the lines of subway and metro bus
  **/
-
 public class FrameGMap extends Fragment implements LocationListener,
         ConnectionCallbacks, OnConnectionFailedListener, OnMarkerClickListener,
         OnMapReadyCallback, OnMyLocationButtonClickListener {
@@ -70,9 +70,9 @@ public class FrameGMap extends Fragment implements LocationListener,
     private static final String TAG = "FrameGMap.java";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
     //Each 5 seconds the location is updated
-    private static final int TIME_UPDATE = 5000;
+    private static final int TIME_UPDATE = 10000;
     //Each second the location is update (if the user is moving too fast)
-    private static final int TIME_FAST_UPDATE = 1000;
+    private static final int TIME_FAST_UPDATE = 5000;
     //Variables
     private GoogleMap googleMap;
     private GoogleApiClient googleApiClient;
@@ -144,18 +144,21 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.setOnMyLocationButtonClickListener(this);
         //We can see 3D models of buildings
         this.googleMap.setBuildingsEnabled(true);
-
+        //Implementing onMarkerClickListener interface
+        this.googleMap.setOnMarkerClickListener(this);
         this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 20));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
         //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
 
+        MyImages images = new MyImages(getActivity());
 
-        /**Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
-                .title("losreyeslinea1")
+        //If we need to add a marker we can use the code below
+        Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
+                .title("Observatorio")
                 .snippet("linea 1"));
-        marker.setIcon(BitmapDescriptorFactory.fromBitmap(oneImage()));**/
+        marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));
 
         enableMyLocation();
     }

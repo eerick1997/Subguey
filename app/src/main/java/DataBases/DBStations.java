@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -48,7 +47,11 @@ public class DBStations extends SQLiteOpenHelper {
         super(context, DB_STATIONS_nameDB, null, 1);
         Log.d(TAG, "DBStations() called with: context = [" + context + "], name = [" + name + "], " +
                 "factory = [" + factory + "], version = [" + version + "]");
+        //Initializing our variables
         this.context = context;
+        //Instancing a converter Object
+        converter = new Converter();
+
     }
 
     /**
@@ -152,10 +155,10 @@ public class DBStations extends SQLiteOpenHelper {
                     LatLng position = (LatLng) converter.getObject(cursor.getBlob(1));
                     String id = cursor.getString(0);
 
-                    String uri = "@drawable/ic_"+id;
+                    String uri = "@drawable/ic_" + id;
                     int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
                     Drawable drawable = context.getResources().getDrawable(imageResource);
-                    Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+                    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
                     //Creating a new marker
                     Marker marker = googleMap.addMarker(new MarkerOptions().position(position)
                             .title(id)
@@ -163,7 +166,7 @@ public class DBStations extends SQLiteOpenHelper {
                 } while (cursor.moveToNext());
             }
         } catch (Exception e) {
-            Log.e   (TAG, "setMarkers: ", e);
+            Log.e(TAG, "setMarkers: ", e);
         }
     }
 
