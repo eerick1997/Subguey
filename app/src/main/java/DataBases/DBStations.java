@@ -163,7 +163,7 @@ public class DBStations extends SQLiteOpenHelper {
                 } while (cursor.moveToNext());
             }
         } catch (Exception e) {
-            Log.e(TAG, "setMarkers: ", e);
+            Log.e   (TAG, "setMarkers: ", e);
         }
     }
 

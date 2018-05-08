@@ -6,6 +6,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -99,15 +104,6 @@ public class FrameGMap extends Fragment implements LocationListener,
         startLocationUpdates();
         dbStations = new DBStations(getActivity(), "", null, 1);
 
-
-        int imageRes = getActivity().getResources()
-                .getIdentifier("@drawable/ic_close", null, getActivity().getPackageName());
-
-        Drawable drawable = getActivity().getResources().getDrawable(imageRes);
-        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
-        Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
-            .title("losreyeslinea1")
-            .icon(BitmapDescriptorFactory.fromBitmap(bitmap)));
     }
 
     //This method is called just when the view hasn't been created
@@ -153,9 +149,17 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 20));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
-        new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
+        //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
+
+
+        /**Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
+                .title("losreyeslinea1")
+                .snippet("linea 1"));
+        marker.setIcon(BitmapDescriptorFactory.fromBitmap(oneImage()));**/
+
         enableMyLocation();
     }
+
 
     @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
