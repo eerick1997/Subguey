@@ -26,7 +26,7 @@ public abstract class PermissionUtils {
     public static void requestPermission(AppCompatActivity activity, int requestId,
                                          String permission, boolean finishActivity){
         if(ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)){
-            //Display a dialog with rationale
+            //Display a dialog with rational
             PermissionUtils.RationaleDialog.newInstance(requestId, finishActivity).show(activity.getFragmentManager(), "dialog");
         } else {
             //Location permission hasn't been granted yet, request it
@@ -142,4 +142,6 @@ public abstract class PermissionUtils {
             }
         }
     }
+
+
 }
