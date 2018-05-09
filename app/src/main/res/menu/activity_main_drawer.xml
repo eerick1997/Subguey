@@ -3,29 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <!--<item android:title="Mapas">
-        <menu>-->
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_map_main"
-                    android:icon="@drawable/ic_map"
-                    android:title="@string/navigation_drawer_map" />
-                <!--item
-                    android:id="@+id/nav_gallery"
-                    android:icon="@drawable/ic_menu_gallery"
-                    android:title="Gallery" />
-                <item
-                    android:id="@+id/nav_slideshow"
-                    android:icon="@drawable/ic_menu_slideshow"
-                    android:title="Slideshow" />
-                <item
-                    android:id="@+id/nav_manage"
-                    android:icon="@drawable/ic_menu_manage"
-                    android:title="Tools" /-->
-            </group>
-        <!--</menu>
-    </item>-->
-    <item android:title="Lineas">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_map_main"
+            android:icon="@drawable/ic_map"
+            android:title="@string/navigation_drawer_map" />
+    </group>
+    <item android:title="@string/nav_main_lines">
         <menu>
             <item
                 android:id="@+id/nav_lines_subway"
