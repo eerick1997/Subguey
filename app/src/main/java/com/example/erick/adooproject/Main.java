@@ -31,6 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    //Lalocomotora
     //Lalombriz
     //Constants
     private static final String TAG = "Main.java";
