@@ -5,14 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.LightingColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
@@ -51,10 +43,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import DataBases.DBStations;
+import DataBases.SQLite.DBStations;
 import MapUtilities.PermissionUtils;
 import UIElements.MyImages;
-import UIElements.customMarkerEvent;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 

@@ -31,7 +31,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //Lalombriz
     //Constants
     private static final String TAG = "Main.java";
 
@@ -66,6 +65,7 @@ public class Main extends AppCompatActivity
         Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
         user_name.setText("");
         user_name.setText(getString(R.string.hello_user) + " " + preferences.getNameUser());
+        /**This code downloads an image, and puts in the nav bar circle image**/
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -194,20 +194,4 @@ public class Main extends AppCompatActivity
 
         /******************************* END JUST FOR TESTING ******************************************/
     }
-
-    /**private void setProfileIMG() {
-     Log.d(TAG, "setProfileIMG() called");
-     /**CircleImageView circleImageView;
-     circleImageView = (CircleImageView) findViewById(R.id.IMG_nav_header_user_profile);**/
-    /**final String imgUrl = "https://api.androidhive.info/images/glide/medium/deadpool.jpg";
-     final ImageView imageView = (ImageView)findViewById(R.id.IMG_nav_bar_profile);
-     try {
-     PLogin pref = new PLogin(Main.this);
-     Glide.with(Main.this)
-     .load(imgUrl)
-     .into(imageView);
-     } catch (Exception e) {
-     Log.e(TAG, "setProfileIMG: ", e);
-     }
-     }**/
 }

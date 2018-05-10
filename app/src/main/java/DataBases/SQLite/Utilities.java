@@ -1,4 +1,4 @@
-package DataBases;
+package DataBases.SQLite;
 
 public class Utilities {
 

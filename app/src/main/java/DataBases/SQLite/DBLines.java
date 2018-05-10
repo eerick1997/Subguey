@@ -1,4 +1,4 @@
-package DataBases;
+package DataBases.SQLite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import Objects.Line;
 
-import static DataBases.Utilities.*;
+import static DataBases.SQLite.Utilities.*;
 
 public class DBLines extends SQLiteOpenHelper{
 
