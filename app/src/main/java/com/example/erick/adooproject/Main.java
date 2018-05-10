@@ -31,6 +31,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+
+    /* Que oooooooooooooooooooooooooooooooooooooooooooooooooonda
+    que peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeets
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Constants
     private static final String TAG = "Main.java";
 
