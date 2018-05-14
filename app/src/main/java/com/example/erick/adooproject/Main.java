@@ -52,7 +52,6 @@ public class Main extends AppCompatActivity
 
 
 
-
     //Constants
     private static final String TAG = "Main.java";
 
