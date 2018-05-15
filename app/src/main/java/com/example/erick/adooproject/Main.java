@@ -40,10 +40,15 @@ import com.google.firebase.database.ValueEventListener;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+<<<<<<< HEAD
+    //Lalocomotora
+    //Lalombriz
+=======
 
 
 
 
+>>>>>>> d9343d53bb0ee642907bb2bf7f3d767886374203
     //Constants
     private static final String TAG = "Main.java";
 
