@@ -18,36 +18,27 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 import Objects.Exit;
+import Objects.FirebaseReferences;
 import Objects.Line;
 import Objects.Service;
 import Objects.Station;
+import Objects.User;
 import Preferences.PLogin;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-
-
-    /* Que oooooooooooooooooooooooooooooooooooooooooooooooooonda
-    que peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeets
-     */
-
-    /**
-     * Por eso ella no te ama :v
-     * **/
-
-
-
-
-
-
-
-
 
 
 
@@ -73,6 +64,19 @@ public class Main extends AppCompatActivity
         preferences = new PLogin(Main.this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+
+        /*FirebaseDatabase database= FirebaseDatabase.getInstance();
+        DatabaseReference usuarios = database.getReference(FirebaseReferences.BASEDATOS_REFERENCE).child(FirebaseReferences.USUARIO_REFERENCE);
+        User usuario= new User("prueba@gmail.com", "Esunaprueba", 10, 1, 10, "prueba", 1);
+        usuarios.push().setValue(usuario);*/
+
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
