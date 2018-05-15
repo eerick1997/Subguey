@@ -1,4 +1,4 @@
-package DataBases;
+package DataBases.SQLite;
 
 import android.util.Log;
 

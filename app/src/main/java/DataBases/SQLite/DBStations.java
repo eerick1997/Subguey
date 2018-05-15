@@ -1,4 +1,4 @@
-package DataBases;
+package DataBases.SQLite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,16 +22,16 @@ import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
 
-import static DataBases.Utilities.DB_STATIONS_ID;
-import static DataBases.Utilities.DB_STATIONS_Line;
-import static DataBases.Utilities.DB_STATIONS_Name;
-import static DataBases.Utilities.DB_STATIONS_exits;
-import static DataBases.Utilities.DB_STATIONS_nameDB;
-import static DataBases.Utilities.DB_STATIONS_next;
-import static DataBases.Utilities.DB_STATIONS_position;
-import static DataBases.Utilities.DB_STATIONS_previous;
-import static DataBases.Utilities.DB_STATIONS_services;
-import static DataBases.Utilities.DB_STATIONS_tbl;
+import static DataBases.SQLite.Utilities.DB_STATIONS_ID;
+import static DataBases.SQLite.Utilities.DB_STATIONS_Line;
+import static DataBases.SQLite.Utilities.DB_STATIONS_Name;
+import static DataBases.SQLite.Utilities.DB_STATIONS_exits;
+import static DataBases.SQLite.Utilities.DB_STATIONS_nameDB;
+import static DataBases.SQLite.Utilities.DB_STATIONS_next;
+import static DataBases.SQLite.Utilities.DB_STATIONS_position;
+import static DataBases.SQLite.Utilities.DB_STATIONS_previous;
+import static DataBases.SQLite.Utilities.DB_STATIONS_services;
+import static DataBases.SQLite.Utilities.DB_STATIONS_tbl;
 
 public class DBStations extends SQLiteOpenHelper {
 

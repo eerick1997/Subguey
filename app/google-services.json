@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "463841305761",
+    "firebase_url": "https://basedatosadoo-ae5ee.firebaseio.com",
+    "project_id": "basedatosadoo-ae5ee",
+    "storage_bucket": "basedatosadoo-ae5ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463841305761:android:a028c3c44d2c26b9",
+        "android_client_info": {
+          "package_name": "com.example.erick.adooproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463841305761-psngae1bltbqs1p7fsrosiqbucmu05qq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.erick.adooproject",
+            "certificate_hash": "4d5195fb2a4747df390ddd7217bdbf5ee58dab7d"
+          }
+        },
+        {
+          "client_id": "463841305761-c0e6lvmfnet1vhot7juvsbpnk4s6ik10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5blSMi4mvQ1azEAYnW_vVkEmGewNVSio"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463841305761-c0e6lvmfnet1vhot7juvsbpnk4s6ik10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,21 +18,37 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 import Objects.Exit;
+import Objects.FirebaseReferences;
 import Objects.Line;
 import Objects.Service;
 import Objects.Station;
+import Objects.User;
 import Preferences.PLogin;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+<<<<<<< HEAD
     //Lalocomotora
     //Lalombriz
+=======
+
+
+
+
+>>>>>>> d9343d53bb0ee642907bb2bf7f3d767886374203
     //Constants
     private static final String TAG = "Main.java";
 
@@ -54,6 +70,19 @@ public class Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+
+        /*FirebaseDatabase database= FirebaseDatabase.getInstance();
+        DatabaseReference usuarios = database.getReference(FirebaseReferences.BASEDATOS_REFERENCE).child(FirebaseReferences.USUARIO_REFERENCE);
+        User usuario= new User("prueba@gmail.com", "Esunaprueba", 10, 1, 10, "prueba", 1);
+        usuarios.push().setValue(usuario);*/
+
+
+
+
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -67,6 +96,7 @@ public class Main extends AppCompatActivity
         Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
         user_name.setText("");
         user_name.setText(getString(R.string.hello_user) + " " + preferences.getNameUser());
+        /**This code downloads an image, and puts in the nav bar circle image**/
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -195,20 +225,4 @@ public class Main extends AppCompatActivity
 
         /******************************* END JUST FOR TESTING ******************************************/
     }
-
-    /**private void setProfileIMG() {
-     Log.d(TAG, "setProfileIMG() called");
-     /**CircleImageView circleImageView;
-     circleImageView = (CircleImageView) findViewById(R.id.IMG_nav_header_user_profile);**/
-    /**final String imgUrl = "https://api.androidhive.info/images/glide/medium/deadpool.jpg";
-     final ImageView imageView = (ImageView)findViewById(R.id.IMG_nav_bar_profile);
-     try {
-     PLogin pref = new PLogin(Main.this);
-     Glide.with(Main.this)
-     .load(imgUrl)
-     .into(imageView);
-     } catch (Exception e) {
-     Log.e(TAG, "setProfileIMG: ", e);
-     }
-     }**/
 }
