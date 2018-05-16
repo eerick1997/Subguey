@@ -41,7 +41,7 @@ public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 //Me lleva la verga >:v
-    
+
     //Constants
     private static final String TAG = "Main.java";
 
