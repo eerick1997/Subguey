@@ -14,29 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
-
 import Objects.Exit;
-import Objects.FirebaseReferences;
 import Objects.Line;
 import Objects.Service;
 import Objects.Station;
-import Objects.User;
-import Objects.Usuario;
 import Preferences.PLogin;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,11 +51,6 @@ public class Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FirebaseDatabase database= FirebaseDatabase.getInstance();
-        DatabaseReference usuarios = database.getReference(FirebaseReferences.BASEDATOS_REFERENCE).child(FirebaseReferences.USUARIO_REFERENCE);
-        Usuario usuario= new Usuario("prueba@gmail.com", "Esunaprueba1", 10, 1, 10, "prueba", 1);
-        usuarios.push().setValue(usuario);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -86,7 +68,7 @@ public class Main extends AppCompatActivity
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .override(250,250)
+                .override(270,270)
                 .centerCrop()
                 .into(user_profile);
         navigationView.setNavigationItemSelectedListener(this);

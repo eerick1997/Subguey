@@ -22,16 +22,16 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
 import UIElements.EventInfo;
 
-import static Preferences.Utilities.EMAIL;
-import static Preferences.Utilities.IMG_PROFILE;
-import static Preferences.Utilities.NAME_USER;
-import static Preferences.Utilities.SIGNED;
+import static Preferences.Utilities.*;
+import static DataBases.Firebase.FirebaseReferences.*;
 
 public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
@@ -133,6 +133,13 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 String user_email = account.getEmail();
                 String user_id = account.getId();
                 Uri user_photo = account.getPhotoUrl();
+                //User datas
+                user = new User(user_name, user_email, user_given_name,
+                        0.0f, 0.0f, user_photo.toString(),
+                        1);
+                //We register to this user
+                register(user);
+
                 //user = new User(user_given_name, user_email, user_name);
                 Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                         + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
@@ -144,7 +151,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 preferences.savePreference(NAME_USER, user_name + " " + user_given_name);
                 //To save the email
                 preferences.savePreference(EMAIL, user_email);
-
+                //To save img_profile
                 preferences.savePreference(IMG_PROFILE, user_photo.toString());
                 //Now we go to the next activity
                 changeActivity();
@@ -202,5 +209,23 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             Log.e(TAG, "changeActivity: ", e);
             preferences.cleanPreferences();
         }
+    }
+
+    /**
+     * Description: This method send data to our database and verify if a user
+     * already exists in the FireBase database
+     * Parameters: An User object, as we know FireBase database is a oriented
+     * object database, so we can send a complete object and It'll be registered
+     * Returns: nothing
+     * **/
+    private void register(@NonNull User user){
+        Log.d(TAG, "register() called with: user = [" + user + "]");
+        //We make an instance of a FirebaseDatabase object to create our database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //We need to pass the name of our database and child to we need to use or create
+        DatabaseReference users = database.getReference(DB_REFERENCE)
+                .child(USER_REFERENCE);
+        //We add the data in to our server
+        users.push().setValue(user);
     }
 }

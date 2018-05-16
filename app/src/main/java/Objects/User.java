@@ -1,17 +1,14 @@
 package Objects;
 
-import android.util.Log;
-
-import java.net.URI;
-
 /**Class User contains information that we can get using
  * the Google account, this information can be:
  * name, email, profile photo, id of google, ..., etc**/
 public class User {
 
     //Variables
-    private String name, email, nick_name;
-    private float nqualifiers = 0.0f, sum_qualifications= 0.0f;
+    private String name, email, nick_name, profile_img;
+    private float n_qualifiers, sum_qualifications;
+    private int state;
     //Constructor
     /**User constructor needs six parameters
      * 1. Name: The name of this user this is provided by his/her google account
@@ -21,14 +18,16 @@ public class User {
      * 5. Sum of qualifications: this parameter has all the qualifications of the users
      * 6. Qualification: this parameter has the **/
     public User(String name, String email, String nick_name,
-                float nqualifiers, float sum_qualifications,
-                Float qualification){
+                float n_qualifiers, float sum_qualifications,
+                String profile_img, int state){
         //Initializing our global private variables
         this.name = name;
         this.email = email;
         this.nick_name = nick_name;
-        this.nqualifiers = nqualifiers;
+        this.n_qualifiers = n_qualifiers;
         this.sum_qualifications = sum_qualifications;
+        this.profile_img = profile_img;
+        this.state = state;
     }
 
     /**--------------- GETTERS ---------------**/
@@ -44,12 +43,20 @@ public class User {
         return this.nick_name;
     }
 
-    public Float getNqualifiers(){
-        return this.nqualifiers;
+    public float getN_qualifiers(){
+        return this.n_qualifiers;
     }
 
-    public Float getSum_qualifications(){
+    public float getSum_qualifications(){
         return this.sum_qualifications;
+    }
+
+    public String getProfile_img(){
+        return this.profile_img;
+    }
+
+    public int getState(){
+        return this.state;
     }
 
     /**-------------- SETTERS ---------------**/
@@ -65,12 +72,20 @@ public class User {
         this.nick_name = nick_name;
     }
 
-    public void setNqualifiers(Float nqualifiers){
-        this.nqualifiers = nqualifiers;
+    public void setNqualifiers(Float n_qualifiers){
+        this.n_qualifiers = n_qualifiers;
     }
 
     public void setSum_qualifications(Float sum_qualifications){
         this.sum_qualifications = sum_qualifications;
+    }
+
+    public void setetProfile_img(String profile_img){
+        this.profile_img = profile_img;
+    }
+
+    public void setetState(int state){
+        this.state = state;
     }
 
 }
