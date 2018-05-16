@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 String user_email = account.getEmail();
                 String user_id = account.getId();
                 Uri user_photo = account.getPhotoUrl();
-                user = new User(user_given_name, user_email, user_name);
+                //user = new User(user_given_name, user_email, user_name);
                 Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                         + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
                 //We save the information of the user in our preferences

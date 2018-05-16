@@ -64,18 +64,10 @@ public class Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
         FirebaseDatabase database= FirebaseDatabase.getInstance();
         DatabaseReference usuarios = database.getReference(FirebaseReferences.BASEDATOS_REFERENCE).child(FirebaseReferences.USUARIO_REFERENCE);
-        Usuario usuario= new Usuario("prueba@gmail.com", "Esunaprueba", 10, 1, 10, "prueba", 1);
+        Usuario usuario= new Usuario("prueba@gmail.com", "Esunaprueba1", 10, 1, 10, "prueba", 1);
         usuarios.push().setValue(usuario);
-
-
-
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
