@@ -28,6 +28,7 @@ import Objects.Line;
 import Objects.Service;
 import Objects.Station;
 import Objects.User;
+import Objects.Usuario;
 import Preferences.PLogin;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -66,10 +67,10 @@ public class Main extends AppCompatActivity
 
 
 
-        /*FirebaseDatabase database= FirebaseDatabase.getInstance();
+        FirebaseDatabase database= FirebaseDatabase.getInstance();
         DatabaseReference usuarios = database.getReference(FirebaseReferences.BASEDATOS_REFERENCE).child(FirebaseReferences.USUARIO_REFERENCE);
-        User usuario= new User("prueba@gmail.com", "Esunaprueba", 10, 1, 10, "prueba", 1);
-        usuarios.push().setValue(usuario);*/
+        Usuario usuario= new Usuario("prueba@gmail.com", "Esunaprueba", 10, 1, 10, "prueba", 1);
+        usuarios.push().setValue(usuario);
 
 
 
