@@ -9,7 +9,6 @@
         android:layout_height="64dp"
         android:contentDescription="@string/app_name"
         android:scaleType="fitXY"
-
         android:src="@drawable/nav_subway" />
 
     <EditText
