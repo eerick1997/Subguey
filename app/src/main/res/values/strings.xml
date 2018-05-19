@@ -31,6 +31,8 @@
     <string name="LA">#913f92</string>
     <string name="LB">#c2c4c6</string>
     <string name="L12">#cac640</string>
+    <string name="acceder_color">#000E59</string>
+    <string name="layout_acceder">#FFFFFF</string>
     <string name="ubication_station_info">Ubicación</string>
     <string name="schedule_station_info">Horario</string>
     <string name="contact_station_info">Contacto</string>
@@ -40,4 +42,5 @@
     <string name="nav_main_lines">Líneas</string>
     <string name="you_need_a_nick">En Sübguey necesitamos que puedas identificarte con el resto de la comunidad. Escribe tú nombre de usuario.</string>
     <string name="nick_name">Nombre de usuario</string>
+    <string name="log_in_message">Cuenta vinculada con la de Google para su registro</string>
 </resources>
