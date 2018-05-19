@@ -23,7 +23,7 @@
             android:layout_height="269dp"
             android:adjustViewBounds="true"
             android:paddingTop="5dp"
-            android:src="@drawable/logo_Subguey" />
+            android:src="@drawable/logo_subguey" />
 
         <TextView
             android:id="@+id/info_login"
