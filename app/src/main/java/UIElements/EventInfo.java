@@ -68,7 +68,7 @@ public class EventInfo {
              *
              * **/
 
-            //We add all the elements in the view object in the AlertDialog
+            //We add all the elements in our Alert Dialog
             alertDialog.setView(view);
             alertDialog.show();
         } catch (Exception e) {
