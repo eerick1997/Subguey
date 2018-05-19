@@ -50,10 +50,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
+        <!--activity
             android:name=".FrameGMap"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/title_activity_frame_gmap" />
+            android:label="@string/title_activity_frame_gmap" /-->
         <activity
             android:name=".activity_station_info"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

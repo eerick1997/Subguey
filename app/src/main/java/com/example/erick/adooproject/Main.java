@@ -14,13 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
-
 import java.util.ArrayList;
-
 import Objects.Exit;
 import Objects.Line;
 import Objects.Service;
@@ -31,27 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
-    /* Que oooooooooooooooooooooooooooooooooooooooooooooooooonda
-    que peeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeets
-     */
-
-    /**
-     * Por eso ella no te ama :v
-     * **/
-
-
-
-
-
-
-
-
-
-
-
-
+//Me lleva la verga >:v
 
     //Constants
     private static final String TAG = "Main.java";
@@ -91,7 +68,7 @@ public class Main extends AppCompatActivity
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .override(250,250)
+                .override(270,270)
                 .centerCrop()
                 .into(user_profile);
         navigationView.setNavigationItemSelectedListener(this);
