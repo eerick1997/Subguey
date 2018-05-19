@@ -42,5 +42,5 @@
     <string name="nav_main_lines">Líneas</string>
     <string name="you_need_a_nick">En Sübguey necesitamos que puedas identificarte con el resto de la comunidad. Escribe tú nombre de usuario.</string>
     <string name="nick_name">Nombre de usuario</string>
-    <string name="log_in_message">Cuenta vinculada con la de Google para su registro</string>
+    <string name="log_in_message">Cuenta vinculada con la de Google para su registro.</string>
 </resources>
