@@ -23,7 +23,7 @@
             android:layout_height="269dp"
             android:adjustViewBounds="true"
             android:paddingTop="5dp"
-            android:src="@drawable/logo_subguey"
+            android:src="@mipmap/ic_launcher"
             />
 
         <TextView
@@ -34,22 +34,19 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="25dp"
             android:text="@string/log_in_message"
-            android:textColor=""
-            android:textColorHighlight=""
             android:textSize="17dp" />
 
         <Button
-            android:id="@+id/g_sign_in_button"
+            android:id="@+id/btn_sign_in_button"
             android:layout_width="100dp"
             android:layout_height="46dp"
             android:layout_gravity="center"
             android:layout_marginLeft="45dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="45dp"
             android:layout_marginTop="20dp"
-            android:background="@string/L2"
             android:foregroundGravity="center"
-            android:text="ACCEDER"
-            android:textColor="@string/layout_acceder" />
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/txt_log_in" />
 
     </LinearLayout>
 

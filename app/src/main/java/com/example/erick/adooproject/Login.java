@@ -17,7 +17,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,8 +29,12 @@ import Objects.User;
 import Preferences.PLogin;
 import UIElements.EventInfo;
 
-import static Preferences.Utilities.*;
-import static DataBases.Firebase.FirebaseReferences.*;
+import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
+import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
+import static Preferences.Utilities.EMAIL;
+import static Preferences.Utilities.IMG_PROFILE;
+import static Preferences.Utilities.NAME_USER;
+import static Preferences.Utilities.SIGNED;
 
 public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
@@ -65,9 +68,8 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
          * specified in the googleSignInOptions object*/
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
-        /*Setting dimensions of the sign-in button*/
-        SignInButton signInButton = findViewById(R.id.g_sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        /*Making an instance of our button to sign in an user*/
+        Button signInButton = findViewById(R.id.btn_sign_in_button);
 
         /*Setting on click listener event*/
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -79,15 +81,16 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             }
         });
 
+        //DON'T ERASE THIS
         /*We create a Button to revoke access*/
-        Button button = (Button) findViewById(R.id.BTN_revoke);
+        /**Button button = (Button) findViewById(R.id.BTN_revoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Revoke access button pressed", Snackbar.LENGTH_LONG).show();
                 revokeAccess();
             }
-        });
+        });**/
     }
 
     @Override
