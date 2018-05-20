@@ -147,6 +147,8 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                     Uri user_photo = account.getPhotoUrl();
                     String str_photo = user_photo.toString();
 
+                    Log.i("VALOR: ", ""+user_photo.toString());
+
                     if (str_photo.isEmpty() || str_photo.trim().equals("")) {
                         str_photo = "empty";
                     }
@@ -231,12 +233,12 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     private void register(@NonNull User user){
         Log.d(TAG, "register() called with: user = [" + user + "]");
         //We make an instance of a FirebaseDatabase object to create our database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         //We need to pass the name of our database and child to we need to use or create
         DatabaseReference users = database.getReference(DB_REFERENCE)
                 .child(USER_REFERENCE);
         //We add the data in to our server
-        users.push().setValue(user);
+        users.push().setValue(user);*/
     }
 
     private void getAccountData(GoogleSignInAccount account) throws Exception {
