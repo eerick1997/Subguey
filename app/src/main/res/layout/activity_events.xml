@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="¿Algo que reportar?"/>
+        android:text="@string/text_events" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
