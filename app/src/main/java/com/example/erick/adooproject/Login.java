@@ -144,9 +144,13 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 String user_email = account.getEmail();
                 String user_id = account.getId();
                 Uri user_photo = account.getPhotoUrl();
+                String str_photo= user_photo.toString();
+                if(str_photo.isEmpty()){
+                    str_photo="";
+                }
                 //User datas
                 user = new User(user_name, user_email, user_given_name,
-                        0.0f, 0.0f, user_photo.toString(),
+                        0.0f, 0.0f, str_photo,
                         1);
                 //We register to this user
                 register(user);
@@ -237,7 +241,10 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         String user_email = account.getEmail();
         String user_id = account.getId();
         Uri user_photo = account.getPhotoUrl();
-
+        String str_photo= user_photo.toString();
+        if(str_photo.isEmpty()){
+            str_photo="";
+        }
         //We save the information of the user in our preferences
         //To save the last state
         preferences.savePreference(SIGNED, true);
@@ -246,9 +253,9 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         //To save the email
         preferences.savePreference(EMAIL, user_email);
         //To save img_profile
-        preferences.savePreference(IMG_PROFILE, user_photo.toString());
+        preferences.savePreference(IMG_PROFILE, str_photo);
         Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
-                + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
+                + user_family_name + " " + user_email + " " + user_id + " " + str_photo);
         //Now we go to the next activity
         changeActivity();
     }
