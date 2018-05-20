@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,9 +53,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         setContentView(R.layout.activity_login);
 
         new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00"));
-        //We need to verify if the user has already signed so we invoke the method changeActivity
-        changeActivity();
-        //If the user wan't signed
 
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
@@ -69,8 +67,9 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         /*Making an instance of our button to sign in an user*/
-        Button signInButton = findViewById(R.id.btn_sign_in_button);
-
+        SignInButton signInButton = findViewById(R.id.btn_sign_in_button);
+        //Setting size
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
         /*Setting on click listener event*/
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +82,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
 
         //DON'T ERASE THIS
         /*We create a Button to revoke access*/
-        Button button = (Button) findViewById(R.id.BTN_revoke);
+        Button button = findViewById(R.id.BTN_revoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,18 +90,27 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 revokeAccess();
             }
         });
+        changeActivity();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        /*Here we check if an user is already signed in our app.
-         * if someone is already signed the GoogleSignInAccount will be non-null*/
-        GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
-
-        /**
-         * Here we can send to another activity or/and update UI
-         * **/
+        Log.d(TAG, "onStart() called");
+        try {
+            /*Here we check if an user is already signed in our app.
+             * if someone is already signed the GoogleSignInAccount will be non-null*/
+            GoogleSignInAccount googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this);
+            if (googleSignInAccount != null) {
+                Log.i(TAG, "onStart: An user has been found " + googleSignInAccount.getDisplayName());
+                //getAccountData(googleSignInAccount);
+            } else {
+                Log.i(TAG, "onStart: I don't found a user");
+                preferences.cleanPreferences();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "onStart: ", e);
+        }
     }
 
     /**
@@ -143,21 +151,10 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 //We register to this user
                 register(user);
 
-                //user = new User(user_given_name, user_email, user_name);
                 Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                         + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
-                //We save the information of the user in our preferences
-
-                //To save the last state
-                preferences.savePreference(SIGNED, true);
-                //To save the name of this user
-                preferences.savePreference(NAME_USER, user_name + " " + user_given_name);
-                //To save the email
-                preferences.savePreference(EMAIL, user_email);
-                //To save img_profile
-                preferences.savePreference(IMG_PROFILE, user_photo.toString());
-                //Now we go to the next activity
-                changeActivity();
+                //Getting account data and storing in preferences
+                getAccountData(account);
             } else {
                 Log.e(TAG, "handleSignInResult: we can't get the account");
             }
@@ -230,5 +227,29 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 .child(USER_REFERENCE);
         //We add the data in to our server
         users.push().setValue(user);
+    }
+
+    private void getAccountData(GoogleSignInAccount account) {
+
+        String user_name = account.getDisplayName();
+        String user_given_name = account.getGivenName();
+        String user_family_name = account.getFamilyName();
+        String user_email = account.getEmail();
+        String user_id = account.getId();
+        Uri user_photo = account.getPhotoUrl();
+
+        //We save the information of the user in our preferences
+        //To save the last state
+        preferences.savePreference(SIGNED, true);
+        //To save the name of this user
+        preferences.savePreference(NAME_USER, user_name + " " + user_given_name);
+        //To save the email
+        preferences.savePreference(EMAIL, user_email);
+        //To save img_profile
+        preferences.savePreference(IMG_PROFILE, user_photo.toString());
+        Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
+                + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
+        //Now we go to the next activity
+        changeActivity();
     }
 }

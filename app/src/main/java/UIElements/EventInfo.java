@@ -7,12 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.erick.adooproject.R;
-
-import org.w3c.dom.Text;
 
 import Objects.Event;
 
@@ -58,6 +55,7 @@ public class EventInfo {
                 @Override
                 public void onClick(View v) {
                     Snackbar.make(v, "Button pressed", Snackbar.LENGTH_SHORT).show();
+                    alertDialog.dismiss();
                 }
             });
 

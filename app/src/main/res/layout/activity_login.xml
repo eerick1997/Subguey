@@ -23,8 +23,7 @@
             android:layout_height="269dp"
             android:adjustViewBounds="true"
             android:paddingTop="5dp"
-            android:src="@drawable/logo_subguey"
-            />
+            android:src="@drawable/logo_subguey" />
 
         <TextView
             android:id="@+id/info_login"
@@ -34,23 +33,23 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/log_in_message"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
-        <Button
+        <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_sign_in_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:foregroundGravity="center"
-            android:background="@color/colorPrimaryDark"
-            android:text="@string/txt_log_in" />
+            android:foregroundGravity="center" />
 
         <Button
             android:id="@+id/BTN_revoke"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:text="Revoke" />
 
     </LinearLayout>
 
