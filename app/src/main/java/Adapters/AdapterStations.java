@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import Objects.Station;
 
-public class AdapterStations extends RecyclerView.Adapter<AdapterStations.StationsViewHolder>{
+public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.StationsViewHolder>{
 
     //Constants
     private static final String TAG = "AdapterStations.java";

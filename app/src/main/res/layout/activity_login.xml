@@ -23,7 +23,7 @@
             android:layout_height="269dp"
             android:adjustViewBounds="true"
             android:paddingTop="5dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/logo_subguey"
             />
 
         <TextView
