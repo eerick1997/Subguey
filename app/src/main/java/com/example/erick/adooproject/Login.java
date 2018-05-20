@@ -83,14 +83,14 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
 
         //DON'T ERASE THIS
         /*We create a Button to revoke access*/
-        /**Button button = (Button) findViewById(R.id.BTN_revoke);
+        Button button = (Button) findViewById(R.id.BTN_revoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Revoke access button pressed", Snackbar.LENGTH_LONG).show();
                 revokeAccess();
             }
-        });**/
+        });
     }
 
     @Override
