@@ -138,27 +138,33 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             /**Signed in successfully we can update the UI**/
             if (account != null) {
-                String user_name = account.getDisplayName();
-                String user_given_name = account.getGivenName();
-                String user_family_name = account.getFamilyName();
-                String user_email = account.getEmail();
-                String user_id = account.getId();
-                Uri user_photo = account.getPhotoUrl();
-                String str_photo= user_photo.toString();
-                if(str_photo.isEmpty()){
-                    str_photo="";
-                }
-                //User datas
-                user = new User(user_name, user_email, user_given_name,
-                        0.0f, 0.0f, str_photo,
-                        1);
-                //We register to this user
-                register(user);
+                try {
+                    String user_name = account.getDisplayName();
+                    String user_given_name = account.getGivenName();
+                    String user_family_name = account.getFamilyName();
+                    String user_email = account.getEmail();
+                    String user_id = account.getId();
+                    Uri user_photo = account.getPhotoUrl();
+                    String str_photo = user_photo.toString();
 
-                Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
-                        + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
-                //Getting account data and storing in preferences
-                getAccountData(account);
+                    if (str_photo.isEmpty() || str_photo.trim().equals("")) {
+                        str_photo = "empty";
+                    }
+                    //User datas
+                    user = new User(user_name, user_email, user_given_name,
+                            0.0f, 0.0f, str_photo,
+                            1);
+                    //We register to this user
+                    register(user);
+
+                    Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
+                            + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
+                    //Getting account data and storing in preferences
+
+                    getAccountData(account);
+                } catch (Exception e) {
+                    Log.e(TAG, "handleSignInResult: ", e);
+                }
             } else {
                 Log.e(TAG, "handleSignInResult: we can't get the account");
             }
@@ -233,7 +239,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         users.push().setValue(user);
     }
 
-    private void getAccountData(GoogleSignInAccount account) {
+    private void getAccountData(GoogleSignInAccount account) throws Exception {
 
         String user_name = account.getDisplayName();
         String user_given_name = account.getGivenName();
@@ -241,9 +247,9 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         String user_email = account.getEmail();
         String user_id = account.getId();
         Uri user_photo = account.getPhotoUrl();
-        String str_photo= user_photo.toString();
-        if(str_photo.isEmpty()){
-            str_photo="";
+        String str_photo = user_photo.toString();
+        if (str_photo.isEmpty() || str_photo.trim().equals("")) {
+            str_photo = "empty";
         }
         //We save the information of the user in our preferences
         //To save the last state
