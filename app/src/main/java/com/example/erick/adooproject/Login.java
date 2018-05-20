@@ -22,16 +22,12 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
 import UIElements.EventInfo;
 
-import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
-import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
 import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_USER;
@@ -145,13 +141,14 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                     String user_email = account.getEmail();
                     String user_id = account.getId();
                     Uri user_photo = account.getPhotoUrl();
-                    String str_photo = user_photo.toString();
-
-                    Log.i("VALOR: ", ""+user_photo.toString());
-
-                    if (str_photo.isEmpty() || str_photo.trim().equals("")) {
+                    String str_photo = "empty";
+                    try {
+                        str_photo = user_photo.toString();
+                    } catch (Exception e) {
                         str_photo = "empty";
                     }
+                    Log.i("VALOR: ", "" + user_photo);
+
                     //User datas
                     user = new User(user_name, user_email, user_given_name,
                             0.0f, 0.0f, str_photo,
@@ -249,10 +246,13 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         String user_email = account.getEmail();
         String user_id = account.getId();
         Uri user_photo = account.getPhotoUrl();
-        String str_photo = user_photo.toString();
-        if (str_photo.isEmpty() || str_photo.trim().equals("")) {
+        String str_photo = "empty";
+        try {
+            str_photo = user_photo.toString();
+        } catch (Exception e) {
             str_photo = "empty";
         }
+
         //We save the information of the user in our preferences
         //To save the last state
         preferences.savePreference(SIGNED, true);
