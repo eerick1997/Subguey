@@ -38,7 +38,7 @@ public class CustomNickAlert {
 
     /**This method show an customized alert dialog. We don't need
      * extra information to send data to an user                **/
-    public void showDialog(User user) {
+    public void showDialog(final User user) {
         //As we said in the description we gonna use an Alert Dialog
         final AlertDialog alertDialog;
         //Probably we catch an exception
@@ -56,6 +56,7 @@ public class CustomNickAlert {
                 public void onClick(View v) {
                     String nick_user = TXTNickName.getText().toString();
                     Log.i("VALOR: ", "" + nick_user);
+                    user.setNick_name(nick_user.trim());
                     /**LALITO ELLA NO TE AMA :v De aquí se pueden sacar los datos para
                      * poder**/
                 }
