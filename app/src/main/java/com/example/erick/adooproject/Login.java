@@ -22,12 +22,21 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import DataBases.Firebase.FirebaseReferences;
 import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
+import UIElements.CustomNickAlert;
 import UIElements.EventInfo;
 
+import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
+import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
 import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_USER;
@@ -154,13 +163,13 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                             0.0f, 0.0f, str_photo,
                             1);
                     //We register to this user
-                    register(user);
+                    register(user, account);
 
                     Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                             + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
                     //Getting account data and storing in preferences
 
-                    getAccountData(account);
+                    //getAccountData(account);
                 } catch (Exception e) {
                     Log.e(TAG, "handleSignInResult: ", e);
                 }
@@ -227,15 +236,57 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
      * object database, so we can send a complete object and It'll be registered
      * Returns: nothing
      * **/
-    private void register(@NonNull User user){
+    private void register(@NonNull final User user, final GoogleSignInAccount account) {
         Log.d(TAG, "register() called with: user = [" + user + "]");
         //We make an instance of a FirebaseDatabase object to create our database
         /*FirebaseDatabase database = FirebaseDatabase.getInstance();
         //We need to pass the name of our database and child to we need to use or create
-        DatabaseReference users = database.getReference(DB_REFERENCE)
-                .child(USER_REFERENCE);
-        //We add the data in to our server
-        users.push().setValue(user);*/
+        final DatabaseReference usuarios = database.getReference(FirebaseReferences.DB_REFERENCE).child(FirebaseReferences.USER_REFERENCE);
+        //put Object on database's child User
+        usuarios.push().setValue(user);*/
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference usuarios = database.getReference(FirebaseReferences.DB_REFERENCE).child(FirebaseReferences.USER_REFERENCE);
+        usuarios.addListenerForSingleValueEvent(new ValueEventListener() {
+            boolean bool1= false;
+            boolean bool2= false;
+            @Override
+
+
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot objSnapshot : snapshot.getChildren()) {
+                    final User actual= objSnapshot.getValue(User.class);
+
+                    if(user.getEmail().equals(actual.getEmail())){
+                        bool1=true;
+                        Toast.makeText(Login.this, "La cuenta de correo gmail: "+user.getEmail()+" ya se encuentra asociada", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+                if(bool1==false){
+
+
+                    CustomNickAlert nick_alert = new CustomNickAlert(Login.this);
+                    nick_alert.showDialog();
+
+
+
+                    usuarios.push().setValue(user);
+                    /*try {
+                        getAccountData(account);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Log.e("Read failed", firebaseError.getMessage());
+            }
+        });
+
+
+        //getAccountData(account); //line 168
     }
 
     private void getAccountData(GoogleSignInAccount account) throws Exception {
