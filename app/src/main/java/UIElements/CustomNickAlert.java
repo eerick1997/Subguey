@@ -2,14 +2,25 @@ package UIElements;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.erick.adooproject.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import Objects.User;
+
+import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
+import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
 
 public class CustomNickAlert {
 
@@ -27,7 +38,7 @@ public class CustomNickAlert {
 
     /**This method show an customized alert dialog. We don't need
      * extra information to send data to an user                **/
-    public void showDialog(){
+    public void showDialog(User user) {
         //As we said in the description we gonna use an Alert Dialog
         final AlertDialog alertDialog;
         //Probably we catch an exception
@@ -44,7 +55,9 @@ public class CustomNickAlert {
 
                 public void onClick(View v) {
                     String nick_user = TXTNickName.getText().toString();
-                   Log.i("VALOR: ", ""+nick_user);
+                    Log.i("VALOR: ", "" + nick_user);
+                    /**LALITO ELLA NO TE AMA :v De aquí se pueden sacar los datos para
+                     * poder**/
                 }
             });
             //We add all the elements in our Alert Dialog
@@ -53,6 +66,68 @@ public class CustomNickAlert {
         } catch (Exception e){
             Log.e(TAG, "showDialog: ", e);
         }
+    }
+
+    /**
+     * Description: This method send data to our database and verify if a user
+     * already exists in the FireBase database
+     * Parameters: An User object, as we know FireBase database is a oriented
+     * object database, so we can send a complete object and It'll be registered
+     * Returns: nothing
+     **/
+    private void register(@NonNull final User user /*, final GoogleSignInAccount account */) {
+        Log.d(TAG, "register() called with: user = [" + user + "]");
+
+        //We make an instance of a FirebaseDatabase object to create our database
+        /*FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //We need to pass the name of our database and child to we need to use or create
+        final DatabaseReference usuarios = database.getReference(FirebaseReferences.DB_REFERENCE).child(FirebaseReferences.USER_REFERENCE);
+        //put Object on database's child User
+        usuarios.push().setValue(user);*/
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference usuarios = database.getReference(DB_REFERENCE).child(USER_REFERENCE);
+        usuarios.addListenerForSingleValueEvent(new ValueEventListener() {
+            boolean bool1 = false;
+            boolean bool2 = false;
+
+            @Override
+
+
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot objSnapshot : snapshot.getChildren()) {
+                    final User actual = objSnapshot.getValue(User.class);
+
+                    if (user.getEmail().equals(actual.getEmail())) {
+                        bool1 = true;
+                        Toast.makeText(context, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+                if (bool1 == false) {
+
+
+                    CustomNickAlert nick_alert = new CustomNickAlert(context);
+                    nick_alert.showDialog();
+
+
+                    usuarios.push().setValue(user);
+                    /*try {
+                        getAccountData(account);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Log.e("Read failed", firebaseError.getMessage());
+            }
+        });
+
+
+        //getAccountData(account); //line 168
     }
 
 }

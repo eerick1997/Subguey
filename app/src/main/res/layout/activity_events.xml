@@ -125,8 +125,7 @@
                     android:layout_width="59dp"
                     android:layout_height="55sp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/event_natural"
-                    />
+                    android:src="@mipmap/event_natural" />
 
                 <Button
                     android:id="@+id/event_natural"
