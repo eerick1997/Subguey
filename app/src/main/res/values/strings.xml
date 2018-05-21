@@ -44,5 +44,13 @@
     <string name="nick_name">Nombre de usuario</string>
     <string name="log_in_message">Cuenta vinculada con la de Google para su registro.</string>
     <string name="txt_log_in">Acceder</string>
-    <string name="text_events">¿Algo que reportar?</string>
+    <string name="text_events">¿Algo qué reportar?</string>
+    <string name="cerrar_event">CERRAR</string>
+
+    <string name="event_crime">DÉLITOS EN LOS ÁNDENES</string>
+    <string name="event_natural">EVENTOS NATURALES</string>
+    <string name="event_failure">FALLAS TÉCNICAS</string>
+    <string name="event_by_user">FALLAS OCASIONADAS POR USUARIOS</string>
+    <string name="event_accident">ACCIDENTES</string>
+
 </resources>
