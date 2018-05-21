@@ -2,6 +2,8 @@ package Objects;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Event {
 
     //Constants
@@ -10,12 +12,17 @@ public class Event {
     //Variables
     private int type;
     private String user, hour;
+    private LatLng position;
 
-    public Event(int type, String user, String hour){
+    public Event() {
+    }
+
+    public Event(int type, String user, String hour, LatLng position) {
         Log.d(TAG, "Event() called with: type = [" + type + "], user = [" + user + "], hour = [" + hour + "]");
         this.type = type;
         this.user = user;
         this.hour = hour;
+        this.position = position;
     }
 
     public int getType(){
@@ -34,5 +41,11 @@ public class Event {
         Log.d(TAG, "getHour() called");
         Log.d(TAG, "getHour() returned: " + hour);
         return this.hour;
+    }
+
+    public LatLng getPosition() {
+        Log.d(TAG, "getPosition() called");
+        Log.d(TAG, "getPosition() returned: " + this.position);
+        return this.position;
     }
 }
