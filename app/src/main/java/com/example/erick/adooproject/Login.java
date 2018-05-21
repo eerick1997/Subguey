@@ -27,6 +27,7 @@ import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
 import UIElements.EventInfo;
+import UIElements.EventsReports;
 
 import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.IMG_PROFILE;
@@ -49,7 +50,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         setContentView(R.layout.activity_login);
 
         new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00"));
-
+        new EventsReports(Login.this).showDialog();
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder

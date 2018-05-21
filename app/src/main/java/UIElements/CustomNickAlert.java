@@ -109,7 +109,7 @@ public class CustomNickAlert {
 
 
                     CustomNickAlert nick_alert = new CustomNickAlert(context);
-                    nick_alert.showDialog();
+                    //nick_alert.showDialog();
 
 
                     usuarios.push().setValue(user);

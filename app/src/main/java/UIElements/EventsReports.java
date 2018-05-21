@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.erick.adooproject.R;
-
-import Objects.Event;
 
 public class EventsReports {
     private static final String TAG = "EventsReports.java";
@@ -22,7 +19,7 @@ public class EventsReports {
         this.context = context;
     }
 
-    public void showDialog(Event event){
+    public void showDialog() {
         final AlertDialog alertDialog;
         try {
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -30,11 +27,11 @@ public class EventsReports {
 
             alertDialog = new AlertDialog.Builder(context).create();
 
-            TextView txt_event_natural = (TextView) view.findViewById(R.id.event_natural);
-            TextView txt_event_accident = (TextView) view.findViewById(R.id.event_accident);
-            TextView txt_event_by_user = (TextView) view.findViewById(R.id.event_by_users);
-            TextView txt_event_crime = (TextView) view.findViewById(R.id.event_crime);
-            TextView txt_event_failure = (TextView) view.findViewById(R.id.event_failure);
+            Button BTN_accident = view.findViewById(R.id.event_accident);
+            Button BTN_crime = view.findViewById(R.id.event_accident);
+            Button BTN_failure = view.findViewById(R.id.event_failure);
+            Button BTN_natural = view.findViewById(R.id.event_natural);
+            Button BTN_by_users = view.findViewById(R.id.event_by_users);
 
             Button btn_cerrar = (Button)view.findViewById(R.id.BTN_close_events);
 
