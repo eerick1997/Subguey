@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -50,7 +51,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00"));
+        new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311)));
         new EventsReports(Login.this).showDialog();
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
