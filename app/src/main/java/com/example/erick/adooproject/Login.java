@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import Objects.Event;
 import Objects.User;
 import Preferences.PLogin;
+import UIElements.CustomNickAlert;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
 
@@ -156,7 +157,9 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                             1);
 
                     //We register to this user
-                    //register(user, account);
+                    CustomNickAlert nick_alert= new CustomNickAlert(Login.this);
+                    nick_alert.showDialog(user);
+
 
                     Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                             + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
@@ -174,7 +177,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
 
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -55,10 +55,13 @@ public class CustomNickAlert {
 
                 public void onClick(View v) {
                     String nick_user = TXTNickName.getText().toString();
-                    Log.i("VALOR: ", "" + nick_user);
                     user.setNick_name(nick_user.trim());
+                    Log.i("VALOR: ", "" + user.getNick_name());
+                    register(user);
                     /**LALITO ELLA NO TE AMA :v De aquí se pueden sacar los datos para
                      * poder**/
+                    /*Ste man :v */
+
                 }
             });
             //We add all the elements in our Alert Dialog
@@ -104,14 +107,14 @@ public class CustomNickAlert {
                         Toast.makeText(context, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada", Toast.LENGTH_LONG).show();
                     }
 
+                    if (user.getNick_name().equals(actual.getNick_name())) {
+                        bool2 = true;
+                        Toast.makeText(context, "El Nick "+user.getNick_name()+" ya se encuentra en uso, intente con otro ", Toast.LENGTH_LONG).show();
+                    }
+
+
                 }
-                if (bool1 == false) {
-
-
-                    CustomNickAlert nick_alert = new CustomNickAlert(context);
-                    //nick_alert.showDialog();
-
-
+                if ((bool1 == false) && (bool2==false)) {
                     usuarios.push().setValue(user);
                     /*try {
                         getAccountData(account);
