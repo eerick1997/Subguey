@@ -96,25 +96,19 @@ public class CustomNickAlert {
             boolean bool2 = false;
 
             @Override
-
-
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot objSnapshot : snapshot.getChildren()) {
                     final User actual = objSnapshot.getValue(User.class);
-
                     if (user.getEmail().equals(actual.getEmail())) {
                         bool1 = true;
                         Toast.makeText(context, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada", Toast.LENGTH_LONG).show();
                     }
-
                     if (user.getNick_name().equals(actual.getNick_name())) {
                         bool2 = true;
                         Toast.makeText(context, "El Nick "+user.getNick_name()+" ya se encuentra en uso, intente con otro ", Toast.LENGTH_LONG).show();
                     }
-
-
                 }
-                if ((bool1 == false) && (bool2==false)) {
+                if ((!bool1) && (!bool2)) {
                     usuarios.push().setValue(user);
                     /*try {
                         getAccountData(account);
