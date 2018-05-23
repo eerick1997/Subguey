@@ -25,6 +25,9 @@ public class Event {
         this.position = position;
     }
 
+    /**
+     * -------------- GETTERS ---------------
+     **/
     public int getType(){
         Log.d(TAG, "getType() called");
         Log.d(TAG, "getType() returned: " + this.type);
@@ -48,4 +51,29 @@ public class Event {
         Log.d(TAG, "getPosition() returned: " + this.position);
         return this.position;
     }
+
+    /**
+     * -------------- SETTERS ---------------
+     **/
+
+    public void setType(int type) {
+        Log.d(TAG, "setType() called with: type = [" + type + "]");
+        this.type = type;
+    }
+
+    public void setUser(String user) {
+        Log.d(TAG, "setUser() called with: user = [" + user + "]");
+        this.user = user;
+    }
+
+    public void setHour(String hour) {
+        Log.d(TAG, "setHour() called with: hour = [" + hour + "]");
+        this.hour = hour;
+    }
+
+    public void setPosition(LatLng position) {
+        Log.d(TAG, "setPosition() called with: position = [" + position + "]");
+        this.position = position;
+    }
+
 }

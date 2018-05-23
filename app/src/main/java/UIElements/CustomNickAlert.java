@@ -90,8 +90,8 @@ public class CustomNickAlert {
         usuarios.push().setValue(user);*/
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference usuarios = database.getReference(DB_REFERENCE).child(USER_REFERENCE);
-        usuarios.addListenerForSingleValueEvent(new ValueEventListener() {
+        final DatabaseReference users = database.getReference(DB_REFERENCE).child(USER_REFERENCE);
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
             boolean bool1 = false;
             boolean bool2 = false;
 
@@ -109,7 +109,7 @@ public class CustomNickAlert {
                     }
                 }
                 if ((!bool1) && (!bool2)) {
-                    usuarios.push().setValue(user);
+                    users.push().setValue(user);
                     /*try {
                         getAccountData(account);
                     } catch (Exception e) {

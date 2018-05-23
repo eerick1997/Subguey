@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import java.util.logging.LogManager;
-
-import Preferences.Utilities;
-
 import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_PREFERENCES;
@@ -16,10 +12,10 @@ import static Preferences.Utilities.SIGNED;
 
 /**This class is created to get and set preferences of our application
  * in this case we can get preferences about the login of a user**/
-public class PLogin {
+public class SubgueyPreferences {
 
     //Constants
-    private static final String TAG = "PLogin.java";
+    private static final String TAG = "SubgueyPreferences.java";
     //Variables
     private Context context;
     //To get access to out preferences
@@ -30,8 +26,8 @@ public class PLogin {
      * make an instance, then we initialize our global variable context and
      * finally we create a new object type SharedPreferences which we gonna
      * use in all methods inside this class**/
-    public PLogin(Context context){
-        Log.d(TAG, "PLogin() called with: context = [" + context + "]");
+    public SubgueyPreferences(Context context) {
+        Log.d(TAG, "SubgueyPreferences() called with: context = [" + context + "]");
         this.context = context;
     }
 

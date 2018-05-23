@@ -26,7 +26,7 @@ import com.google.android.gms.tasks.Task;
 
 import Objects.Event;
 import Objects.User;
-import Preferences.PLogin;
+import Preferences.SubgueyPreferences;
 import UIElements.CustomNickAlert;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     //This is our own object, here we store information about this user
     private User user;
     //We gonna use preferences so we make an instance of this object
-    PLogin preferences = new PLogin(Login.this);
+    SubgueyPreferences preferences = new SubgueyPreferences(Login.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

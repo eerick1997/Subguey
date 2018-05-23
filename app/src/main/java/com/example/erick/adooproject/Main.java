@@ -14,15 +14,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
+
 import Objects.Exit;
 import Objects.Line;
 import Objects.Service;
 import Objects.Station;
-import Preferences.PLogin;
+import Preferences.SubgueyPreferences;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Main extends AppCompatActivity
@@ -41,13 +44,13 @@ public class Main extends AppCompatActivity
     //This variable contains the las id
     private int lastId = 0;
 
-    private PLogin preferences;
+    private SubgueyPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        preferences = new PLogin(Main.this);
+        preferences = new SubgueyPreferences(Main.this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
