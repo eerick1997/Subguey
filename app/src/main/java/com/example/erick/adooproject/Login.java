@@ -50,9 +50,9 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        new EventInfo(Login.this).showDialog(new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311)));
-        new EventsReports(Login.this).showDialog();
+        Event event = new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311));
+        new EventInfo(Login.this).showDialog(event);
+        new EventsReports(Login.this).showDialog(event);
         //new EventsReports(Login.this).showDialog(new Event(0, "eerick1997", "12:43:59", new LatLng(-1.42324,1.13421213)));
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
