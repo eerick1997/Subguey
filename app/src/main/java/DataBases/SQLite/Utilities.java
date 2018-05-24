@@ -25,4 +25,16 @@ public class Utilities {
 
     /** -------------. END DATABASE STATION INFORMATION -------------- **/
 
+    /**
+     * -------------- HERE we store information about all our events
+     * registered in Subguey
+     **/
+
+    public static final String DB_EVENTS_nameDB = "DataBaseEvents.db",
+            DB_EVENT_tbl = "identifier", DB_EVENT_TYPE = "type",
+            DB_EVENT_PUBLISHER = "publisher", DB_EVENT_HOUR = "HOUR",
+            DB_EVENT_POSITION = "position";
+
+    /*** --------------- END DATABASE EVENT INFORMATION -------------- **/
+
 }
