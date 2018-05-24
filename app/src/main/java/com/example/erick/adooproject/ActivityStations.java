@@ -86,52 +86,52 @@ public class ActivityStations extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         switch (color) {
             case "1":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L1)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L1)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM1)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM1)));
                 break;
             case "2":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L2)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L2)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM2)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM2)));
                 break;
             case "3":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L3)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L3)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM3)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM3)));
                 break;
             case "4":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L4)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L4)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM4)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM4)));
                 break;
             case "5":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L5)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L5)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM5)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM5)));
                 break;
             case "6":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L6)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L6)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM6)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM6)));
                 break;
             case "7":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L7)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L7)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM7)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM7)));
                 break;
             case "8":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L8)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L8)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM8)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM8)));
                 break;
             case "9":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L9)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L9)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM9)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM9)));
                 break;
             case "A":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LA)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LA)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LMA)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LMA)));
                 break;
             case "B":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LB)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LB)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LMB)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LMB)));
                 break;
             case "12":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L12)));
-                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.L12)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM12)));
+                toolbar.setBackgroundColor(Color.parseColor(getString(R.string.LM12)));
                 break;
         }
     }

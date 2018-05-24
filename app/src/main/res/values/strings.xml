@@ -18,19 +18,27 @@
     <string name="navigation_drawer_lines_subway">Lineas metro</string>
     <string name="navigation_drawer_lines_metro_bus">Lineas metrobus</string>
 
-    <!-- COLORS -->
-    <string name="L1">#ff507b</string>
-    <string name="L2">#145ea9</string>
-    <string name="L3">#c2cc29</string>
-    <string name="L4">#28c7cc</string>
-    <string name="L5">#f3ec26</string>
-    <string name="L6">#ee0b0b</string>
-    <string name="L7">#fa5a19</string>
-    <string name="L8">#00a541</string>
-    <string name="L9">#693601</string>
-    <string name="LA">#913f92</string>
-    <string name="LB">#c2c4c6</string>
-    <string name="L12">#cac640</string>
+    <!-- COLORS METRO -->
+    <string name="LM1">#ff507b</string>
+    <string name="LM2">#145ea9</string>
+    <string name="LM3">#c2cc29</string>
+    <string name="LM4">#28c7cc</string>
+    <string name="LM5">#f3ec26</string>
+    <string name="LM6">#ee0b0b</string>
+    <string name="LM7">#fa5a19</string>
+    <string name="LM8">#00a541</string>
+    <string name="LM9">#693601</string>
+    <string name="LMA">#913f92</string>
+    <string name="LMB">#c2c4c6</string>
+    <string name="LM12">#cac640</string>
+    <!-- COLORS METRO BUS -->
+    <string name="LMB1">#</string>
+    <string name="LMB2">#</string>
+    <string name="LMB3">#</string>
+    <string name="LMB4">#</string>
+    <string name="LMB5">#</string>
+    <string name="LMB6">#</string>
+    <string name="LMB7">#</string>
     <string name="acceder_color">#000E59</string>
     <string name="layout_acceder">#FFFFFF</string>
     <string name="ubication_station_info">Ubicación</string>

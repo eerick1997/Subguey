@@ -28,6 +28,7 @@ import java.io.Serializable;
 
 import Adapters.AdapterStationsInfo;
 import Objects.Station;
+import UIElements.ChangeStyle;
 
 /**This class contains the view to show information about
  * each station, we use animations to give a better user experience
@@ -44,7 +45,6 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
     private Station station;
     private GoogleMap googleMap;
     //We go to change the color of the toolbar so
-    private Toolbar toolbar;
     private RecyclerView recyclerView;
 
 
@@ -53,6 +53,8 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_info);
+
+        ChangeStyle style = new ChangeStyle(activity_station_info.this);
 
         //Getting intent
         Intent intent = getIntent();
@@ -68,7 +70,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         mapView.onResume();
 
         //App bar
-        toolbar = (Toolbar) findViewById(R.id.station_info_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.station_info_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(station.getName());
 
@@ -100,7 +102,8 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         collapsingToolbarLayout.setTitle(station.getName());
 
         //Changing the color
-        changeUIColor();
+        style.setColorCollapsingToolbar(station.getLine(), collapsingToolbarLayout);
+        style.setColorWindow(station.getLine(), getWindow());
     }
 
     @Override
@@ -126,54 +129,54 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         Log.i(TAG, "changeUIColor: " + station.getLine());
         switch (station.getLine()) {
             case "1":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L1)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L1)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM1)));
+
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM1)));
                 break;
             case "2":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L2)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L2)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM2)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM2)));
                 break;
             case "3":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L3)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L3)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM3)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM3)));
                 break;
             case "4":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L4)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L4)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM4)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM4)));
                 break;
             case "5":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L5)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L5)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM5)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM5)));
                 break;
             case "6":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L6)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L6)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM6)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM6)));
                 break;
             case "7":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L7)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L7)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM7)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM7)));
                 break;
             case "8":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L8)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L8)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM8)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM8)));
                 break;
             case "9":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L9)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L9)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM9)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM9)));
                 break;
             case "A":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LA)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LA)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LMA)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LMA)));
                 break;
             case "B":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LB)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LB)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LMB)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LMB)));
                 break;
             case "12":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.L12)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.L12)));
+                window.setStatusBarColor(Color.parseColor(getString(R.string.LM12)));
+                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM12)));
                 break;
-                //Hola mundo :'v'
         }
     }
 

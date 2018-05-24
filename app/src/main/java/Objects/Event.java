@@ -31,7 +31,7 @@ public class Event {
     public int getType(){
         Log.d(TAG, "getType() called");
         Log.d(TAG, "getType() returned: " + this.type);
-        return this.getType();
+        return this.type;
     }
 
     public String getUser() {

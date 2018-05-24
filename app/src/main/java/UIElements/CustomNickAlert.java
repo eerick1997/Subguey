@@ -49,8 +49,8 @@ public class CustomNickAlert {
             View view = inflater.inflate(R.layout.nick_alert, null);
             //We make an instance of an alertDialog
             alertDialog = new AlertDialog.Builder(context).create();
-            final EditText TXTNickName = (EditText)view.findViewById(R.id.TXT_nick_alert);
-            Button button = (Button)view.findViewById(R.id.BTN_dialog_nick_alert);
+            final EditText TXTNickName = view.findViewById(R.id.TXT_nick_alert);
+            Button button = view.findViewById(R.id.BTN_dialog_nick_alert);
             button.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
