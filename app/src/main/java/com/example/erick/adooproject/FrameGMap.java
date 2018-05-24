@@ -80,6 +80,10 @@ public class FrameGMap extends Fragment implements LocationListener,
     //We need the initial position
     private LatLng initial_camera = new LatLng(19.380316, -99.132637);
 
+
+    /**
+     * - - - - - - - - - - ABSTRACT METHODS - - - - - - - - - - - - - - -
+     **/
     //This method is called just when the view has been created
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -154,66 +158,6 @@ public class FrameGMap extends Fragment implements LocationListener,
         enableMyLocation();
     }
 
-
-    @SuppressLint("MissingPermission")
-    private void startLocationUpdates() {
-        Log.d(TAG, "startLocationUpdates() called");
-        //We need to create an object to start receiving location request
-        locationRequest = new LocationRequest();
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(TIME_UPDATE);
-        locationRequest.setFastestInterval(TIME_FAST_UPDATE);
-
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
-        builder.addLocationRequest(locationRequest);
-        LocationSettingsRequest locationSettingsRequest = builder.build();
-
-        getFusedLocationProviderClient(getActivity()).requestLocationUpdates(locationRequest,
-                new LocationCallback() {
-                    @Override
-                    public void onLocationResult(LocationResult locationResult) {
-                        onLocationChanged(locationResult.getLastLocation());
-                    }
-                },
-                Looper.myLooper());
-    }
-
-    @SuppressLint("MissingPermission")
-    private void getLastLocation() {
-        FusedLocationProviderClient locationProviderClient = getFusedLocationProviderClient(getActivity());
-        locationProviderClient.getLastLocation()
-                .addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            onLocationChanged(location);
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "onFailure: Error trying to get last GPS location");
-                        Log.e(TAG, "onFailure: ", e);
-                    }
-                });
-    }
-
-    /**
-     * This method enables the My location layer if the fine location permission has been granted
-     **/
-    private void enableMyLocation() {
-        Log.d(TAG, "enableMyLocation() called");
-        if (ContextCompat.checkSelfPermission(view.getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            //Permission to access the location is missing
-            PermissionUtils.requestPermission((AppCompatActivity) view.getContext(), LOCATION_PERMISSION_REQUEST_CODE,
-                    Manifest.permission.ACCESS_FINE_LOCATION, true);
-        } else if (googleMap != null) {
-            googleMap.setMyLocationEnabled(true);
-        }
-    }
-
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -247,13 +191,6 @@ public class FrameGMap extends Fragment implements LocationListener,
             startLocationUpdates();
             enableMyLocation();
         }
-    }
-
-    private void showMissingPermissionError() {
-        Log.d(TAG, "showMissingPermissionError() called");
-        final Activity activity = (Activity) view.getContext();
-        PermissionUtils.PermissionDeniedDialog
-                .newInstance(true).show(activity.getFragmentManager(), "dialog");
     }
 
     @Override
@@ -345,9 +282,73 @@ public class FrameGMap extends Fragment implements LocationListener,
         super.onPause();
     }
 
-    /**private void stopLocationUpdates() throws Exception{
-        Log.d(TAG, "stopLocationUpdates() called");
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-    }**/
+    /** - - - - - - - - - - OUR METHODS - - - - - - - - - - - - - - - **/
+
+    /**
+     * This method enables the My location layer if the fine location permission has been granted
+     **/
+    private void enableMyLocation() {
+        Log.d(TAG, "enableMyLocation() called");
+        if (ContextCompat.checkSelfPermission(view.getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            //Permission to access the location is missing
+            PermissionUtils.requestPermission((AppCompatActivity) view.getContext(), LOCATION_PERMISSION_REQUEST_CODE,
+                    Manifest.permission.ACCESS_FINE_LOCATION, true);
+        } else if (googleMap != null) {
+            googleMap.setMyLocationEnabled(true);
+        }
+    }
+
+    private void showMissingPermissionError() {
+        Log.d(TAG, "showMissingPermissionError() called");
+        final Activity activity = (Activity) view.getContext();
+        PermissionUtils.PermissionDeniedDialog
+                .newInstance(true).show(activity.getFragmentManager(), "dialog");
+    }
+
+    @SuppressLint("MissingPermission")
+    private void startLocationUpdates() {
+        Log.d(TAG, "startLocationUpdates() called");
+        //We need to create an object to start receiving location request
+        locationRequest = new LocationRequest();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(TIME_UPDATE);
+        locationRequest.setFastestInterval(TIME_FAST_UPDATE);
+
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
+        builder.addLocationRequest(locationRequest);
+        LocationSettingsRequest locationSettingsRequest = builder.build();
+
+        getFusedLocationProviderClient(getActivity()).requestLocationUpdates(locationRequest,
+                new LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        onLocationChanged(locationResult.getLastLocation());
+                    }
+                },
+                Looper.myLooper());
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocation() {
+        FusedLocationProviderClient locationProviderClient = getFusedLocationProviderClient(getActivity());
+        locationProviderClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            onLocationChanged(location);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: Error trying to get last GPS location");
+                        Log.e(TAG, "onFailure: ", e);
+                    }
+                });
+    }
+
 
 }

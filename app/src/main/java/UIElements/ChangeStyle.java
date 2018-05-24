@@ -1,33 +1,29 @@
 package UIElements;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.erick.adooproject.R;
-
 public class ChangeStyle {
 
     //Constants
     private static final String TAG = "ChangeStyle.java";
     //Variables
-    private Context context;
+    private Activity activity;
 
-    public ChangeStyle(Context context) {
-        Log.d(TAG, "ChangeStyle() called with:" +
-                "color = context.getString(R.string.LM1); context = [" + context + "]");
-        this.context = context;
+    public ChangeStyle(Activity activity) {
+        Log.d(TAG, "ChangeStyle() called with: activity = [" + activity + "]");
+        this.activity = activity;
     }
 
     /**
-     * This method changes the color of our app bar and status bar
+     * This method changes the color of our collapsing toolbar
      * Receive:
-     * color = context.getString(R.string.LM1);An String that contains a color in HEX format
-     * Returns:
-     * color = context.getString(R.string.LM1);Nothing
+     * color = An String that contains the line format
+     * Returns: Nothing
      **/
     public void setColorCollapsingToolbar(String color, CollapsingToolbarLayout collapsingT) {
         Log.d(TAG, "setColorCollapsingToolbar() called with:" +
@@ -36,6 +32,9 @@ public class ChangeStyle {
         collapsingT.setContentScrimColor(Color.parseColor(getColor(color)));
     }
 
+    /**
+     *
+     * **/
     public void setColorWindow(String color, Window window) {
         Log.d(TAG, "setColorWindow() called with:" +
                 "color = context.getString(R.string.LM1); color = [" + color + "], " +
@@ -45,7 +44,12 @@ public class ChangeStyle {
     }
 
     private String getColor(String ID) {
-        String color = "";
+        Log.d(TAG, "getColor() called with: ID = [" + ID + "]");
+        int color = activity.getResources()
+                .getIdentifier(ID, "strings", activity.getPackageName());
+        Log.d(TAG, "getColor() returned: " + ID);
+        return activity.getString(color);
+        /**String color = "";
         switch (ID) {
             case "LM1":
                 color = context.getString(R.string.LM1);
@@ -102,7 +106,7 @@ public class ChangeStyle {
                 color = context.getString(R.string.LMB6);
                 break;
         }
-        return color;
+         return color;**/
     }
 
 

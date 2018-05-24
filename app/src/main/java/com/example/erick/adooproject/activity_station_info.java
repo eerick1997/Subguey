@@ -2,7 +2,6 @@ package com.example.erick.adooproject;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -15,8 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -70,12 +67,12 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         mapView.onResume();
 
         //App bar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.station_info_toolbar);
+        Toolbar toolbar = findViewById(R.id.station_info_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(station.getName());
 
         /** JUST FOR TESTING **/
-        recyclerView = (RecyclerView) findViewById(R.id.station_info_recycler_view);
+        recyclerView = findViewById(R.id.station_info_recycler_view);
         //ArrayList<Station> stations = new ArrayList<>();
         //stations.add(station);
         AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElements());
@@ -86,7 +83,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
                 new DividerItemDecoration(this, UIElements.DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        fab_button = (FloatingActionButton) findViewById(R.id.station_info_fab);
+        fab_button = findViewById(R.id.station_info_fab);
         fab_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +95,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         });
 
         //CollapsingToolbarLayout
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.station_info_collapsing_layout);
+        collapsingToolbarLayout = findViewById(R.id.station_info_collapsing_layout);
         collapsingToolbarLayout.setTitle(station.getName());
 
         //Changing the color
@@ -120,7 +117,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
      * This function changes the color of toolbar and status bar
      * depending of the line
      **/
-    @SuppressLint({"ResourceAsColor", "LongLogTag"})
+    /**@SuppressLint({"ResourceAsColor", "LongLogTag"})
     public void changeUIColor() {
         Log.d(TAG, "changeUIColor() called");
         //Changing the color of the Status Bar
@@ -178,6 +175,6 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
                 collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM12)));
                 break;
         }
-    }
+    }**/
 
 }
