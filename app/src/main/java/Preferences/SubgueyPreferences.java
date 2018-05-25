@@ -8,6 +8,7 @@ import static Preferences.Utilities.EMAIL;
 import static Preferences.Utilities.IMG_PROFILE;
 import static Preferences.Utilities.NAME_PREFERENCES;
 import static Preferences.Utilities.NAME_USER;
+import static Preferences.Utilities.NICK_USER;
 import static Preferences.Utilities.SIGNED;
 
 /**This class is created to get and set preferences of our application
@@ -64,6 +65,11 @@ public class SubgueyPreferences {
         return sharedPreferences.getString(NAME_USER, "");
     }
 
+    public String getNickUser() {
+        Log.d(TAG, "getNickUser() called");
+        sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(NICK_USER, "");
+    }
     public String getEmail(){
         Log.d(TAG, "getEmail() called");
         sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, Context.MODE_PRIVATE);
@@ -94,6 +100,8 @@ public class SubgueyPreferences {
             sharedPreferences = context.getSharedPreferences(NAME_PREFERENCES, 0);
             //We gonna edit preferences
             SharedPreferences.Editor editor = sharedPreferences.edit();
+            //We clean the preference NICK_USER
+            editor.putString(NICK_USER, "");
             //We clean the preference NAME_USER
             editor.putString(NAME_USER, "");
             //We clean the preference EMAIL

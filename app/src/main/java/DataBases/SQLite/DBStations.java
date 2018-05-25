@@ -142,7 +142,22 @@ public class DBStations extends SQLiteOpenHelper {
         return stations;
     }
 
-    private void setMarkers(GoogleMap googleMap) {
+    public Station getStationInfo(String id) {
+        Log.d(TAG, "getStationInfo() called with: id = [" + id + "]");
+        String query = "SELECT " + DB_STATIONS_ID + ", " +
+                DB_STATIONS_Name + ", " +
+                DB_STATIONS_Line + ", " +
+                DB_STATIONS_position + ", " +
+                DB_STATIONS_services + ", " +
+                DB_STATIONS_exits + ", " +
+                DB_STATIONS_next + ", " +
+                DB_STATIONS_previous + " FROM " +
+                DB_STATIONS_tbl + " WHERE ";
+
+        return null;
+    }
+
+    public void setMarkers(GoogleMap googleMap) {
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "SELECT " + DB_STATIONS_ID + ", " +
                 DB_STATIONS_position + " FROM " +

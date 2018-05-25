@@ -7,6 +7,7 @@ public class Utilities {
     public static final String NAME_PREFERENCES = "subguey_preferences",
     SIGNED  = "isSigned",
     NAME_USER = "nameUser",
+            NICK_USER = "nickUser",
     EMAIL = "email",
     IMG_PROFILE = "uriProfileUser";
 }

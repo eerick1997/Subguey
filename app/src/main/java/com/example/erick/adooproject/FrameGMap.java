@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -45,6 +47,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import DataBases.SQLite.DBStations;
 import MapUtilities.PermissionUtils;
+import Objects.Event;
+import UIElements.EventsReports;
 import UIElements.MyImages;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -97,6 +101,17 @@ public class FrameGMap extends Fragment implements LocationListener,
                 .addOnConnectionFailedListener(this) //We indicate that OnConnectionFailedListener has been implemented
                 .build();//We make the GoogleApiClient
         startLocationUpdates();
+
+        FloatingActionButton fab = this.view.findViewById(R.id.FAB_send_event);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
+                Event event = new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311));
+                new EventsReports(getActivity()).showDialog(event);
+            }
+        });
+
         dbStations = new DBStations(getActivity(), "", null, 1);
 
     }
@@ -349,6 +364,5 @@ public class FrameGMap extends Fragment implements LocationListener,
                     }
                 });
     }
-
 
 }

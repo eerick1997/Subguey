@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <!--group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_map_main"
             android:icon="@drawable/ic_map"
             android:title="@string/navigation_drawer_map" />
-    </group>
+    </group-->
     <item android:title="@string/nav_main_lines">
         <menu>
             <item

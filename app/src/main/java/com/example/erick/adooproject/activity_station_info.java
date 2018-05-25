@@ -55,13 +55,13 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
 
         //Getting intent
         Intent intent = getIntent();
-        this.station = (Station) intent.getParcelableExtra("Station");
+        this.station = intent.getParcelableExtra("Station");
 
         Log.i(TAG, "onCreate: " + station);
         Log.i(TAG, "onCreate: " + station.getServices());
         Log.i(TAG, "onCreate: " + station.getExits());
         //Getting a google map
-        mapView = (MapView) findViewById(R.id.google_map_station_info);
+        mapView = findViewById(R.id.google_map_station_info);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
         mapView.onResume();

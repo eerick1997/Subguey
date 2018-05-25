@@ -20,21 +20,12 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import Objects.Event;
 import Objects.User;
 import Preferences.SubgueyPreferences;
 import UIElements.CustomNickAlert;
-import UIElements.EventInfo;
-import UIElements.EventsReports;
-
-import static Preferences.Utilities.EMAIL;
-import static Preferences.Utilities.IMG_PROFILE;
-import static Preferences.Utilities.NAME_USER;
-import static Preferences.Utilities.SIGNED;
 
 public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
@@ -49,11 +40,19 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
         setContentView(R.layout.activity_login);
-        Event event = new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311));
-        new EventInfo(Login.this).showDialog(event);
-        new EventsReports(Login.this).showDialog(event);
+
+        if (preferences.getIsSigned()) {
+            Intent intent = new Intent(this, Main.class);
+            startActivity(intent);
+        }
+
+        //Event event = new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311));
+        //new EventInfo(Login.this).showDialog(event);
+        //new EventsReports(Login.this).showDialog(event);
         //new EventsReports(Login.this).showDialog(new Event(0, "eerick1997", "12:43:59", new LatLng(-1.42324,1.13421213)));
+
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder
@@ -90,11 +89,12 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 revokeAccess();
             }
         });
-        changeActivity();
+
     }
 
     @Override
     protected void onStart() {
+        Log.d(TAG, "onStart() called");
         super.onStart();
         Log.d(TAG, "onStart() called");
         try {
@@ -106,7 +106,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 //getAccountData(googleSignInAccount);
             } else {
                 Log.i(TAG, "onStart: I don't found a user");
-                preferences.cleanPreferences();
+                //preferences.cleanPreferences();
             }
         } catch (Exception e) {
             Log.e(TAG, "onStart: ", e);
@@ -120,6 +120,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
      * Returns: Anything
      **/
     private void signIn() {
+        Log.d(TAG, "signIn() called");
         //Creating an Intent object
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -132,6 +133,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
      * Returns: anything
      **/
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        Log.d(TAG, "handleSignInResult() called with: completedTask = [" + completedTask + "]");
         try {
             /*This object (GoogleSignInAccount) contains information about the
              * signed user*/
@@ -145,15 +147,14 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                     String user_email = account.getEmail();
                     String user_id = account.getId();
                     Uri user_photo = account.getPhotoUrl();
-                    String str_photo = "empty";
+                    String str_photo;
                     try {
                         str_photo = user_photo.toString();
                     } catch (Exception e) {
                         str_photo = "empty";
                     }
-                    Log.i("VALOR: ", "" + user_photo);
 
-                    //User datas
+                    //User data
                     user = new User(user_name, user_email, user_given_name,
                             0.0f, 0.0f, str_photo,
                             1);
@@ -181,6 +182,8 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult() called with: requestCode = [" + requestCode + "], " +
+                "resultCode = [" + resultCode + "], data = [" + data + "]");
         super.onActivityResult(requestCode, resultCode, data);
         /*Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);*/
         if (requestCode == RC_SIGN_IN) {
@@ -191,6 +194,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     }
 
     private void revokeAccess() {
+        Log.d(TAG, "revokeAccess() called");
         googleSignInClient.revokeAccess()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
@@ -205,56 +209,8 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     @SuppressLint("ResourceType")
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed() called with: connectionResult = [" + connectionResult + "]");
         Toast.makeText(getApplicationContext(), getString(R.id.no_connection), Toast.LENGTH_LONG).show();
     }
 
-    /**
-     * changeActivity method
-     * Description: Verify if the user has already signed
-     * Returns: Nothing
-     **/
-    private void changeActivity() {
-
-        try {
-            if (preferences.getIsSigned()) {
-                Intent intent = new Intent(this, Main.class);
-                startActivity(intent);
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "changeActivity: ", e);
-            preferences.cleanPreferences();
-        }
-    }
-
-
-
-    private void getAccountData(GoogleSignInAccount account) throws Exception {
-
-        String user_name = account.getDisplayName();
-        String user_given_name = account.getGivenName();
-        String user_family_name = account.getFamilyName();
-        String user_email = account.getEmail();
-        String user_id = account.getId();
-        Uri user_photo = account.getPhotoUrl();
-        String str_photo = "empty";
-        try {
-            str_photo = user_photo.toString();
-        } catch (Exception e) {
-            str_photo = "empty";
-        }
-
-        //We save the information of the user in our preferences
-        //To save the last state
-        preferences.savePreference(SIGNED, true);
-        //To save the name of this user
-        preferences.savePreference(NAME_USER, user_name + " " + user_given_name);
-        //To save the email
-        preferences.savePreference(EMAIL, user_email);
-        //To save img_profile
-        preferences.savePreference(IMG_PROFILE, str_photo);
-        Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
-                + user_family_name + " " + user_email + " " + user_id + " " + str_photo);
-        //Now we go to the next activity
-        changeActivity();
-    }
 }

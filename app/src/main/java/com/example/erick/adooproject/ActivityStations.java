@@ -37,7 +37,7 @@ public class ActivityStations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stations);
         //Getting toolbar element
-        toolbar = (Toolbar) findViewById(R.id.activity_stations_toolbar);
+        toolbar = findViewById(R.id.activity_stations_toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
@@ -47,7 +47,7 @@ public class ActivityStations extends AppCompatActivity {
         window.setStatusBarColor(Color.parseColor("#303f9f"));
 
         //Getting FAB
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_stations);
+        FloatingActionButton fab = findViewById(R.id.fab_stations);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +61,7 @@ public class ActivityStations extends AppCompatActivity {
 
         stations = intent.getParcelableArrayListExtra("Stations");
 
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.activity_stations_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.activity_stations_recycler_view);
         AdapterStations adapterStations = new AdapterStations(stations);
         recyclerView.setAdapter(adapterStations);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, DividerItemDecoration.VERTICAL, false));

@@ -31,8 +31,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//Me lleva la verga >:v
-
     //Constants
     private static final String TAG = "Main.java";
 
@@ -51,19 +49,19 @@ public class Main extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         preferences = new SubgueyPreferences(Main.this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         View view = navigationView.getHeaderView(0);
-        TextView user_name = (TextView) view.findViewById(R.id.TXT_nav_header_name);
-        CircleImageView user_profile = (CircleImageView) view.findViewById(R.id.IMG_nav_header_user_profile);
+        TextView user_name = view.findViewById(R.id.TXT_nav_header_name);
+        CircleImageView user_profile = view.findViewById(R.id.IMG_nav_header_user_profile);
         Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
         user_name.setText("");
         user_name.setText(getString(R.string.hello_user) + " " + preferences.getNameUser());
@@ -71,19 +69,19 @@ public class Main extends AppCompatActivity
         Glide.with(Main.this)
                 .load(preferences.getProfileURIIMG())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(R.drawable.ic_default_profile)
                 .override(270,270)
                 .centerCrop()
                 .into(user_profile);
         navigationView.setNavigationItemSelectedListener(this);
 
         fragmentManager = getFragmentManager();
-        lastId = R.id.nav_map_main;
         fragmentManager.beginTransaction().replace(R.id.content_frame, new FrameGMap()).commit();
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -124,10 +122,10 @@ public class Main extends AppCompatActivity
         int id = item.getItemId();
 
 
-        if (id == R.id.nav_map_main && lastId != R.id.nav_map_main) {
+        /**if (id == R.id.nav_map_main && lastId != R.id.nav_map_main) {
             Log.i(TAG, "onNavigationItemSelected: id " + id);
             fragmentManager.beginTransaction().replace(R.id.content_frame, new FrameGMap()).commit();
-        } else if (id == R.id.nav_lines_subway) {
+         } else**/if (id == R.id.nav_lines_subway) {
             Log.i(TAG, "onNavigationItemSelected: ");
             justForTesting();
         } else if (id == R.id.nav_lines_metro_bus) {
@@ -137,7 +135,7 @@ public class Main extends AppCompatActivity
         }
         lastId = id;
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -178,17 +176,17 @@ public class Main extends AppCompatActivity
         for (int i = 0; i < 5; i++)
             positions.add(new LatLng(lat += 0.05, lng += 0.05));
         //for(int i = 1; i <= 9; i++)
-        stations.add(new Station("Observatorio 1", "1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 1", "LM1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "LM2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "LM3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
         // ArrayList<Station> stations = new ArrayList<>();
 
 
         for (int i = 1; i <= 9; i++)
-            lines.add(new Line("ABC", String.valueOf(i), stations));
-        lines.add(new Line("CDE", "A", stations));
-        lines.add(new Line("EFG", "B", stations));
-        lines.add(new Line("HIJ", "12", stations));
+            lines.add(new Line("ABC", "LM" + i, stations));
+        //lines.add(new Line("LM1", "LM1", stations));
+        //lines.add(new Line("LM2", "LM2", stations));
+        //lines.add(new Line("LM3", "LM3", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);

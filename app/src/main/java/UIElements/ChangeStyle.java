@@ -27,7 +27,7 @@ public class ChangeStyle {
      **/
     public void setColorCollapsingToolbar(String color, CollapsingToolbarLayout collapsingT) {
         Log.d(TAG, "setColorCollapsingToolbar() called with:" +
-                "color = context.getString(R.string.LM1); color = [" + color + "], " +
+                "color = [" + color + "], " +
                 "collapsingT = [" + collapsingT + "]");
         collapsingT.setContentScrimColor(Color.parseColor(getColor(color)));
     }
@@ -46,8 +46,9 @@ public class ChangeStyle {
     private String getColor(String ID) {
         Log.d(TAG, "getColor() called with: ID = [" + ID + "]");
         int color = activity.getResources()
-                .getIdentifier(ID, "strings", activity.getPackageName());
-        Log.d(TAG, "getColor() returned: " + ID);
+                .getIdentifier(ID, "string", activity.getPackageName());
+        Log.i(TAG, "getColor: color " + color);
+        Log.d(TAG, "getColor() returned: " + activity.getString(color));
         return activity.getString(color);
         /**String color = "";
         switch (ID) {

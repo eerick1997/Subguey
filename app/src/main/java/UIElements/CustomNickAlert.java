@@ -1,7 +1,8 @@
 package UIElements;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.erick.adooproject.Main;
 import com.example.erick.adooproject.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,49 +20,61 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import Objects.User;
+import Preferences.SubgueyPreferences;
 
 import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
 import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
+import static Preferences.Utilities.EMAIL;
+import static Preferences.Utilities.IMG_PROFILE;
+import static Preferences.Utilities.NAME_USER;
+import static Preferences.Utilities.NICK_USER;
+import static Preferences.Utilities.SIGNED;
 
 public class CustomNickAlert {
 
     //Constants
     private static final String TAG = "CustomNickAlert.java";
     //Variables
-    private Context context;
+    //private Context context;
+    private Activity activity;
+    private SubgueyPreferences preferences;
+    private AlertDialog alertDialog;
 
     //Constructor
-    public CustomNickAlert(Context context){
-        Log.d(TAG, "CustomNickAlert() called with: context = [" + context + "]");
+    public CustomNickAlert(Activity activity) {
+        Log.d(TAG, "CustomNickAlert() called with: activity = [" + activity + "]");
         //Initializing variables
-        this.context = context;
+        this.activity = activity;
+        //this.context = context;
+        preferences = new SubgueyPreferences(this.activity);
     }
 
     /**This method show an customized alert dialog. We don't need
      * extra information to send data to an user                **/
     public void showDialog(final User user) {
+
+        changeActivity();
         //As we said in the description we gonna use an Alert Dialog
-        final AlertDialog alertDialog;
+        //final AlertDialog alertDialog;
         //Probably we catch an exception
         try{
             //We need to inflate a layout to customize an Alert Dialog
-            LayoutInflater inflater = LayoutInflater.from(context);
+            LayoutInflater inflater = LayoutInflater.from(activity);
             /**Method inflate(here_we_have_the_name_of_the_layout_to_inflate, view_group)**/
             View view = inflater.inflate(R.layout.nick_alert, null);
             //We make an instance of an alertDialog
-            alertDialog = new AlertDialog.Builder(context).create();
+            alertDialog = new AlertDialog.Builder(activity).create();
             final EditText TXTNickName = view.findViewById(R.id.TXT_nick_alert);
-            Button button = view.findViewById(R.id.BTN_dialog_nick_alert);
+            final Button button = view.findViewById(R.id.BTN_dialog_nick_alert);
             button.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
+                    button.setEnabled(false);
                     String nick_user = TXTNickName.getText().toString();
                     user.setNick_name(nick_user.trim());
                     Log.i("VALOR: ", "" + user.getNick_name());
                     register(user);
-                    /**LALITO ELLA NO TE AMA :v De aquí se pueden sacar los datos para
-                     * poder**/
-                    /*Ste man :v */
+                    button.setEnabled(true);
 
                 }
             });
@@ -79,7 +93,7 @@ public class CustomNickAlert {
      * object database, so we can send a complete object and It'll be registered
      * Returns: nothing
      **/
-    private void register(@NonNull final User user /*, final GoogleSignInAccount account */) {
+    private void register(@NonNull final User user) {
         Log.d(TAG, "register() called with: user = [" + user + "]");
 
         //We make an instance of a FirebaseDatabase object to create our database
@@ -101,20 +115,20 @@ public class CustomNickAlert {
                     final User actual = objSnapshot.getValue(User.class);
                     if (user.getEmail().equals(actual.getEmail())) {
                         bool1 = true;
-                        Toast.makeText(context, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada", Toast.LENGTH_LONG).show();
                     }
                     if (user.getNick_name().equals(actual.getNick_name())) {
                         bool2 = true;
-                        Toast.makeText(context, "El Nick "+user.getNick_name()+" ya se encuentra en uso, intente con otro ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, "El Nick " + user.getNick_name() + " ya se encuentra en uso, intente con otro ", Toast.LENGTH_LONG).show();
                     }
                 }
                 if ((!bool1) && (!bool2)) {
-                    users.push().setValue(user);
-                    /*try {
-                        getAccountData(account);
+                    try {
+                        getAccountData(user);
+                        users.push().setValue(user);
                     } catch (Exception e) {
-                        e.printStackTrace();
-                    }*/
+                        Log.e(TAG, "onDataChange: ", e);
+                    }
                 }
             }
 
@@ -123,9 +137,58 @@ public class CustomNickAlert {
                 Log.e("Read failed", firebaseError.getMessage());
             }
         });
-
-
         //getAccountData(account); //line 168
+    }
+
+    private void getAccountData(User user) throws Exception {
+        Log.d(TAG, "getAccountData() called with: user = [" + user + "]");
+
+        /**String user_name = account.getDisplayName();
+         String user_given_name = account.getGivenName();
+         String user_family_name = account.getFamilyName();
+         String user_email = account.getEmail();
+         String user_id = account.getId();
+         Uri user_photo = account.getPhotoUrl();
+         String str_photo = "empty";
+         try {
+         str_photo = user_photo.toString();
+         } catch (Exception e) {
+         str_photo = "empty";
+         }**/
+
+        //We save the information of the user in our preferences
+        //To save the last state
+        preferences.savePreference(SIGNED, true);
+        //To save the nickName
+        preferences.savePreference(NICK_USER, user.getNick_name());
+        //To save the name of this user
+        preferences.savePreference(NAME_USER, user.getName());
+        //To save the email
+        preferences.savePreference(EMAIL, user.getEmail());
+        //To save img_profile
+        preferences.savePreference(IMG_PROFILE, user.getProfile_img());
+
+        //Now we go to the next activity
+        changeActivity();
+    }
+
+    /**
+     * changeActivity method
+     * Description: Verify if the user has already signed
+     * Returns: Nothing
+     **/
+    private void changeActivity() {
+
+        try {
+            if (preferences.getIsSigned()) {
+                Intent intent = new Intent(activity, Main.class);
+                activity.startActivity(intent);
+                alertDialog.dismiss();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "changeActivity: ", e);
+            preferences.cleanPreferences();
+        }
     }
 
 }

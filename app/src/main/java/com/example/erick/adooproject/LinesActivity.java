@@ -19,8 +19,8 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 
 import Adapters.AdapterLines;
-import UIElements.DividerItemDecoration;
 import Objects.Line;
+import UIElements.DividerItemDecoration;
 
 public class LinesActivity extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class LinesActivity extends AppCompatActivity {
         for (int i = 0; i < lines.size(); i++)
             Log.i(TAG, "onCreate: lines.getWhichLine " + lines.get(i).getWhichLine());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_lines);
+        FloatingActionButton fab = findViewById(R.id.fab_lines);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
