@@ -22,10 +22,19 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import Objects.User;
 import Preferences.SubgueyPreferences;
 import UIElements.CustomNickAlert;
+
+import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
+import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
+import static Preferences.Utilities.NICK_USER;
 
 public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
@@ -122,6 +131,8 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     private void signIn() {
         Log.d(TAG, "signIn() called");
         //Creating an Intent object
+
+
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -156,12 +167,44 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
 
                     //User data
                     user = new User(user_name, user_email, user_given_name,
-                            0.0f, 0.0f, str_photo,
-                            1);
+                            1.0f, 10.0f, str_photo,
+                             1);
 
-                    //We register to this user
-                    CustomNickAlert nick_alert= new CustomNickAlert(Login.this);
-                    nick_alert.showDialog(user);
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    final DatabaseReference users = database.getReference(DB_REFERENCE).child(USER_REFERENCE);
+                    users.addListenerForSingleValueEvent(new ValueEventListener() {
+                        boolean bool = false;
+
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            for (DataSnapshot objSnapshot : snapshot.getChildren()) {
+                                final User actual = objSnapshot.getValue(User.class);
+                                if (user.getEmail().equals(actual.getEmail())) {
+                                    bool=true;
+                                    Toast.makeText(Login.this, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada, Subgüey usará estos datos", Toast.LENGTH_LONG).show();
+                                    preferences.savePreference(NICK_USER, actual.getNick_name());
+                                    Intent intent= new Intent(Login.this,Main.class);
+                                    startActivity(intent);
+
+                                }
+                            }
+                            if(!bool){
+                                CustomNickAlert nick_alert= new CustomNickAlert(Login.this);
+                                nick_alert.showDialog(user);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError firebaseError) {
+                            Log.e("Read failed", firebaseError.getMessage());
+                        }
+                    });
+
+
+
+
+
 
 
                     Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
