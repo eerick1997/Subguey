@@ -17,7 +17,8 @@ import android.widget.Button;
 import com.example.erick.adooproject.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
@@ -31,8 +32,8 @@ import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
 import static DataBases.Firebase.FirebaseReferences.EVENT_REFERENCE;
 
 public class EventsReports implements LocationListener,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        ConnectionCallbacks,
+        OnConnectionFailedListener {
     //Constants
     private static final String TAG = "EventsReports.java";
     private static final int ACCIDENT = 0;
@@ -60,7 +61,6 @@ public class EventsReports implements LocationListener,
                 .addApi(LocationServices.API)
                 .addOnConnectionFailedListener(this)
                 .build();
-
     }
 
     //This method shows the alert dialog in display
@@ -159,11 +159,6 @@ public class EventsReports implements LocationListener,
         events.push().setValue(event);
     }
 
-    private Location getLastLocation() {
-        FusedLocationProviderClient locationProviderClient;
-        return null;
-    }
-
     @Override
     public void onLocationChanged(Location location) {
         Log.d(TAG, "onLocationChanged() called with: location = [" + location + "]");
@@ -217,8 +212,10 @@ public class EventsReports implements LocationListener,
         builder.addLocationRequest(locationRequest);
         LocationSettingsRequest locationSettingsRequest = builder.build();
 
-        //get
+    }
 
-
+    private Location getLastLocation() {
+        //FusedLocationProviderClient locationProviderClient = getFusedLocatioNproviderClinet();
+        return null;
     }
 }
