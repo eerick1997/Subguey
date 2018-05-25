@@ -34,7 +34,9 @@ import UIElements.CustomNickAlert;
 
 import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
 import static DataBases.Firebase.FirebaseReferences.USER_REFERENCE;
-import static Preferences.Utilities.NICK_USER;
+import static Preferences.Utilities.*;
+
+
 
 public class Login extends AppCompatActivity implements OnConnectionFailedListener {
 
@@ -184,6 +186,13 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                                     bool=true;
                                     Toast.makeText(Login.this, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada, Subgüey usará estos datos", Toast.LENGTH_LONG).show();
                                     preferences.savePreference(NICK_USER, actual.getNick_name());
+                                    preferences.savePreference(EMAIL, actual.getEmail());
+                                    preferences.savePreference(SIGNED, true);
+                                    preferences.savePreference(NAME_USER, actual.getName());
+                                    preferences.savePreference(IMG_PROFILE, actual.getProfile_img());
+
+
+
                                     Intent intent= new Intent(Login.this,Main.class);
                                     startActivity(intent);
 
