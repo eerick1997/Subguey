@@ -39,6 +39,11 @@
     <string name="LMB5">#</string>
     <string name="LMB6">#</string>
     <string name="LMB7">#</string>
+    <!-- COLORS DEFAULT APPLICATION -->
+    <string name="colorPrimary">#142582</string>
+    <string name="colorPrimaryDark">#000E59</string>
+    <string name="colorAccent">#FF0009</string>
+
     <string name="acceder_color">#000E59</string>
     <string name="layout_acceder">#FFFFFF</string>
     <string name="ubication_station_info">Ubicación</string>

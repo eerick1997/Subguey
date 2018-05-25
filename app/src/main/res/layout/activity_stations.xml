@@ -33,14 +33,4 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_stations"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_gravity="bottom|end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_btn_speak_now"/>
-
 </android.support.design.widget.CoordinatorLayout>

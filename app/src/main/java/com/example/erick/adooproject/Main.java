@@ -122,15 +122,12 @@ public class Main extends AppCompatActivity
         int id = item.getItemId();
 
 
-        /**if (id == R.id.nav_map_main && lastId != R.id.nav_map_main) {
-            Log.i(TAG, "onNavigationItemSelected: id " + id);
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FrameGMap()).commit();
-         } else**/if (id == R.id.nav_lines_subway) {
+        if (id == R.id.nav_lines_subway) {
             Log.i(TAG, "onNavigationItemSelected: ");
-            justForTesting();
+            justForTesting("Metro");
         } else if (id == R.id.nav_lines_metro_bus) {
             Log.i(TAG, "onNavigationItemSelected: ");
-            justForTesting();
+            justForTesting("Metrobus");
 
         }
         lastId = id;
@@ -140,7 +137,7 @@ public class Main extends AppCompatActivity
         return true;
     }
 
-    private void justForTesting() {
+    private void justForTesting(String title) {
         ArrayList<Line> lines = new ArrayList<>();
         /***************************THIS CODE IS JUST FOR TESTING*********************************/
 
@@ -175,21 +172,19 @@ public class Main extends AppCompatActivity
 
         for (int i = 0; i < 5; i++)
             positions.add(new LatLng(lat += 0.05, lng += 0.05));
-        //for(int i = 1; i <= 9; i++)
         stations.add(new Station("Observatorio 1", "LM1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
         stations.add(new Station("Observatorio 2", "LM2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
         stations.add(new Station("Observatorio 3", "LM3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        // ArrayList<Station> stations = new ArrayList<>();
-
 
         for (int i = 1; i <= 9; i++)
             lines.add(new Line("ABC", "LM" + i, stations));
-        //lines.add(new Line("LM1", "LM1", stations));
-        //lines.add(new Line("LM2", "LM2", stations));
-        //lines.add(new Line("LM3", "LM3", stations));
+        lines.add(new Line("LM1", "LMA", stations));
+        lines.add(new Line("LM2", "LMB", stations));
+        lines.add(new Line("LM3", "LM12", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);
+        intent.putExtra("title", title);
         startActivity(intent);
 
         /******************************* END JUST FOR TESTING ******************************************/
