@@ -48,6 +48,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import DataBases.SQLite.DBStations;
 import MapUtilities.PermissionUtils;
 import Objects.Event;
+import UIElements.EventInfo;
 import UIElements.EventsReports;
 import UIElements.MyImages;
 
@@ -125,7 +126,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         //We get a view element from a layout
         view = inflater.inflate(R.layout.frame_gmap, container, false);
         //We make an instance of a MapView
-        mapView = (MapView) view.findViewById(R.id.mapview);
+        mapView = view.findViewById(R.id.mapview);
         //We create the MapView
         mapView.onCreate(savedInstanceState);
         //We call to getMapAsync method
@@ -167,7 +168,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         //If we need to add a marker we can use the code below
         Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
                 .title("Observatorio")
-                .snippet("linea 1"));
+                .snippet("Metro"));
         marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));
 
         enableMyLocation();
@@ -266,6 +267,20 @@ public class FrameGMap extends Fragment implements LocationListener,
     public boolean onMarkerClick(Marker marker) {
         Log.d(TAG, "onMarkerClick() called with: marker = [" + marker + "]");
 
+        //We need to know the type of alert dialog that we need to display
+        //Marker is an event type
+        if (marker.getSnippet().equals("event")) {
+            EventInfo eventInfo = new EventInfo(getActivity());
+            Event event = new Event(0, "eerick1997", "12:00", initial_camera);
+            eventInfo.showDialog(event);
+        }
+        //Marker is an station type
+        else {
+
+        }
+        EventInfo eventInfo = new EventInfo(getActivity());
+        Event event = new Event(0, "eerick1997", "12:00", initial_camera);
+        eventInfo.showDialog(event);
 
         marker.hideInfoWindow();
         return true;

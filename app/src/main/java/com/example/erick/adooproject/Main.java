@@ -127,7 +127,7 @@ public class Main extends AppCompatActivity
             justForTesting("Metro");
         } else if (id == R.id.nav_lines_metro_bus) {
             Log.i(TAG, "onNavigationItemSelected: ");
-            justForTesting("Metrobus");
+            justForTestingMetrobus("Metrobus");
 
         }
         lastId = id;
@@ -181,6 +181,56 @@ public class Main extends AppCompatActivity
         lines.add(new Line("LM1", "LMA", stations));
         lines.add(new Line("LM2", "LMB", stations));
         lines.add(new Line("LM3", "LM12", stations));
+
+        Intent intent = new Intent(Main.this, LinesActivity.class);
+        intent.putParcelableArrayListExtra("Lines", lines);
+        intent.putExtra("title", title);
+        startActivity(intent);
+
+        /******************************* END JUST FOR TESTING ******************************************/
+    }
+
+    private void justForTestingMetrobus(String title) {
+        ArrayList<Line> lines = new ArrayList<>();
+        /***************************THIS CODE IS JUST FOR TESTING*********************************/
+
+        /*********** JUST FOR TESTING **********/
+
+        ArrayList<Service> services = new ArrayList<>();
+        services.add(new Service("Biciestacionamiento",
+                "lunes a viernes de 9:00 a 19:00 horas",
+                "Teléfonos 5242-6144, 5242-6145",
+                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+
+        services.add(new Service("Central camionera", "", "",
+                "Por la salida dirección Pantitlán, cruzando la calle se encuentra la Central de autobuses Poniente (también conocida como Central Observatorio)"));
+
+        services.add(new Service("Instalación para personas con discapacidad", "", "",
+                "Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso y rampas de acceso"));
+
+        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas",
+                "teléfonos 5242-6144, 5242-6145",
+                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+
+        ArrayList<Exit> exits = new ArrayList<>();
+        exits.add(new Exit("Nororiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
+        exits.add(new Exit("Norponiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
+        exits.add(new Exit("Suroriente", "Real del Monte, Colonia Pino Suárez"));
+        exits.add(new Exit("Surponiente", "Real del Monte, Colonia Pino Suárez"));
+
+        ArrayList<Station> stations = new ArrayList<>();
+        ArrayList<LatLng> positions = new ArrayList<>();
+        Double lat = 19.3982121;
+        Double lng = -99.2005697;
+
+        for (int i = 0; i < 5; i++)
+            positions.add(new LatLng(lat += 0.05, lng += 0.05));
+        stations.add(new Station("Observatorio 1", "LMB1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "LMB2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "LMB3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+
+        for (int i = 1; i <= 6; i++)
+            lines.add(new Line("ABC", "LMB" + i, stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);

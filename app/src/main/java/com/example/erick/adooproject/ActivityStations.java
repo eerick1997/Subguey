@@ -52,7 +52,7 @@ public class ActivityStations extends AppCompatActivity {
         stations = intent.getParcelableArrayListExtra("Stations");
 
         RecyclerView recyclerView = findViewById(R.id.activity_stations_recycler_view);
-        AdapterStations adapterStations = new AdapterStations(stations);
+        AdapterStations adapterStations = new AdapterStations(stations, ActivityStations.this);
         recyclerView.setAdapter(adapterStations);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, DividerItemDecoration.VERTICAL, false));
         recyclerView.addItemDecoration(

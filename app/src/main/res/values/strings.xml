@@ -32,13 +32,13 @@
     <string name="LMB">#c2c4c6</string>
     <string name="LM12">#cac640</string>
     <!-- COLORS METRO BUS -->
-    <string name="LMB1">#</string>
-    <string name="LMB2">#</string>
-    <string name="LMB3">#</string>
-    <string name="LMB4">#</string>
-    <string name="LMB5">#</string>
-    <string name="LMB6">#</string>
-    <string name="LMB7">#</string>
+    <string name="LMB1">#9F332C</string>
+    <string name="LMB2">#863A90</string>
+    <string name="LMB3">#86A03A</string>
+    <string name="LMB4">#E8942D</string>
+    <string name="LMB5">#06357C</string>
+    <string name="LMB6">#E03C8E</string>
+    <string name="LMB7">#097237</string>
     <!-- COLORS DEFAULT APPLICATION -->
     <string name="colorPrimary">#142582</string>
     <string name="colorPrimaryDark">#000E59</string>

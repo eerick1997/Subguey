@@ -3,4 +3,28 @@
     <color name="colorPrimary">#142582</color>
     <color name="colorPrimaryDark">#000E59</color>
     <color name="colorAccent">#FF0009</color>
+
+    <color name="LM1">#ff507b</color>
+    <color name="LM2">#145ea9</color>
+    <color name="LM3">#c2cc29</color>
+    <color name="LM4">#28c7cc</color>
+    <color name="LM5">#f3ec26</color>
+    <color name="LM6">#ee0b0b</color>
+    <color name="LM7">#fa5a19</color>
+    <color name="LM8">#00a541</color>
+    <color name="LM9">#693601</color>
+    <color name="LMA">#913f92</color>
+    <color name="LMB">#c2c4c6</color>
+    <color name="LM12">#cac640</color>
+    <color name="alert">#ffbd00</color>
+
+    <color name="LMB1">#9F332C</color>
+    <color name="LMB2">#863A90</color>
+    <color name="LMB3">#86A03A</color>
+    <color name="LMB4">#E8942D</color>
+    <color name="LMB5">#06357C</color>
+    <color name="LMB6">#E03C8E</color>
+    <color name="LMB7">#097237</color>
+
+
 </resources>

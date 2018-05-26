@@ -10,6 +10,8 @@ import android.util.Log;
 
 import com.example.erick.adooproject.R;
 
+import Objects.Station;
+
 public class MyImages {
 
     //Constants
@@ -74,5 +76,14 @@ public class MyImages {
         canvas.drawBitmap(small2, 0f, 0f, null);
         canvas.drawBitmap(small1, 55f, 45f, null);
         return bresult;
+    }
+
+    public void getNameImg(Station station, String type) {
+        Log.d(TAG, "getNameImg() called with: station = [" + station + "], type = [" + type + "]");
+        String str_replace = "LM";
+        if (type.equals("Metrobus")) str_replace = "LMB";
+        String resource = "ic_" + station.getName().replace(" ", "_metro_" + station.getLine().replace(str_replace, ""));
+        Log.i(TAG, "getNameImg: resource name " + resource);
+        //return "";
     }
 }

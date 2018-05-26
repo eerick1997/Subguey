@@ -1,6 +1,7 @@
 package Adapters;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.example.erick.adooproject.activity_station_info;
 import java.util.ArrayList;
 
 import Objects.Station;
+import UIElements.MyImages;
 
 public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.StationsViewHolder>{
 
@@ -26,6 +28,7 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
     //Variables
     private View.OnClickListener listener;
     private ArrayList<Station> stations;
+    private Activity activity;
 
     public class StationsViewHolder extends RecyclerView.ViewHolder{
         //Constants
@@ -38,8 +41,8 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
         public StationsViewHolder(View view){
             super(view);
             //Here we get interface elements
-            TXT_Station = (TextView)view.findViewById(R.id.station_element_text_view);
-            IMG_Station = (ImageView)view.findViewById(R.id.station_element_image_view);
+            TXT_Station = view.findViewById(R.id.station_element_text_view);
+            IMG_Station = view.findViewById(R.id.station_element_image_view);
         }
 
         //Here we put data in the interface
@@ -48,12 +51,15 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
             TXT_Station.setText(station.getName());
             //This need to be dynamic
             IMG_Station.setBackgroundResource(R.mipmap.ic_launcher);
+            MyImages images = new MyImages(activity);
+            images.getNameImg(station, "Metro");
         }
     }
 
     //Constructor super class
-    public AdapterStations(ArrayList<Station> stations){
+    public AdapterStations(ArrayList<Station> stations, Activity activity) {
         this.stations = stations;
+        this.activity = activity;
     }
 
     @Override
