@@ -79,6 +79,28 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BTN_dialog_event_like"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:drawableTop="@drawable/ic_like"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/BTN_dialog_event_dislike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:drawableTop="@drawable/ic_dislike"
+                    android:layout_weight="1"
+                    style="@style/Widget.AppCompat.Button.Borderless" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
