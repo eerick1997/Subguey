@@ -45,7 +45,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import DataBases.SQLite.DBStations;
 import MapUtilities.PermissionUtils;
 import Objects.Event;
 import UIElements.EventInfo;
@@ -77,7 +76,6 @@ public class FrameGMap extends Fragment implements LocationListener,
     private boolean mPermissionDenied = false;
 
     private LocationRequest locationRequest;
-    private DBStations dbStations;
 
     //We need to limit the map
     private LatLngBounds CDMX = new LatLngBounds(
@@ -112,8 +110,6 @@ public class FrameGMap extends Fragment implements LocationListener,
                 new EventsReports(getActivity()).showDialog(event);
             }
         });
-
-        dbStations = new DBStations(getActivity(), "", null, 1);
 
     }
 

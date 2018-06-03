@@ -9,6 +9,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import MapUtilities.MLatLng;
+
 /**
  * This object contains information about an Station
  **/
@@ -17,7 +19,7 @@ public class Station implements Parcelable, Serializable {
     //Constants
     private static final String TAG = "Station.java";
     //Variables
-    private LatLng position;
+    private MLatLng position;
     private String name, line;
     //Here we store information about different services into each station
     private ArrayList<Service> services;
@@ -26,13 +28,16 @@ public class Station implements Parcelable, Serializable {
     /*Here we store information about different the points of the path to go to the
     next station*/
 
-    private ArrayList<LatLng> next;
-    private ArrayList<LatLng> previous;
+    private ArrayList<MLatLng> next;
+    private ArrayList<MLatLng> previous;
 
+    public Station() {
+
+    }
     //Constructor
-    public Station(String name, String line, LatLng position,
+    public Station(String name, String line, MLatLng position,
                    ArrayList<Service> services, ArrayList<Exit> exits,
-                   ArrayList<LatLng> next, ArrayList<LatLng> previous) {
+                   ArrayList<MLatLng> next, ArrayList<MLatLng> previous) {
         Log.d(TAG, "Station() called with: name = [" + name + "], " +
                 "line = [" + line + "], position = [" + position + "], " +
                 "services = [" + services + "], exits = [" + exits + "], " +
@@ -62,7 +67,7 @@ public class Station implements Parcelable, Serializable {
         return this.line;
     }
 
-    public LatLng getPosition() {
+    public MLatLng getPosition() {
         Log.d(TAG, "getPosition() called");
         Log.d(TAG, "getPosition() returned: " + this.position);
         return this.position;
@@ -85,12 +90,12 @@ public class Station implements Parcelable, Serializable {
         return fillElement();
     }
 
-    public ArrayList<LatLng> getNext() {
+    public ArrayList<MLatLng> getNext() {
         Log.d(TAG, "getNext() called");
         return this.next;
     }
 
-    public ArrayList<LatLng> getPrevious() {
+    public ArrayList<MLatLng> getPrevious() {
         Log.d(TAG, "getPrevious() called");
         return previous;
     }
@@ -109,8 +114,8 @@ public class Station implements Parcelable, Serializable {
         for (int i = 0; i < services.size(); i++) {
             String description = "";
 
-            if (!services.get(i).getUbication().isEmpty())
-                description += "Ubicación: \n\n" + services.get(i).getUbication();
+            if (!services.get(i).getlocation().isEmpty())
+                description += "Ubicación: \n\n" + services.get(i).getlocation();
 
             if (!description.isEmpty())
                 description += " \n\n ";
@@ -130,17 +135,23 @@ public class Station implements Parcelable, Serializable {
         return elements;
     }
 
+    public LatLng getLatLng() {
+        Log.d(TAG, "getLatLng() called");
+        return new LatLng(position.getLatitude(), position.getLongitude());
+    }
     /**
      * --------------- PARCEL METHODS ---------------
      **/
 
 
     protected Station(Parcel in) {
-        position = in.readParcelable(LatLng.class.getClassLoader());
+        position = in.readParcelable(MLatLng.class.getClassLoader());
         name = in.readString();
         line = in.readString();
         services = in.createTypedArrayList(Service.CREATOR);
         exits = in.createTypedArrayList(Exit.CREATOR);
+        next = in.createTypedArrayList(MLatLng.CREATOR);
+        previous = in.createTypedArrayList(MLatLng.CREATOR);
     }
 
     @Override
@@ -150,6 +161,8 @@ public class Station implements Parcelable, Serializable {
         dest.writeString(line);
         dest.writeTypedList(services);
         dest.writeTypedList(exits);
+        dest.writeTypedList(next);
+        dest.writeTypedList(previous);
     }
 
     @Override
@@ -168,5 +181,6 @@ public class Station implements Parcelable, Serializable {
             return new Station[size];
         }
     };
+
 
 }

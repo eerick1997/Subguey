@@ -11,13 +11,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.erick.adooproject.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
+import DataBases.SQLite.DataBases;
+import MapUtilities.MLatLng;
 import Objects.Event;
-
-import static DataBases.Firebase.FirebaseReferences.DB_REFERENCE;
-import static DataBases.Firebase.FirebaseReferences.EVENT_REFERENCE;
+import Objects.Exit;
+import Objects.Service;
+import Objects.Station;
 
 public class EventsReports {
     //Constants
@@ -31,7 +33,6 @@ public class EventsReports {
     private Context context;
 
 
-
     //Constructor
     public EventsReports(Context context) {
         Log.d(TAG, "EventsReports() called with: context = [" + context + "]");
@@ -40,8 +41,7 @@ public class EventsReports {
 
     //This method shows the alert dialog in display
     public void showDialog(final Event event) {
-        Log.d(TAG, "showDialog() called");
-        // Log.d(TAG, "showDialog() called with: event = [" + event + "]");
+        Log.d(TAG, "showDialog() called with: event = [" + event + "]");
         try {
             //This object contains information about an event
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -125,13 +125,41 @@ public class EventsReports {
      **/
     private void sendEvent(@NonNull final Event event) {
         Log.d(TAG, "sendEvent() called with: event = [" + event + "]");
+        DataBases db = new DataBases(this.context);
+        db.insertStation("observatorio_LM1", testing());
+        ArrayList<Station> stations = db.getStations();
+        for (int i = 0; i < stations.size(); i++) {
+            Log.i(TAG, " >>>>> sendEvent: " + stations.get(i).getName());
+        }
+        /**We make instance of a FirebaseDatabase  object to create our database
+         FirebaseDatabase database = FirebaseDatabase.getInstance();
+         //We need to pass the name of our database and
+         final DatabaseReference events = database.getReference(DB_REFERENCE)
+         .child(STATION_REFETENCE);
+         events.push().setValue(event);
+         */
+    }
 
-        //We make instance of a FirebaseDatabase  object to create our database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        //We need to pass the name of our database and
-        final DatabaseReference events = database.getReference(DB_REFERENCE)
-                .child(EVENT_REFERENCE);
-        events.push().setValue(event);
+
+    private Station testing() {
+        Station station;
+        ArrayList<Service> services = new ArrayList<>();
+        ArrayList<Exit> exists = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            services.add(new Service("Name", "Schedule", "Contact", "Ubication"));
+            exists.add(new Exit("Name", "Streets"));
+        }
+
+        ArrayList<MLatLng> next = new ArrayList<>();
+        ArrayList<MLatLng> previous = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            next.add(new MLatLng(1.23, 1.43));
+            previous.add(new MLatLng(5.21, 5.14));
+        }
+
+        MLatLng position = new MLatLng(10.42, 11.425);
+        station = new Station("OBSERVATORIO", "LM1", position, services, exists, next, previous);
+        return station;
     }
 
 }

@@ -17,10 +17,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import MapUtilities.MLatLng;
 import Objects.Exit;
 import Objects.Line;
 import Objects.Service;
@@ -166,15 +166,16 @@ public class Main extends AppCompatActivity
         exits.add(new Exit("Surponiente", "Real del Monte, Colonia Pino Suárez"));
 
         ArrayList<Station> stations = new ArrayList<>();
-        ArrayList<LatLng> positions = new ArrayList<>();
+        ArrayList<MLatLng> positions = new ArrayList<>();
         Double lat = 19.3982121;
         Double lng = -99.2005697;
 
         for (int i = 0; i < 5; i++)
-            positions.add(new LatLng(lat += 0.05, lng += 0.05));
-        stations.add(new Station("Observatorio 1", "LM1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "LM2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "LM3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+            positions.add(new MLatLng(lat += 0.05, lng += 0.05));
+
+        stations.add(new Station("Observatorio 1", "LM1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "LM2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "LM3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
 
         for (int i = 1; i <= 9; i++)
             lines.add(new Line("ABC", "LM" + i, stations));
@@ -219,15 +220,15 @@ public class Main extends AppCompatActivity
         exits.add(new Exit("Surponiente", "Real del Monte, Colonia Pino Suárez"));
 
         ArrayList<Station> stations = new ArrayList<>();
-        ArrayList<LatLng> positions = new ArrayList<>();
+        ArrayList<MLatLng> positions = new ArrayList<>();
         Double lat = 19.3982121;
         Double lng = -99.2005697;
 
         for (int i = 0; i < 5; i++)
-            positions.add(new LatLng(lat += 0.05, lng += 0.05));
-        stations.add(new Station("Observatorio 1", "LMB1", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "LMB2", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "LMB3", new LatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+            positions.add(new MLatLng(lat += 0.05, lng += 0.05));
+        stations.add(new Station("Observatorio 1", "LMB1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "LMB2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "LMB3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
 
         for (int i = 1; i <= 6; i++)
             lines.add(new Line("ABC", "LMB" + i, stations));

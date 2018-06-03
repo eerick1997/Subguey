@@ -107,10 +107,10 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         this.googleMap.addMarker(new MarkerOptions()
-                .position(station.getPosition())).setTitle(station.getName());
+                .position(station.getLatLng())).setTitle(station.getName());
         this.googleMap.setMaxZoomPreference(19);
         this.googleMap.setIndoorEnabled(true);
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(station.getPosition(), 18));
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(station.getLatLng(), 18));
     }
 
     /**

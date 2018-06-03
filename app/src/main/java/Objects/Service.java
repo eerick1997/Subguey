@@ -15,22 +15,22 @@ public class Service implements Parcelable, Serializable{
     //Constants
     private static final String TAG = "Service.java";
     //Variables
-    private String name, schedule, contact, ubication;
+    private String name, schedule, contact, location;
 
     //Constructor
-    public Service(String name, String schedule, String contact, String ubication){
+    public Service(String name, String schedule, String contact, String location) {
         //Initializing global variables
         this.name = name;
         this.schedule = schedule;
         this.contact = contact;
-        this.ubication = ubication;
+        this.location = location;
     }
 
     protected Service(Parcel in) {
         name = in.readString();
         schedule = in.readString();
         contact = in.readString();
-        ubication = in.readString();
+        location = in.readString();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Service implements Parcelable, Serializable{
         dest.writeString(name);
         dest.writeString(schedule);
         dest.writeString(contact);
-        dest.writeString(ubication);
+        dest.writeString(location);
     }
 
     @Override
@@ -77,9 +77,9 @@ public class Service implements Parcelable, Serializable{
         return this.contact;
     }
 
-    public String getUbication(){
-        Log.d(TAG, "getUbication() called");
-        Log.d(TAG, "getUbication() returned: " + this.ubication);
-        return this.ubication;
+    public String getlocation() {
+        Log.d(TAG, "getlocation() called");
+        Log.d(TAG, "getlocation() returned: " + this.location);
+        return this.location;
     }
 }

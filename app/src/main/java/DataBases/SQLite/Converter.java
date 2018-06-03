@@ -4,68 +4,56 @@ import android.util.Log;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Converter {
+public class Converter implements Serializable {
     //Constants
     private static final String TAG = "Converter.java";
 
+
     /**This method convert an object into a byte array
      * this method receive just an argument type Object
-     * and returns an array of bytes**/
+     * and returns an array of bytes
+     * @param object: This object we gonna convert into bytes
+     * @return byte[]
+     * **/
     public byte[] toBytes(Object object){
+        Log.d(TAG, "toBytes() called with: object = [" + object + "]");
         byte[] bytes = null;
-        //We can use a ByteArrayOutputStream to convert
-        //everything in a byte array
-        ByteArrayOutputStream byteArrayOutputStream =
-                new ByteArrayOutputStream();
-        ObjectOutput objectOutput = null;
-        try{
-            //We associate our ByteArrayOutputStream with our ObjectOutput
-            objectOutput = new ObjectOutputStream(byteArrayOutputStream);
-            //We convert our object into bytes
-            objectOutput.writeObject(object);
-            objectOutput.flush();
-            //we convert our byteArrayOutputStream into bytes
-            bytes = byteArrayOutputStream.toByteArray();
-        } catch (IOException e){
+        //Probably we catch an exception
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(object);
+            bytes = outputStream.toByteArray();
+        } catch (Exception e) {
             Log.e(TAG, "toBytes: ", e);
-        } finally {
-            try{
-                byteArrayOutputStream.close();
-            } catch (IOException e){
-                Log.e(TAG, "toBytes: ", e);
-            }
         }
+        Log.d(TAG, "toBytes() returned: " + bytes);
         return bytes;
     }
 
-    public Object getObject(byte[] bytes){
+    /**
+     * This method convert a byte array into an object
+     * we use this method to force SQLite to be oriented object
+     *
+     * @param bytes: byte array
+     * @return Object
+     **/
+    public Object getObject(byte[] bytes) {
+        Log.d(TAG, "getObject() called with: bytes = [" + bytes + "]");
         Object object = null;
-        //We associate a byte array in a ByteArrayInputStream
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-        ObjectInput in = null;
-        try{
-            //We initialize our ObjectInput
-            in = new ObjectInputStream(byteArrayInputStream);
-            //We get an object
-            object = in.read();
-        } catch (IOException e){
+        //Probably we catch an exception
+        try {
+            ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            object = objectInputStream.readObject();
+        } catch (Exception e) {
             Log.e(TAG, "getObject: ", e);
-        } finally{
-            try{
-                if(in != null){
-                    in.close();
-                }
-            }catch (IOException e){
-                Log.e(TAG, "getObject: ", e);
-            }
         }
+        Log.d(TAG, "getObject() returned: " + object);
         return object;
     }
-
 }
