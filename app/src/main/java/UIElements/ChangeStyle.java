@@ -30,7 +30,7 @@ public class ChangeStyle {
         Log.d(TAG, "setColorCollapsingToolbar() called with:" +
                 "color = [" + color + "], " +
                 "collapsingT = [" + collapsingT + "]");
-        collapsingT.setContentScrimColor(Color.parseColor(getColor(color)));
+        collapsingT.setContentScrimColor(Color.parseColor(getLineColor(color)));
     }
 
     /**
@@ -41,12 +41,12 @@ public class ChangeStyle {
                 "color = context.getString(R.string.LM1); color = [" + color + "], " +
                 "window = [" + window + "]");
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor(getColor(color)));
+        window.setStatusBarColor(Color.parseColor(getLineColor(color)));
     }
 
     public void setColorToolbar(String color, Toolbar toolbar) {
         Log.d(TAG, "setColorToolbar() called with: color = [" + color + "], toolbar = [" + toolbar + "]");
-        toolbar.setBackgroundColor(Color.parseColor(getColor(color)));
+        toolbar.setBackgroundColor(Color.parseColor(getLineColor(color)));
     }
 
     public String getColor(String ID) {
@@ -58,5 +58,14 @@ public class ChangeStyle {
         return activity.getString(color);
     }
 
+    public String getLineColor(String str_line){
+        Log.d(TAG, "getLineColor() called with: str_line = [" + str_line + "]");
+        String str_color = str_line.replace(" ", "_");
+        Log.i(TAG, "getLineColor: str_color " + str_color);
+        int color = activity.getResources()
+                .getIdentifier(str_color, "string", activity.getPackageName());
+        Log.d(TAG, "getLineColor() returned: " + activity.getString(color));
+        return activity.getString(color);
+    }
 
 }

@@ -1,5 +1,6 @@
 package DataBases.SQLite;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
@@ -55,5 +56,25 @@ public class Converter implements Serializable {
         }
         Log.d(TAG, "getObject() returned: " + object);
         return object;
+    }
+
+    public String getIdStation(@NonNull String name, @NonNull String line){
+        Log.d(TAG, "getIdStation() called with: name = [" + name + "], line = [" + line + "]");
+        String id = null;
+        try{
+            if(name.contains(" "))
+                name = name.replace(" ", "_");
+            if(name.contains("ñ"))
+                name = name.replace("ñ", "ni");
+            if(line.contains(" "))
+                line = line.replace(" ", "_");
+
+            id = "ic_" + name + "_" + line;
+        } catch (Exception e){
+            Log.e(TAG, "getIdStation: ", e);
+        }
+        id += ".png";
+        Log.d(TAG, "getIdStation() returned: " + id);
+        return id;
     }
 }

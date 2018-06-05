@@ -66,7 +66,7 @@ public class MyImages {
                 small2.getWidth(), small2.getHeight());
         for (int i = 0; i < pixels.length; i++) {
             if (pixels[i] == Color.BLACK)
-                pixels[i] = Color.parseColor(activity.getString(R.string.LM1));
+                pixels[i] = Color.parseColor(activity.getString(R.string.metro_1));
         }
         small2.setPixels(pixels, 0, small2.getWidth(), 0, 0, small2.getWidth(), small2.getHeight());
         Bitmap bresult = Bitmap.createBitmap(small2.getWidth(), small2.getHeight(), small2.getConfig());

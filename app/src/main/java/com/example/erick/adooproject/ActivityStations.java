@@ -60,6 +60,7 @@ public class ActivityStations extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         String color = intent.getStringExtra("color");
+        Log.i(TAG, "onCreate: color: " + color);
         style.setColorWindow(color, getWindow());
         style.setColorToolbar(color, toolbar);
     }

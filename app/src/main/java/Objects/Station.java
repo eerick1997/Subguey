@@ -139,6 +139,25 @@ public class Station implements Parcelable, Serializable {
         Log.d(TAG, "getLatLng() called");
         return new LatLng(position.getLatitude(), position.getLongitude());
     }
+
+    public ArrayList<LatLng> getNextLatLng(){
+        Log.d(TAG, "getNextLatLng() called");
+        ArrayList<LatLng> nextLatLng = new ArrayList<>();
+        for(int i = 0; i < next.size(); i++){
+            nextLatLng.add(new LatLng(next.get(i).getLatitude(), next.get(i).getLongitude()));
+        }
+        return nextLatLng;
+    }
+
+    public ArrayList<LatLng> getPreciousLatLng(){
+        Log.d(TAG, "getPreciousLatLng() called");
+        ArrayList<LatLng> previousLatLng = new ArrayList<>();
+        for(int i = 0; i < previous.size(); i++){
+            previousLatLng.add(new LatLng(previous.get(i).getLatitude(), previous.get(i).getLongitude()));
+        }
+        return previousLatLng;
+    }
+
     /**
      * --------------- PARCEL METHODS ---------------
      **/

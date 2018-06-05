@@ -1,6 +1,7 @@
 package UIElements;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.erick.adooproject.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,8 @@ import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
 
+import static DataBases.Firebase.FirebaseReferences.*;
+
 public class EventsReports {
     //Constants
     private static final String TAG = "EventsReports.java";
@@ -30,13 +35,13 @@ public class EventsReports {
     private static final int NATURAL = 3;
     private static final int BY_USER = 4;
     //Variables
-    private Context context;
+    private Activity activity;
 
 
     //Constructor
-    public EventsReports(Context context) {
-        Log.d(TAG, "EventsReports() called with: context = [" + context + "]");
-        this.context = context;
+    public EventsReports(Activity activity) {
+        Log.d(TAG, "EventsReports() called with: activity = [" + activity + "]");
+        this.activity = activity;
     }
 
     //This method shows the alert dialog in display
@@ -44,10 +49,10 @@ public class EventsReports {
         Log.d(TAG, "showDialog() called with: event = [" + event + "]");
         try {
             //This object contains information about an event
-            LayoutInflater inflater = LayoutInflater.from(context);
+            LayoutInflater inflater = LayoutInflater.from(activity);
             View view = inflater.inflate(R.layout.activity_events, null);
 
-            final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+            final AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
 
             Button BTN_accident = view.findViewById(R.id.event_accident);
             BTN_accident.setOnClickListener(new OnClickListener() {
@@ -125,19 +130,19 @@ public class EventsReports {
      **/
     private void sendEvent(@NonNull final Event event) {
         Log.d(TAG, "sendEvent() called with: event = [" + event + "]");
-        DataBases db = new DataBases(this.context);
+        /**DataBases db = new DataBases(this.activity);
         db.insertStation("observatorio_LM1", testing());
         ArrayList<Station> stations = db.getStations();
         for (int i = 0; i < stations.size(); i++) {
             Log.i(TAG, " >>>>> sendEvent: " + stations.get(i).getName());
-        }
-        /**We make instance of a FirebaseDatabase  object to create our database
+        }**/
+         //We make instance of a FirebaseDatabase  object to create our database
          FirebaseDatabase database = FirebaseDatabase.getInstance();
          //We need to pass the name of our database and
          final DatabaseReference events = database.getReference(DB_REFERENCE)
-         .child(STATION_REFETENCE);
+         .child(EVENT_REFERENCE);
          events.push().setValue(event);
-         */
+
     }
 
 

@@ -173,15 +173,15 @@ public class Main extends AppCompatActivity
         for (int i = 0; i < 5; i++)
             positions.add(new MLatLng(lat += 0.05, lng += 0.05));
 
-        stations.add(new Station("Observatorio 1", "LM1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "LM2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "LM3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 1", "metro 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "metro 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "metro 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
 
         for (int i = 1; i <= 9; i++)
-            lines.add(new Line("ABC", "LM" + i, stations));
-        lines.add(new Line("LM1", "LMA", stations));
-        lines.add(new Line("LM2", "LMB", stations));
-        lines.add(new Line("LM3", "LM12", stations));
+            lines.add(new Line("ABC", "metro " + i, stations));
+        lines.add(new Line("metro 1", "metro a", stations));
+        lines.add(new Line("metro 2", "metro b", stations));
+        lines.add(new Line("metro 3", "metro 12", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);
@@ -226,12 +226,12 @@ public class Main extends AppCompatActivity
 
         for (int i = 0; i < 5; i++)
             positions.add(new MLatLng(lat += 0.05, lng += 0.05));
-        stations.add(new Station("Observatorio 1", "LMB1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "LMB2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "LMB3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 1", "metrobus 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 2", "metrobus 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 3", "metrobus 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
 
         for (int i = 1; i <= 6; i++)
-            lines.add(new Line("ABC", "LMB" + i, stations));
+            lines.add(new Line("ABC", "metrobus " + i, stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);

@@ -50,7 +50,7 @@ public class AdapterLines extends Adapter<AdapterLines.LinesViewHolder> {
             String line_text = line.getStations().get(0).getName() + " - " +
                     line.getStations().get(line.getStations().size() - 1).getName();
             TXT_line.setText(line_text);
-            TXT_color.setBackgroundColor(Color.parseColor(style.getColor(line.getWhichLine())));
+            TXT_color.setBackgroundColor(Color.parseColor(style.getLineColor(line.getWhichLine())));
             String txt_replace = "LM";
             if (type.equals("Metrobus"))
                 txt_replace = "LMB";

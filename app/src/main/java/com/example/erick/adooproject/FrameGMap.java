@@ -45,8 +45,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.ArrayList;
+
+import MapUtilities.MLatLng;
 import MapUtilities.PermissionUtils;
 import Objects.Event;
+import Objects.Exit;
+import Objects.Service;
+import Objects.Station;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
 import UIElements.MyImages;
@@ -167,6 +173,17 @@ public class FrameGMap extends Fragment implements LocationListener,
                 .snippet("Metro"));
         marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));
 
+        ArrayList<Service> services = new ArrayList<>();
+        ArrayList<Exit> exits = new ArrayList<>();
+        for (int i = 0; i < 2; i++){
+            services.add(new Service("Something"+i,"SSomething", "Csomebody", "Lsomething"));
+            exits.add(new Exit("Name"+i,"Street"+i));
+        }
+        MLatLng MlatLng = new MLatLng(initial_camera.latitude, initial_camera.longitude);
+        Station station = new Station("Observatorio", "LM1", MlatLng, services, exits, null, null);
+        marker.setTag(station);
+        Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
+
         enableMyLocation();
     }
 
@@ -263,6 +280,7 @@ public class FrameGMap extends Fragment implements LocationListener,
     public boolean onMarkerClick(Marker marker) {
         Log.d(TAG, "onMarkerClick() called with: marker = [" + marker + "]");
 
+        Log.i(TAG, ">>>>> onMarkerClick: " + marker.getTag().getClass());
         //We need to know the type of alert dialog that we need to display
         //Marker is an event type
         if (marker.getSnippet().equals("event")) {

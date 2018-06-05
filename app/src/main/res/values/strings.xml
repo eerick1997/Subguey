@@ -19,26 +19,26 @@
     <string name="navigation_drawer_lines_metro_bus">Lineas metrobus</string>
 
     <!-- COLORS METRO -->
-    <string name="LM1">#ff507b</string>
-    <string name="LM2">#145ea9</string>
-    <string name="LM3">#c2cc29</string>
-    <string name="LM4">#28c7cc</string>
-    <string name="LM5">#f3ec26</string>
-    <string name="LM6">#ee0b0b</string>
-    <string name="LM7">#fa5a19</string>
-    <string name="LM8">#00a541</string>
-    <string name="LM9">#693601</string>
-    <string name="LMA">#913f92</string>
-    <string name="LMB">#c2c4c6</string>
-    <string name="LM12">#cac640</string>
+    <string name="metro_1">#ff507b</string>
+    <string name="metro_2">#145ea9</string>
+    <string name="metro_3">#c2cc29</string>
+    <string name="metro_4">#28c7cc</string>
+    <string name="metro_5">#f3ec26</string>
+    <string name="metro_6">#ee0b0b</string>
+    <string name="metro_7">#fa5a19</string>
+    <string name="metro_8">#00a541</string>
+    <string name="metro_9">#693601</string>
+    <string name="metro_a">#913f92</string>
+    <string name="metro_b">#c2c4c6</string>
+    <string name="metro_12">#cac640</string>
     <!-- COLORS METRO BUS -->
-    <string name="LMB1">#9F332C</string>
-    <string name="LMB2">#863A90</string>
-    <string name="LMB3">#86A03A</string>
-    <string name="LMB4">#E8942D</string>
-    <string name="LMB5">#06357C</string>
-    <string name="LMB6">#E03C8E</string>
-    <string name="LMB7">#097237</string>
+    <string name="metrobus_1">#9F332C</string>
+    <string name="metrobus_2">#863A90</string>
+    <string name="metrobus_3">#86A03A</string>
+    <string name="metrobus_4">#E8942D</string>
+    <string name="metrobus_5">#06357C</string>
+    <string name="metrobus_6">#E03C8E</string>
+    <string name="metrobus_7">#097237</string>
     <!-- COLORS DEFAULT APPLICATION -->
     <string name="colorPrimary">#142582</string>
     <string name="colorPrimaryDark">#000E59</string>

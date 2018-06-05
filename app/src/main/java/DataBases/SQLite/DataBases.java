@@ -1,5 +1,6 @@
 package DataBases.SQLite;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,10 +8,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
+import MapUtilities.DrawPolyline;
 import Objects.Event;
 import Objects.Station;
+import UIElements.ChangeStyle;
+import UIElements.MyImages;
 
 import static DataBases.SQLite.Utilities.DB_NAME;
 import static DataBases.SQLite.Utilities.E_CREA;
@@ -34,17 +44,18 @@ public class DataBases extends SQLiteOpenHelper {
     private static final String TAG = "DataBases.java";
 
     //Variables
-    private Context context;
+    private Activity activity;
     private SQLiteDatabase sqLiteDatabase;
     private Converter converter = new Converter();
 
     //Constructor
-    public DataBases(Context context) {
-        super(context, DB_NAME, null, 1);
-        Log.d(TAG, "DataBases() called with: context = [" + context + "]");
-        this.context = context;
+    public DataBases(Activity activity) {
+        super(activity, DB_NAME, null, 1);
+        Log.d(TAG, "DataBases() called with: activity = [" + activity + "]");
+        this.activity = activity;
     }
 
+    /** ------------------- OUR METHODS --------------------**/
     public void insertStation(String id, Station station) {
         Log.d(TAG, "insertStation() called with: id = [" + id + "], station = [" + station + "]");
         SQLiteDatabase db = this.getWritableDatabase();
@@ -148,6 +159,43 @@ public class DataBases extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void addStationsMarkers(GoogleMap googleMap){
+        Log.d(TAG, "setMarkers() called with: googleMap = [" + googleMap + "]");
+        try{
+            MyImages images = new MyImages(this.activity);
+            ArrayList<Station> stations = getStations();
+            for(int i = 0; i < stations.size(); i++){
+                Station station = stations.get(i);
+                MarkerOptions markerOptions = new MarkerOptions().position(station.getLatLng())
+                        .title(station.getLine())
+                        .snippet(station.getName());
+
+                Marker marker = googleMap.addMarker(markerOptions);
+                marker.setTag(station);
+                marker.setIcon(BitmapDescriptorFactory
+                        .fromBitmap(images.createIconMarker(converter
+                                .getIdStation(station.getName(),
+                                        station.getLine()))));
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "setMarkers: ", e);
+        }
+    }
+
+    public void addRoutes(GoogleMap googleMap){
+        Log.d(TAG, "addRoutes() called with: googleMap = [" + googleMap + "]");
+        ChangeStyle changeStyle = new ChangeStyle(activity);
+        DrawPolyline drawPolyline = new DrawPolyline(this.activity, googleMap);
+        ArrayList<LatLng> points = new ArrayList<>();
+        ArrayList<Station> stations = getStations();
+        for (int i = 0; i < stations.size(); i++){
+            Station station = stations.get(i);
+            //Getting previous points
+            //drawPolyline.draw(station.getPreciousLatLng(), changeStyle.getLineColor(station.getLine()));
+        }
+    }
+
+    /** -------------------- ABSTRACT METHODS --------------------**/
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate() called with: db = [" + db + "]");
