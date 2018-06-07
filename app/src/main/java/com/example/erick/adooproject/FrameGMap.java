@@ -174,7 +174,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.setBuildingsEnabled(true);
         //Implementing onMarkerClickListener interface
         this.googleMap.setOnMarkerClickListener(this);
-        this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
+        //this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 20));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
@@ -445,6 +445,15 @@ public class FrameGMap extends Fragment implements LocationListener,
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 System.out.println("The " + snapshot.getKey() + " dinosaur's score is " + snapshot.getValue());
+                final Event event = snapshot.getValue(Event.class);
+                System.out.println("sadfasdfasdfasdfasdfasdfasdfsa:   "+event.getPosition());
+
+                Marker marker = googleMap.addMarker(new MarkerOptions().position(event.getPosition()).title("Eventos").snippet("Metro"));
+                marker.setTag(snapshot.getValue());
+
+
+
+
             }
 
             @Override
@@ -452,7 +461,7 @@ public class FrameGMap extends Fragment implements LocationListener,
 
             }
 
-            
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
@@ -470,16 +479,16 @@ public class FrameGMap extends Fragment implements LocationListener,
         });
 
 
-        /*events.addListenerForSingleValueEvent(new ValueEventListener() {
+        events.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot objSnapshot : snapshot.getChildren()) {
                     final Event actual = objSnapshot.getValue(Event.class);
-                    Log.i("HOUR:", ""+actual.getHour());
+                    /*Log.i("HOUR:", ""+actual.getHour());
                     Log.i("POSITION:", ""+actual.getPosition());
                     Log.i("TYPE:", ""+actual.getType());
-                    Log.i("USER:", ""+actual.getUser());
+                    Log.i("USER:", ""+actual.getUser());*/
                 }
 
             }
@@ -490,7 +499,7 @@ public class FrameGMap extends Fragment implements LocationListener,
             }
 
 
-        });*/
+        });
     }
 
 
