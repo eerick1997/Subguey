@@ -452,6 +452,7 @@ public class FrameGMap extends Fragment implements LocationListener,
 
             }
 
+            
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
