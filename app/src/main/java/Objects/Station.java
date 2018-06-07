@@ -29,8 +29,8 @@ public class Station implements Parcelable, Serializable {
     private ArrayList<MLatLng> neighborhood;
     /*Here we store information about different the points of the path to go to the
     next station*/
-    private ArrayList<MLatLng> next;
-    private ArrayList<MLatLng> previous;
+    //private ArrayList<MLatLng> next;
+    //private ArrayList<MLatLng> previous;
 
     public Station() {
 
@@ -38,19 +38,18 @@ public class Station implements Parcelable, Serializable {
     //Constructor
     public Station(String name, String line, MLatLng position,
                    ArrayList<Service> services, ArrayList<Exit> exits,
-                   ArrayList<MLatLng> next, ArrayList<MLatLng> previous,
+                   /**ArrayList<MLatLng> next, ArrayList<MLatLng> previous,**/
                    ArrayList<MLatLng> neighborhood) {
         Log.d(TAG, "Station() called with: name = [" + name + "], line = [" + line + "], " +
                 "position = [" + position + "], services = [" + services + "], " +
-                "exits = [" + exits + "], next = [" + next + "], previous = [" + previous + "], " +
-                "neighborhood = [" + neighborhood + "]");
+                "exits = [" + exits + "], neighborhood = [" + neighborhood + "]");
         this.name = name;
         this.line = line;
         this.position = position;
         this.services = services;
         this.exits = exits;
-        this.next = next;
-        this.previous = previous;
+        //this.next = next;
+        //this.previous = previous;
         this.neighborhood = neighborhood;
     }
 
@@ -88,7 +87,7 @@ public class Station implements Parcelable, Serializable {
         return this.exits;
     }
 
-    public ArrayList<MLatLng> getNext() {
+    /**public ArrayList<MLatLng> getNext() {
         Log.d(TAG, "getNext() called");
         return this.next;
     }
@@ -113,7 +112,7 @@ public class Station implements Parcelable, Serializable {
         return new LatLng(position.getLatitude(), position.getLongitude());
     }
 
-    public ArrayList<LatLng> getNextLatLng(){
+    /**public ArrayList<LatLng> getNextLatLng(){
         Log.d(TAG, "getNextLatLng() called");
         ArrayList<LatLng> nextLatLng = new ArrayList<>();
         for(int i = 0; i < next.size(); i++){
@@ -129,7 +128,7 @@ public class Station implements Parcelable, Serializable {
             previousLatLng.add(new LatLng(previous.get(i).getLatitude(), previous.get(i).getLongitude()));
         }
         return previousLatLng;
-    }
+    }**/
     
     public ArrayList<LatLng> getNeighborhoodLatLng(){
         Log.d(TAG, "getNeighborhoodLatLng() called");
@@ -152,8 +151,8 @@ public class Station implements Parcelable, Serializable {
         line = in.readString();
         services = in.createTypedArrayList(Service.CREATOR);
         exits = in.createTypedArrayList(Exit.CREATOR);
-        next = in.createTypedArrayList(MLatLng.CREATOR);
-        previous = in.createTypedArrayList(MLatLng.CREATOR);
+        //next = in.createTypedArrayList(MLatLng.CREATOR);
+        //previous = in.createTypedArrayList(MLatLng.CREATOR);
         neighborhood = in.createTypedArrayList(MLatLng.CREATOR);
     }
 
@@ -164,8 +163,8 @@ public class Station implements Parcelable, Serializable {
         dest.writeString(line);
         dest.writeTypedList(services);
         dest.writeTypedList(exits);
-        dest.writeTypedList(next);
-        dest.writeTypedList(previous);
+        //dest.writeTypedList(next);
+        //dest.writeTypedList(previous);
         dest.writeTypedList(neighborhood);
     }
 

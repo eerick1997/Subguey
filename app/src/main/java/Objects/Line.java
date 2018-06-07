@@ -5,33 +5,40 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.nio.file.Path;
 import java.util.ArrayList;
+
+import MapUtilities.MLatLng;
 
 public class Line implements Parcelable, Serializable {
 
     //Constanta
     private static final String TAG = "Line.java";
     //Variables
-    private String whichLine, id;
+    private String line, id;
     //As we know each line contains stations, so
     private ArrayList<Station> stations;
+    private ArrayList<MLatLng> path;
 
     //Constructor
-    public Line(String id, String whichLine, ArrayList<Station> stations) {
+    public Line(String id, String line, ArrayList<Station> stations, ArrayList<MLatLng> path) {
+        Log.d(TAG, "Line() called with: id = [" + id + "], line = [" + line + "], " +
+                "stations = [" + stations + "], path = [" + path + "]");
         //Initializing out global variables
         this.id = id;
-        this.whichLine = whichLine;
+        this.line = line;
         this.stations = stations;
+        this.path = path;
     }
-
 
     /**
      * --------------- GETTERS ---------------
      **/
     public String getWhichLine() {
         Log.d(TAG, "getWhichLine() called");
-        Log.d(TAG, "getWhichLine() returned: " + this.whichLine);
-        return this.whichLine;
+        Log.d(TAG, "getWhichLine() returned: " + this.line);
+        return this.line;
     }
 
     public ArrayList<Station> getStations() {
@@ -46,24 +53,21 @@ public class Line implements Parcelable, Serializable {
         return this.id;
     }
 
+    public ArrayList<MLatLng> getPath() {
+        Log.d(TAG, "getPath() called");
+        Log.d(TAG, "getPath() returned: " + this.path);
+        return this.path;
+    }
+
     /**
      * ---------- PARCELABLE METHODS ----------
      **/
 
     protected Line(Parcel in) {
-        whichLine = in.readString();
+        line = in.readString();
+        id = in.readString();
         stations = in.createTypedArrayList(Station.CREATOR);
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(whichLine);
-        dest.writeTypedList(stations);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        path = in.createTypedArrayList(MLatLng.CREATOR);
     }
 
     public static final Creator<Line> CREATOR = new Creator<Line>() {
@@ -77,4 +81,17 @@ public class Line implements Parcelable, Serializable {
             return new Line[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(line);
+        dest.writeString(id);
+        dest.writeTypedList(stations);
+        dest.writeTypedList(path);
+    }
 }

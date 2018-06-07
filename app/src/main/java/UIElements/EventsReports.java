@@ -160,7 +160,7 @@ public class EventsReports {
             previous.add(new MLatLng(5.21, 5.14));
         }
         MLatLng position = new MLatLng(10.42, 11.425);
-        station = new Station("OBSERVATORIO", "LM1", position, services, exists, next, previous, null);
+        station = new Station("OBSERVATORIO", "LM1", position, services, exists, /**next, previous,**/ null);
         return station;
     }
 

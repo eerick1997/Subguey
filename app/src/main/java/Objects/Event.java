@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import MapUtilities.MLatLng;
+
 public class Event {
 
     //Constants
@@ -12,12 +14,12 @@ public class Event {
     //Variables
     private int type;
     private String user, hour;
-    private LatLng position;
+    private MLatLng position;
 
     public Event() {
     }
 
-    public Event(int type, String user, String hour, LatLng position) {
+    public Event(int type, String user, String hour, MLatLng position) {
         Log.d(TAG, "Event() called with: type = [" + type + "], user = [" + user + "], hour = [" + hour + "]");
         this.type = type;
         this.user = user;
@@ -49,7 +51,7 @@ public class Event {
     public LatLng getPosition() {
         Log.d(TAG, "getPosition() called");
         Log.d(TAG, "getPosition() returned: " + this.position);
-        return this.position;
+        return new LatLng(position.getLatitude(), position.getLongitude());
     }
 
     /**
@@ -71,7 +73,7 @@ public class Event {
         this.hour = hour;
     }
 
-    public void setPosition(LatLng position) {
+    public void setPosition(MLatLng position) {
         Log.d(TAG, "setPosition() called with: position = [" + position + "]");
         this.position = position;
     }
