@@ -130,8 +130,11 @@ public class FrameGMap extends Fragment implements LocationListener,
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
-                Event event = new Event(1, preferences.getNickUser(), "12:00", new MLatLng(currentPosition.latitude, currentPosition.longitude));
-                new EventsReports(getActivity()).showDialog(event);
+                if (!currentPosition.equals(null)) {
+                    Event event = new Event(1, preferences.getNickUser(), "12:00", new MLatLng(currentPosition.latitude, currentPosition.longitude));
+                    new EventsReports(getActivity()).showDialog(event);
+                }
+
             }
         });
     }
