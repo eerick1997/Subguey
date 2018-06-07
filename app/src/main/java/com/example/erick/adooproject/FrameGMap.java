@@ -63,6 +63,7 @@ import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
 import Objects.User;
+import Preferences.SubgueyPreferences;
 import UIElements.ChangeStyle;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
@@ -98,9 +99,11 @@ public class FrameGMap extends Fragment implements LocationListener,
     //We need to limit the map
     private LatLngBounds CDMX = new LatLngBounds(
             new LatLng(19.339504, -99.226707), new LatLng(19.415291, -99.074272));
+
+    private LatLng currentPosition = null;
     //We need the initial position
     private LatLng initial_camera = new LatLng(19.380316, -99.132637);
-
+    private SubgueyPreferences preferences;
 
     /**
      * - - - - - - - - - - ABSTRACT METHODS - - - - - - - - - - - - - - -
@@ -119,16 +122,17 @@ public class FrameGMap extends Fragment implements LocationListener,
                 .build();//We make the GoogleApiClient
         startLocationUpdates();
 
+        preferences = new SubgueyPreferences(getActivity());
+
         FloatingActionButton fab = this.view.findViewById(R.id.FAB_send_event);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
-                Event event = new Event(1, "Erick", "12:00", new MLatLng(-1.232423, 1.421311));
+                Event event = new Event(1, preferences.getNickUser(), "12:00", new MLatLng(currentPosition.latitude, currentPosition.longitude));
                 new EventsReports(getActivity()).showDialog(event);
             }
         });
-
     }
 
     //This method is called just when the view hasn't been created
@@ -275,6 +279,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         try {
             //Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            currentPosition = latLng;
         } catch (Exception e){
             Log.e(TAG, "onLocationChanged: ", e);
         }
