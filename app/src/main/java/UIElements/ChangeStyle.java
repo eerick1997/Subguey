@@ -68,10 +68,10 @@ public class ChangeStyle {
         return activity.getString(color);
     }
 
-    private String getStationId(String str){
-        Log.d(TAG, "withoutSpecialCharacters() called with: str = [" + str + "]");
-        String result;
-        result = str.replace("á", "a");
+    public String getStationId(String nameStation, String line){
+        Log.d(TAG, "getStationId() called with: nameStation = [" + nameStation + "], line = [" + line + "]");
+        String result = nameStation + "_" + line;
+        result = result.replace("á", "a");
         result = result.replace("Á", "A");
         result = result.replace("é", "e");
         result = result.replace("É", "É");

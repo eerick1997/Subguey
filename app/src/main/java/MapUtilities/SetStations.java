@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
 import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
+import UIElements.ChangeStyle;
+import UIElements.MyImages;
 
 public class SetStations {
 
@@ -24,11 +29,10 @@ public class SetStations {
         this.activity = activity;
     }
 
-    public void drawStations(ArrayList<Station> stations, GoogleMap googleMap){
-        Log.d(TAG, "drawStations() called with: stations = [" + stations + "], googleMap = [" + googleMap + "]");
-        for(int i = 0; i < stations.size(); i++){
-            Station station = stations.get(i);
-            ArrayList<Station> stationsDraw = new ArrayList<>();
+    public void drawStations(GoogleMap googleMap) throws Exception{
+        Log.d(TAG, "drawStations() called with: googleMap = [" + googleMap + "]");
+        ChangeStyle changeStyle = new ChangeStyle(activity);
+            ArrayList<Station> stations = new ArrayList<>();
             ArrayList<MLatLng> next = null;
             ArrayList<MLatLng> prev = null;
             ArrayList<Service> services = null;
@@ -42,7 +46,7 @@ public class SetStations {
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
-
+            Station station = null;
             position = new MLatLng(19.416171, -99.074326);
 
             services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
@@ -63,7 +67,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.415784, -99.074858));
 
             station = new Station("Pantitlán", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -88,7 +96,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.411622, -99.083155));
 
             station = new Station("Zaragoza", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -110,7 +122,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.415700, -99.091256));
 
             station = new Station("Gómez Farías", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -136,7 +152,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.419603, -99.096743));
 
             station = new Station("Boulevard Puerto Aéreo", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -157,7 +177,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.422509, -99.103347));
 
             station = new Station("Balbuena", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -180,7 +204,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.426673, -99.110055));
 
             station = new Station("Moctezuma", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -207,7 +235,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.429481, -99.114948));
 
             station = new Station("San Lázaro", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -230,7 +262,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.429258, -99.121423));
 
             station = new Station("Candelaria", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -253,7 +289,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.425094, -99.125291));
 
             station = new Station("Merced", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -283,7 +323,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.425545, -99.133531));
 
             station = new Station("Pino Suárez", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -306,7 +350,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.425707, -99.138471));
 
             station = new Station("Isabel la Católica", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -330,7 +378,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.426501, -99.143942));
 
             station = new Station("Salto del Agua", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -355,7 +407,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.426825, -99.149478));
 
             station = new Station("Balderas", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -378,7 +434,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.425277, -99.155084));
 
             station = new Station("Cuauhtémoc", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -407,7 +467,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.423344, -99.163850));
 
             station = new Station("Insurgentes", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -431,7 +495,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.421740, -99.171719));
 
             station = new Station("Sevilla", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -460,7 +528,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.419762, -99.177561));
 
             station = new Station("Chapultepec", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -483,7 +555,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.412370, -99.182695));
 
             station = new Station("Juanacatlán", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -512,7 +588,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.402039, -99.188918));
 
             station = new Station("Tacubaya", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -538,7 +618,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.397854, -99.200950));
 
             station = new Station("Observatorio", "metro 1", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -560,7 +644,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.459974, -99.216274));
 
             station = new Station("Cuatro Caminos", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -581,7 +669,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.457810, -99.203485));
 
             station = new Station("Panteones", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -607,7 +699,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.458548, -99.188830));
 
             station = new Station("Tacuba", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -629,7 +725,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.456282, -99.182113));
 
             station = new Station("Cuitláhuac", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -649,7 +749,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.452549, -99.175901));
 
             station = new Station("Popotla", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -669,7 +773,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.448685, -99.173661));
 
             station = new Station("Colegio Militar", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -698,7 +806,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.444425, -99.167823));
 
             station = new Station("Normal", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -718,7 +830,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.441603, -99.161235));
 
             station = new Station("San Cosme", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -742,7 +858,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.438477, -99.154787));
 
             station = new Station("Revolución", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -774,7 +894,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.437323, -99.147867));
 
             station = new Station("Hidalgo", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -802,7 +926,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.435543, -99.142524));
 
             station = new Station("Bellas Artes", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -824,7 +952,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.435006, -99.137428));
 
             station = new Station("Allende", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -854,7 +986,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.432710, -99.133147));
 
             station = new Station("Zócalo", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -881,7 +1017,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.425545, -99.133531));
 
             station = new Station("Pino Suárez", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -907,7 +1047,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.415499, -99.134842));
 
             station = new Station("San Antonio Abad", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -931,7 +1075,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.408628, -99.136151));
 
             station = new Station("Chabacano", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -951,7 +1099,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.400391, -99.137471));
 
             station = new Station("Viaducto", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -975,7 +1127,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.394663, -99.138131));
 
             station = new Station("Xola", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -997,7 +1153,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.387098, -99.138017));
 
             station = new Station("Villa de Cortés", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -1019,7 +1179,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.379037, -99.140689));
 
             station = new Station("Nativitas", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -1042,7 +1206,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.369470, -99.142119));
 
             station = new Station("Portales", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -1067,7 +1235,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.361405, -99.143441));
 
             station = new Station("Ermita", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -1089,7 +1261,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.352680, -99.145281));
 
             station = new Station("General Anaya", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
 
             next = new ArrayList<>();
             prev = new ArrayList<>();
@@ -1119,7 +1295,11 @@ public class SetStations {
             neighborhood.add(new MLatLng(19.343387, -99.139987));
 
             station = new Station("Tasqueña", "metro 2", position, services, exits, neighborhood);
-            stationsDraw.add(station);
-        }
+            stations.add(station);
+            marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+            .title(station.getName())
+            .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+
     }
 }

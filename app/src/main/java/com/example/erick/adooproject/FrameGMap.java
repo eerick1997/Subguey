@@ -58,6 +58,7 @@ import MapUtilities.DrawLines;
 import MapUtilities.DrawPolyline;
 import MapUtilities.MLatLng;
 import MapUtilities.PermissionUtils;
+import MapUtilities.SetStations;
 import Objects.Event;
 import Objects.Exit;
 import Objects.Service;
@@ -184,13 +185,13 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
         //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
 
-        MyImages images = new MyImages(getActivity());
+        /**MyImages images = new MyImages(getActivity());
 
         //If we need to add a marker we can use the code below
         Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
                 .title("Observatorio")
                 .snippet("Metro"));
-        marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));
+        marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));**/
 
         ArrayList<Service> services = new ArrayList<>();
         ArrayList<Exit> exits = new ArrayList<>();
@@ -200,8 +201,8 @@ public class FrameGMap extends Fragment implements LocationListener,
         }
         MLatLng MlatLng = new MLatLng(initial_camera.latitude, initial_camera.longitude);
         Station station = new Station("Observatorio", "LM1", MlatLng, services, exits,/**, null, null, **/null);
-        marker.setTag(station);
-        Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
+        //marker.setTag(station);
+        //Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
         drawLines.drawLine1(googleMap);
         Log.i(TAG, "onMapReady: Line 1 drawn");
         drawLines.drawLine2(googleMap);
@@ -227,6 +228,12 @@ public class FrameGMap extends Fragment implements LocationListener,
         drawLines.drawLine12(googleMap);
         Log.i(TAG, "onMapReady: Line 12 drawn");
         enableMyLocation();
+        try {
+            new SetStations(getActivity()).drawStations(googleMap);
+        } catch (Exception e){
+            Log.e(TAG, "onMapReady: ", e);
+        }
+        Log.i(TAG, "onMapReady: Stations drawn");
     }
 
     @SuppressLint("MissingPermission")
@@ -322,26 +329,29 @@ public class FrameGMap extends Fragment implements LocationListener,
     @Override
     public boolean onMarkerClick(Marker marker) {
         Log.d(TAG, "onMarkerClick() called with: marker = [" + marker + "]");
+        try {
+            Log.i(TAG, ">>>>> onMarkerClick: " + marker.getTag().getClass());
+            //We need to know the type of alert dialog that we need to display
+            //Marker is an event type
+            if (marker.getSnippet().equals("event")) {
+                EventInfo eventInfo = new EventInfo(getActivity());
+                Event event = new Event(0, "eerick1997", "12:00",
+                        new MLatLng(initial_camera.latitude, initial_camera.longitude));
+                eventInfo.showDialog(event);
+            }
+            //Marker is an station type
+            else {
 
-        Log.i(TAG, ">>>>> onMarkerClick: " + marker.getTag().getClass());
-        //We need to know the type of alert dialog that we need to display
-        //Marker is an event type
-        if (marker.getSnippet().equals("event")) {
+            }
             EventInfo eventInfo = new EventInfo(getActivity());
             Event event = new Event(0, "eerick1997", "12:00",
                     new MLatLng(initial_camera.latitude, initial_camera.longitude));
             eventInfo.showDialog(event);
-        }
-        //Marker is an station type
-        else {
 
+            marker.hideInfoWindow();
+        } catch (Exception e) {
+            Log.e(TAG, "onMarkerClick: ", e);
         }
-        EventInfo eventInfo = new EventInfo(getActivity());
-        Event event = new Event(0, "eerick1997", "12:00",
-                new MLatLng(initial_camera.latitude, initial_camera.longitude));
-        eventInfo.showDialog(event);
-
-        marker.hideInfoWindow();
         return true;
     }
 
