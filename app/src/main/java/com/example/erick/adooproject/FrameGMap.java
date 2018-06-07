@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -44,6 +45,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -55,11 +62,13 @@ import Objects.Event;
 import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
+import Objects.User;
 import UIElements.ChangeStyle;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
 import UIElements.MyImages;
 
+import static DataBases.Firebase.FirebaseReferences.*;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 /**
@@ -139,6 +148,8 @@ public class FrameGMap extends Fragment implements LocationListener,
         //We show the map in the display
         mapView.onResume();
         //We return a View object to create new UI elements
+        extract_Events();
+        //We extract all events from Firebase
         return view;
     }
 
@@ -422,5 +433,64 @@ public class FrameGMap extends Fragment implements LocationListener,
                     }
                 });
     }
+
+
+    public void extract_Events(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.setPersistenceEnabled(true);
+
+        final DatabaseReference events = database.getReference(DB_REFERENCE).child(EVENT_REFERENCE);
+        events.keepSynced(true);
+        events.orderByValue().limitToLast(100).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+                System.out.println("The " + snapshot.getKey() + " dinosaur's score is " + snapshot.getValue());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*events.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot objSnapshot : snapshot.getChildren()) {
+                    final Event actual = objSnapshot.getValue(Event.class);
+                    Log.i("HOUR:", ""+actual.getHour());
+                    Log.i("POSITION:", ""+actual.getPosition());
+                    Log.i("TYPE:", ""+actual.getType());
+                    Log.i("USER:", ""+actual.getUser());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                Log.e("Read failed", firebaseError.getMessage());
+            }
+
+
+        });*/
+    }
+
 
 }
