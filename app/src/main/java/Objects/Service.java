@@ -15,30 +15,24 @@ public class Service implements Parcelable, Serializable{
     //Constants
     private static final String TAG = "Service.java";
     //Variables
-    private String name, schedule, contact, location;
+    private String name, description;
 
     //Constructor
-    public Service(String name, String schedule, String contact, String location) {
+    public Service(String name, String description) {
         //Initializing global variables
         this.name = name;
-        this.schedule = schedule;
-        this.contact = contact;
-        this.location = location;
+        this.description = description;
     }
 
     protected Service(Parcel in) {
         name = in.readString();
-        schedule = in.readString();
-        contact = in.readString();
-        location = in.readString();
+        description = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(schedule);
-        dest.writeString(contact);
-        dest.writeString(location);
+        dest.writeString(description);
     }
 
     @Override
@@ -65,21 +59,9 @@ public class Service implements Parcelable, Serializable{
         return this.name;
     }
 
-    public String getSchedule(){
+    public String getDescription(){
         Log.d(TAG, "getSchedule() called");
-        Log.d(TAG, "getSchedule() returned: " + this.schedule);
-        return this.schedule;
-    }
-
-    public String getContact(){
-        Log.d(TAG, "getContact() called");
-        Log.d(TAG, "getContact() returned: " + this.contact);
-        return this.contact;
-    }
-
-    public String getlocation() {
-        Log.d(TAG, "getlocation() called");
-        Log.d(TAG, "getlocation() returned: " + this.location);
-        return this.location;
+        Log.d(TAG, "getSchedule() returned: " + this.description);
+        return this.description;
     }
 }

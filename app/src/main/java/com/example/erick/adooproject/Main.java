@@ -145,19 +145,13 @@ public class Main extends AppCompatActivity
 
         ArrayList<Service> services = new ArrayList<>();
         services.add(new Service("Biciestacionamiento",
-                "lunes a viernes de 9:00 a 19:00 horas",
-                "Teléfonos 5242-6144, 5242-6145",
-                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+                "lunes a viernes de 9:00 a 19:00 horas"));
 
-        services.add(new Service("Central camionera", "", "",
-                "Por la salida dirección Pantitlán, cruzando la calle se encuentra la Central de autobuses Poniente (también conocida como Central Observatorio)"));
+        services.add(new Service("Central camionera", ""));
 
-        services.add(new Service("Instalación para personas con discapacidad", "", "",
-                "Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso y rampas de acceso"));
+        services.add(new Service("Instalación para personas con discapacidad", ""));
 
-        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas",
-                "teléfonos 5242-6144, 5242-6145",
-                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas"));
 
         ArrayList<Exit> exits = new ArrayList<>();
         exits.add(new Exit("Nororiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
@@ -173,9 +167,9 @@ public class Main extends AppCompatActivity
         for (int i = 0; i < 5; i++)
             positions.add(new MLatLng(lat += 0.05, lng += 0.05));
 
-        stations.add(new Station("Observatorio 1", "metro 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "metro 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "metro 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 1", "metro 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
+        stations.add(new Station("Observatorio 2", "metro 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
+        stations.add(new Station("Observatorio 3", "metro 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
 
         for (int i = 1; i <= 9; i++)
             lines.add(new Line("ABC", "metro " + i, stations));
@@ -199,19 +193,13 @@ public class Main extends AppCompatActivity
 
         ArrayList<Service> services = new ArrayList<>();
         services.add(new Service("Biciestacionamiento",
-                "lunes a viernes de 9:00 a 19:00 horas",
-                "Teléfonos 5242-6144, 5242-6145",
-                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+                "lunes a viernes de 9:00 a 19:00 horas"));
 
-        services.add(new Service("Central camionera", "", "",
-                "Por la salida dirección Pantitlán, cruzando la calle se encuentra la Central de autobuses Poniente (también conocida como Central Observatorio)"));
+        services.add(new Service("Central camionera", ""));
 
-        services.add(new Service("Instalación para personas con discapacidad", "", "",
-                "Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso y rampas de acceso"));
+        services.add(new Service("Instalación para personas con discapacidad", ""));
 
-        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas",
-                "teléfonos 5242-6144, 5242-6145",
-                "Sobre la calle Escuadrón 201 s/n, colonia Real del Monte, frente a la terminal de Autobuses Observatorio-Poniente"));
+        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas"));
 
         ArrayList<Exit> exits = new ArrayList<>();
         exits.add(new Exit("Nororiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
@@ -226,9 +214,9 @@ public class Main extends AppCompatActivity
 
         for (int i = 0; i < 5; i++)
             positions.add(new MLatLng(lat += 0.05, lng += 0.05));
-        stations.add(new Station("Observatorio 1", "metrobus 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 2", "metrobus 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
-        stations.add(new Station("Observatorio 3", "metrobus 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions));
+        stations.add(new Station("Observatorio 1", "metrobus 1", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
+        stations.add(new Station("Observatorio 2", "metrobus 2", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
+        stations.add(new Station("Observatorio 3", "metrobus 3", new MLatLng(19.3982121, -99.2005697), services, exits, positions, positions, null));
 
         for (int i = 1; i <= 6; i++)
             lines.add(new Line("ABC", "metrobus " + i, stations));

@@ -68,4 +68,23 @@ public class ChangeStyle {
         return activity.getString(color);
     }
 
+    private String getStationId(String str){
+        Log.d(TAG, "withoutSpecialCharacters() called with: str = [" + str + "]");
+        String result;
+        result = str.replace("á", "a");
+        result = result.replace("Á", "A");
+        result = result.replace("é", "e");
+        result = result.replace("É", "É");
+        result = result.replace("í", "i");
+        result = result.replace("Í", "I");
+        result = result.replace("ó", "o");
+        result = result.replace("Ó","O");
+        result = result.replace("ú", "u");
+        result = result.replace("Ú", "U");
+        result = result.replace("ñ", "ni");
+        result = result.replace(" ", "_");
+        Log.d(TAG, "withoutSpecialCharacters() returned: " + result.toLowerCase());
+        return result.toLowerCase();
+    }
+
 }

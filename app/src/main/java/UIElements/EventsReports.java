@@ -3,7 +3,6 @@ package UIElements;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import DataBases.SQLite.DataBases;
 import MapUtilities.MLatLng;
 import Objects.Event;
 import Objects.Exit;
@@ -151,7 +149,7 @@ public class EventsReports {
         ArrayList<Service> services = new ArrayList<>();
         ArrayList<Exit> exists = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            services.add(new Service("Name", "Schedule", "Contact", "Ubication"));
+            services.add(new Service("Name", "description"));
             exists.add(new Exit("Name", "Streets"));
         }
 
@@ -161,9 +159,8 @@ public class EventsReports {
             next.add(new MLatLng(1.23, 1.43));
             previous.add(new MLatLng(5.21, 5.14));
         }
-
         MLatLng position = new MLatLng(10.42, 11.425);
-        station = new Station("OBSERVATORIO", "LM1", position, services, exists, next, previous);
+        station = new Station("OBSERVATORIO", "LM1", position, services, exists, next, previous, null);
         return station;
     }
 

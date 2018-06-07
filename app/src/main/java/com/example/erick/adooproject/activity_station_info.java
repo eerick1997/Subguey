@@ -44,7 +44,6 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
     //We go to change the color of the toolbar so
     private RecyclerView recyclerView;
 
-
     @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +72,8 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
 
         /** JUST FOR TESTING **/
         recyclerView = findViewById(R.id.station_info_recycler_view);
-        //ArrayList<Station> stations = new ArrayList<>();
-        //stations.add(station);
-        AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElements());
-        recyclerView.setAdapter(adapterStationsInfo);
+        //AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElements());
+        //recyclerView.setAdapter(adapterStationsInfo);
         /** END JUST FOR TESTING **/
         recyclerView.setLayoutManager(new LinearLayoutManager(this, DividerItemDecoration.VERTICAL, false));
         recyclerView.addItemDecoration(
@@ -112,69 +109,5 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         this.googleMap.setIndoorEnabled(true);
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(station.getLatLng(), 18));
     }
-
-    /**
-     * This function changes the color of toolbar and status bar
-     * depending of the line
-     **/
-    /**@SuppressLint({"ResourceAsColor", "LongLogTag"})
-    public void changeUIColor() {
-        Log.d(TAG, "changeUIColor() called");
-        //Changing the color of the Status Bar
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        Log.i(TAG, "changeUIColor: " + station.getLine());
-        switch (station.getLine()) {
-            case "1":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM1)));
-
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM1)));
-                break;
-            case "2":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM2)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM2)));
-                break;
-            case "3":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM3)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM3)));
-                break;
-            case "4":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM4)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM4)));
-                break;
-            case "5":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM5)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM5)));
-                break;
-            case "6":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM6)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM6)));
-                break;
-            case "7":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM7)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM7)));
-                break;
-            case "8":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM8)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM8)));
-                break;
-            case "9":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM9)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM9)));
-                break;
-            case "A":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LMA)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LMA)));
-                break;
-            case "B":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LMB)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LMB)));
-                break;
-            case "12":
-                window.setStatusBarColor(Color.parseColor(getString(R.string.LM12)));
-                collapsingToolbarLayout.setContentScrimColor(Color.parseColor(getString(R.string.LM12)));
-                break;
-        }
-    }**/
 
 }

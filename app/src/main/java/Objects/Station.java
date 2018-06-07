@@ -25,9 +25,10 @@ public class Station implements Parcelable, Serializable {
     private ArrayList<Service> services;
     //Here we store information about different exits into each station
     private ArrayList<Exit> exits;
+    //Here we store information about different points in the neighborhood map
+    private ArrayList<MLatLng> neighborhood;
     /*Here we store information about different the points of the path to go to the
     next station*/
-
     private ArrayList<MLatLng> next;
     private ArrayList<MLatLng> previous;
 
@@ -37,11 +38,12 @@ public class Station implements Parcelable, Serializable {
     //Constructor
     public Station(String name, String line, MLatLng position,
                    ArrayList<Service> services, ArrayList<Exit> exits,
-                   ArrayList<MLatLng> next, ArrayList<MLatLng> previous) {
-        Log.d(TAG, "Station() called with: name = [" + name + "], " +
-                "line = [" + line + "], position = [" + position + "], " +
-                "services = [" + services + "], exits = [" + exits + "], " +
-                "next = [" + next + "], previous = [" + previous + "]");
+                   ArrayList<MLatLng> next, ArrayList<MLatLng> previous,
+                   ArrayList<MLatLng> neighborhood) {
+        Log.d(TAG, "Station() called with: name = [" + name + "], line = [" + line + "], " +
+                "position = [" + position + "], services = [" + services + "], " +
+                "exits = [" + exits + "], next = [" + next + "], previous = [" + previous + "], " +
+                "neighborhood = [" + neighborhood + "]");
         this.name = name;
         this.line = line;
         this.position = position;
@@ -49,6 +51,7 @@ public class Station implements Parcelable, Serializable {
         this.exits = exits;
         this.next = next;
         this.previous = previous;
+        this.neighborhood = neighborhood;
     }
 
     /**
@@ -85,11 +88,6 @@ public class Station implements Parcelable, Serializable {
         return this.exits;
     }
 
-    public ArrayList<ElementAdapter> getElements() {
-        Log.d(TAG, "getElements() called");
-        return fillElement();
-    }
-
     public ArrayList<MLatLng> getNext() {
         Log.d(TAG, "getNext() called");
         return this.next;
@@ -100,40 +98,15 @@ public class Station implements Parcelable, Serializable {
         return previous;
     }
 
+    public ArrayList<MLatLng> getNeighborhood() {
+        Log.d(TAG, "getNeighborhood() called");
+        Log.d(TAG, "getNeighborhood() returned: " + this.neighborhood);
+        return this.neighborhood;
+    }
+
     /**
      * --------------- Other methods ----------------
      **/
-    public ArrayList<ElementAdapter> fillElement() {
-        Log.d(TAG, "fillElement() called");
-        ArrayList<ElementAdapter> elements = new ArrayList<>();
-
-        Log.i(TAG, "fillElement: " + exits.size());
-        Log.i(TAG, "fillElement: " + services.size());
-        for (int i = 0; i < exits.size(); i++)
-            elements.add(new ElementAdapter(exits.get(i).getName(), exits.get(i).getStreets()));
-        for (int i = 0; i < services.size(); i++) {
-            String description = "";
-
-            if (!services.get(i).getlocation().isEmpty())
-                description += "Ubicación: \n\n" + services.get(i).getlocation();
-
-            if (!description.isEmpty())
-                description += " \n\n ";
-
-            if (!services.get(i).getSchedule().isEmpty())
-                description += "Horario: \n\n" + services.get(i).getSchedule();
-
-            if (!description.isEmpty())
-                description += " \n\n ";
-
-            if (!services.get(i).getContact().isEmpty())
-                description += "Contacto: \n\n" + services.get(i).getContact();
-
-            elements.add(new ElementAdapter(services.get(i).getName(), description));
-        }
-        Log.d(TAG, "fillElement() returned: " + elements);
-        return elements;
-    }
 
     public LatLng getLatLng() {
         Log.d(TAG, "getLatLng() called");
@@ -157,6 +130,16 @@ public class Station implements Parcelable, Serializable {
         }
         return previousLatLng;
     }
+    
+    public ArrayList<LatLng> getNeighborhoodLatLng(){
+        Log.d(TAG, "getNeighborhoodLatLng() called");
+        ArrayList<LatLng> neighborhoodLatLng = new ArrayList<>();
+        for(int i = 0; i < neighborhood.size(); i++){
+            neighborhoodLatLng.add(new LatLng(neighborhood.get(i).getLatitude(), neighborhood.get(i).getLongitude()));
+        }
+        Log.d(TAG, "getNeighborhoodLatLng() returned: " + neighborhoodLatLng);
+        return neighborhoodLatLng;
+    }
 
     /**
      * --------------- PARCEL METHODS ---------------
@@ -171,6 +154,7 @@ public class Station implements Parcelable, Serializable {
         exits = in.createTypedArrayList(Exit.CREATOR);
         next = in.createTypedArrayList(MLatLng.CREATOR);
         previous = in.createTypedArrayList(MLatLng.CREATOR);
+        neighborhood = in.createTypedArrayList(MLatLng.CREATOR);
     }
 
     @Override
@@ -182,6 +166,7 @@ public class Station implements Parcelable, Serializable {
         dest.writeTypedList(exits);
         dest.writeTypedList(next);
         dest.writeTypedList(previous);
+        dest.writeTypedList(neighborhood);
     }
 
     @Override

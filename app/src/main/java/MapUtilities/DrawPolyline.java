@@ -25,16 +25,11 @@ public class DrawPolyline {
         this.googleMap = googleMap;
     }
 
-    public void draw(ArrayList<MLatLng> points, String color) {
-        Log.d(TAG, "draw() called with: points = [" + points + "]");
+    public void draw(ArrayList<LatLng> points, String color) {
+        Log.d(TAG, "draw() called with: points = [" + points + "], color = [" + color + "]");
         PolylineOptions polylineOptions = new PolylineOptions();
 
-        //for(int i = 0; i < points.size(); i++){
-           // for(int j = 0; j < points.get(i).size(); j++){
-
-            //}
-        //}
-        //polylineOptions.addAll(points);
+        polylineOptions.addAll(points);
 
         polylineOptions.color(Color.parseColor(color));
         googleMap.addPolyline(polylineOptions);
