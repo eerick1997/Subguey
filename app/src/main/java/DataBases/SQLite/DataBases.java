@@ -175,7 +175,7 @@ public class DataBases extends SQLiteOpenHelper {
                 marker.setIcon(BitmapDescriptorFactory
                         .fromBitmap(images.createIconMarker(converter
                                 .getIdStation(station.getName(),
-                                        station.getLine()))));
+                                        station.getLine()), station.getLine())));
             }
         } catch (Exception e) {
             Log.e(TAG, "setMarkers: ", e);

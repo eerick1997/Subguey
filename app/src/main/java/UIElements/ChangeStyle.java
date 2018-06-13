@@ -16,7 +16,7 @@ public class ChangeStyle {
     private Activity activity;
 
     public ChangeStyle(Activity activity) {
-        Log.d(TAG, "ChangeStyle() called with: activity = [" + activity + "]");
+        //Log.d(TAG, "ChangeStyle() called with: activity = [" + activity + "]");
         this.activity = activity;
     }
 
@@ -59,17 +59,17 @@ public class ChangeStyle {
     }
 
     public String getLineColor(String str_line){
-        Log.d(TAG, "getLineColor() called with: str_line = [" + str_line + "]");
+        //Log.d(TAG, "getLineColor() called with: str_line = [" + str_line + "]");
         String str_color = str_line.replace(" ", "_");
-        Log.i(TAG, "getLineColor: str_color " + str_color);
+        //Log.i(TAG, "getLineColor: str_color " + str_color);
         int color = activity.getResources()
                 .getIdentifier(str_color, "string", activity.getPackageName());
-        Log.d(TAG, "getLineColor() returned: " + activity.getString(color));
+        //Log.d(TAG, "getLineColor() returned: " + activity.getString(color));
         return activity.getString(color);
     }
 
     public String getStationId(String nameStation, String line){
-        Log.d(TAG, "getStationId() called with: nameStation = [" + nameStation + "], line = [" + line + "]");
+        //Log.d(TAG, "getStationId() called with: nameStation = [" + nameStation + "], line = [" + line + "]");
         String result = nameStation + "_" + line;
         result = result.replace("á", "a");
         result = result.replace("Á", "A");
@@ -83,7 +83,7 @@ public class ChangeStyle {
         result = result.replace("Ú", "U");
         result = result.replace("ñ", "ni");
         result = result.replace(" ", "_");
-        Log.d(TAG, "withoutSpecialCharacters() returned: " + result.toLowerCase());
+        //Log.d(TAG, "withoutSpecialCharacters() returned: " + result.toLowerCase());
         return result.toLowerCase();
     }
 

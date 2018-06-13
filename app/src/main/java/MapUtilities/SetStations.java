@@ -33,16 +33,12 @@ public class SetStations {
         Log.d(TAG, "drawStations() called with: googleMap = [" + googleMap + "]");
         ChangeStyle changeStyle = new ChangeStyle(activity);
             ArrayList<Station> stations = new ArrayList<>();
-            ArrayList<MLatLng> next = null;
-            ArrayList<MLatLng> prev = null;
             ArrayList<Service> services = null;
             ArrayList<Exit> exits = null;
             ArrayList<MLatLng> neighborhood = null;
 
             MLatLng position = null;
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -71,10 +67,9 @@ public class SetStations {
             Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -100,10 +95,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -126,10 +120,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -156,10 +149,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -181,10 +173,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -208,10 +199,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -239,10 +229,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -266,10 +255,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -293,10 +281,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -312,9 +299,6 @@ public class SetStations {
 
             exits.add(new Exit("Norte", "José María Izazaga y Pino Suárez, Colonia Centro"));
             exits.add(new Exit("Poniente", "José María Izazaga y Pino Suárez, Colonia Centro"));
-            next.add(new MLatLng(19.425910, -99.132979));
-
-            prev.add(new MLatLng(19.425927, -99.133005));
 
             neighborhood.add(new MLatLng(19.426526, -99.133749));
             neighborhood.add(new MLatLng(19.425433, -99.132886));
@@ -327,10 +311,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -354,10 +337,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -382,10 +364,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -411,10 +392,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -438,10 +418,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -471,10 +450,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -499,10 +477,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -532,10 +509,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -559,10 +535,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -592,10 +567,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -622,10 +596,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -648,10 +621,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -673,10 +645,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -703,10 +674,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -729,10 +699,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -753,10 +722,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -777,10 +745,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -790,14 +757,6 @@ public class SetStations {
             exits.add(new Exit("Nororiente ", "Calzada México-Tacuba esquina con Avenida de los Maestros, Colonia Tlaxpana "));
             exits.add(new Exit("Norponiente ", "Calzada México-Tacuba esquina con Avenida de los Maestros, Colonia Tlaxpana "));
             exits.add(new Exit("Sur ", "Calzada México-Tacuba esquina calle Tláloc, Colonia Un Hogar para Nosotros "));
-
-            next.add(new MLatLng(19.444591, -99.167430));
-            next.add(new MLatLng(19.443094, -99.164812));
-            next.add(new MLatLng(19.442396, -99.161969));
-
-            prev.add(new MLatLng(19.444608, -99.167456));
-            prev.add(new MLatLng(19.443111, -99.164838));
-            prev.add(new MLatLng(19.442413, -99.161995));
 
             neighborhood.add(new MLatLng(19.445406, -99.168021));
             neighborhood.add(new MLatLng(19.444313, -99.167158));
@@ -810,10 +769,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -834,10 +792,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -862,10 +819,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -898,10 +854,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -930,10 +885,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -956,10 +910,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -990,10 +943,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1021,10 +973,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1035,10 +986,6 @@ public class SetStations {
 
             exits.add(new Exit("Oriente", "Entre calle Gutiérrez Nájera, calle Alfredo Chavero y Avenida San Antonio Abad, Colonia Tránsito"));
             exits.add(new Exit("Poniente", "Entre calle M. Flores, calle José Joaquín Arriaga y Avenida San Antonio Aba, Colonia Obrera"));
-
-            next.add(new MLatLng(19.415872, -99.134546));
-
-            prev.add(new MLatLng(19.415889, -99.134572));
 
             neighborhood.add(new MLatLng(19.416480, -99.135050));
             neighborhood.add(new MLatLng(19.415387, -99.134177));
@@ -1051,10 +998,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1079,10 +1025,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1103,10 +1048,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1131,10 +1075,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1157,10 +1100,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1183,10 +1125,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1210,10 +1151,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1239,10 +1179,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1265,10 +1204,9 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
-            next = new ArrayList<>();
-            prev = new ArrayList<>();
             services = new ArrayList<>();
             exits = new ArrayList<>();
             neighborhood = new ArrayList<>();
@@ -1299,7 +1237,8 @@ public class SetStations {
             marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
             .title(station.getName())
             .snippet(station.getLine()));
-            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()))));
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(new MyImages(activity).createIconMarker(changeStyle.getStationId(station.getName(), station.getLine()), station.getLine())));
+            marker.setTag(station);
 
     }
 }

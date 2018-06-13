@@ -124,11 +124,10 @@ public class Main extends AppCompatActivity
 
         if (id == R.id.nav_lines_subway) {
             Log.i(TAG, "onNavigationItemSelected: ");
-            justForTesting("Metro");
+            //justForTesting("Metro");
         } else if (id == R.id.nav_lines_metro_bus) {
             Log.i(TAG, "onNavigationItemSelected: ");
-            justForTestingMetrobus("Metrobus");
-
+            //justForTestingMetrobus("Metrobus");
         }
         lastId = id;
 

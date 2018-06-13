@@ -54,7 +54,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
 
         //Getting intent
         Intent intent = getIntent();
-        this.station = intent.getParcelableExtra("Station");
+        this.station = intent.getParcelableExtra("station");
 
         Log.i(TAG, "onCreate: " + station);
         Log.i(TAG, "onCreate: " + station.getServices());
@@ -72,6 +72,7 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
 
         /** JUST FOR TESTING **/
         recyclerView = findViewById(R.id.station_info_recycler_view);
+        station.getElelments();
         //AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElements());
         //recyclerView.setAdapter(adapterStationsInfo);
         /** END JUST FOR TESTING **/

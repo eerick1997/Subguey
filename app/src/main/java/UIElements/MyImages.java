@@ -35,11 +35,11 @@ public class MyImages {
      * This method return a Bitmap object with our
      * images fused
      **/
-    public Bitmap createIconMarker(String idStation) {
-        Log.d(TAG, "createIconMarker() called with: idStation = [" + idStation + "]");
+    public Bitmap createIconMarker(String idStation, String line) {
+        //Log.d(TAG, "createIconMarker() called with: idStation = [" + idStation + "]");
         //Getting the id of our resource 1 (station|event logo)
         idStation = "ic_"+idStation;
-        Log.i(TAG, "createIconMarker: " + idStation);
+        //Log.i(TAG, "createIconMarker: " + idStation);
         int imageRes1 = activity.getResources()
                 .getIdentifier(idStation,
                         "mipmap", activity.getPackageName());
@@ -66,7 +66,7 @@ public class MyImages {
                 small2.getWidth(), small2.getHeight());
         for (int i = 0; i < pixels.length; i++) {
             if (pixels[i] == Color.BLACK)
-                pixels[i] = Color.parseColor(activity.getString(R.string.metro_1));
+                pixels[i] = Color.parseColor(new ChangeStyle(activity).getLineColor(line));
         }
         small2.setPixels(pixels, 0, small2.getWidth(), 0, 0, small2.getWidth(), small2.getHeight());
         Bitmap bresult = Bitmap.createBitmap(small2.getWidth(), small2.getHeight(), small2.getConfig());
@@ -79,11 +79,11 @@ public class MyImages {
     }
 
     public void getNameImg(Station station, String type) {
-        Log.d(TAG, "getNameImg() called with: station = [" + station + "], type = [" + type + "]");
+        //Log.d(TAG, "getNameImg() called with: station = [" + station + "], type = [" + type + "]");
         String str_replace = "LM";
         if (type.equals("Metrobus")) str_replace = "LMB";
         String resource = "ic_" + station.getName().replace(" ", "_metro_" + station.getLine().replace(str_replace, ""));
-        Log.i(TAG, "getNameImg: resource name " + resource);
+        //Log.i(TAG, "getNameImg: resource name " + resource);
         //return "";
     }
 }

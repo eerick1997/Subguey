@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -111,7 +112,7 @@ public class FrameGMap extends Fragment implements LocationListener,
      **/
     //This method is called just when the view has been created
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         //We need to make an instance of a GoogleApiClient but
@@ -129,10 +130,12 @@ public class FrameGMap extends Fragment implements LocationListener,
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
-                if (!currentPosition.equals(null)) {
+                //Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
+                if (!(currentPosition == null)) {
                     Event event = new Event(1, preferences.getNickUser(), "12:00", new MLatLng(currentPosition.latitude, currentPosition.longitude));
                     new EventsReports(getActivity()).showDialog(event);
+                } else {
+                    Snackbar.make(v, "Parece que algo va mal, verifica si el GPS está encendido", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -156,7 +159,11 @@ public class FrameGMap extends Fragment implements LocationListener,
         //We show the map in the display
         mapView.onResume();
         //We return a View object to create new UI elements
-        extract_Events();
+        try {
+            extract_Events();
+        } catch (Exception e){
+            Log.e(TAG, "onCreateView: ", e);
+        }
         //We extract all events from Firebase
         return view;
     }
@@ -203,7 +210,6 @@ public class FrameGMap extends Fragment implements LocationListener,
             exits.add(new Exit("Name"+i,"Street"+i));
         }
         MLatLng MlatLng = new MLatLng(initial_camera.latitude, initial_camera.longitude);
-        Station station = new Station("Observatorio", "LM1", MlatLng, services, exits,/**, null, null, **/null);
         //marker.setTag(station);
         //Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
         drawLines.drawLine1(googleMap);
@@ -336,22 +342,28 @@ public class FrameGMap extends Fragment implements LocationListener,
             Log.i(TAG, ">>>>> onMarkerClick: " + marker.getTag().getClass());
             //We need to know the type of alert dialog that we need to display
             //Marker is an event type
-            if (marker.getSnippet().equals("event")) {
+            if (marker.getTitle().equals("event")) {
                 EventInfo eventInfo = new EventInfo(getActivity());
-                Event event = new Event(0, "eerick1997", "12:00",
-                        new MLatLng(initial_camera.latitude, initial_camera.longitude));
+                Event event = (Event) marker.getTag();
                 eventInfo.showDialog(event);
+                marker.hideInfoWindow();
             }
             //Marker is an station type
             else {
-
+                Log.i(TAG, "onMarkerClick: Stations ");
+                Station station = (Station)marker.getTag();
+                Intent intent = new Intent(getActivity(), activity_station_info.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("station", station);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
-            EventInfo eventInfo = new EventInfo(getActivity());
+            /**EventInfo eventInfo = new EventInfo(getActivity());
             Event event = new Event(0, "eerick1997", "12:00",
                     new MLatLng(initial_camera.latitude, initial_camera.longitude));
-            eventInfo.showDialog(event);
+            eventInfo.showDialog(event);**/
 
-            marker.hideInfoWindow();
+
         } catch (Exception e) {
             Log.e(TAG, "onMarkerClick: ", e);
         }
@@ -453,7 +465,8 @@ public class FrameGMap extends Fragment implements LocationListener,
     }
 
 
-    public void extract_Events(){
+    public void extract_Events() throws Exception{
+        Log.d(TAG, "extract_Events() called");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.setPersistenceEnabled(true);
 
@@ -462,16 +475,12 @@ public class FrameGMap extends Fragment implements LocationListener,
         events.orderByValue().limitToLast(100).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
-                System.out.println("The " + snapshot.getKey() + " dinosaur's score is " + snapshot.getValue());
+                //System.out.println("The " + snapshot.getKey() + " dinosaur's score is " + snapshot.getValue());
                 final Event event = snapshot.getValue(Event.class);
-                System.out.println("sadfasdfasdfasdfasdfasdfasdfsa:   "+event.getPosition());
+                //System.out.println("sadfasdfasdfasdfasdfasdfasdfsa:   "+event.getPosition());
 
-                Marker marker = googleMap.addMarker(new MarkerOptions().position(event.getPosition()).title("Eventos").snippet("Metro"));
-                marker.setTag(snapshot.getValue());
-
-
-
-
+                Marker marker = googleMap.addMarker(new MarkerOptions().position(event.getPosition()).title("event").snippet("event"));
+                marker.setTag(event);
             }
 
             @Override
@@ -498,15 +507,10 @@ public class FrameGMap extends Fragment implements LocationListener,
 
 
         events.addListenerForSingleValueEvent(new ValueEventListener() {
-
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot objSnapshot : snapshot.getChildren()) {
                     final Event actual = objSnapshot.getValue(Event.class);
-                    /*Log.i("HOUR:", ""+actual.getHour());
-                    Log.i("POSITION:", ""+actual.getPosition());
-                    Log.i("TYPE:", ""+actual.getType());
-                    Log.i("USER:", ""+actual.getUser());*/
                 }
 
             }

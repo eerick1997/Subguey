@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.example.erick.adooproject.R;
 
 import Objects.Event;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static UIElements.EventsUtilities.*;
 
 /**This class contains the code to show a custom alert dialog
  * which show us information about an event, the information provided is:
@@ -50,6 +53,7 @@ public class EventInfo {
             TextView txt_hour = (TextView)view.findViewById(R.id.TXT_dialog_event_hour);
             TextView txt_message = (TextView)view.findViewById(R.id.TXT_dialog_message);
             Button btn_got_it = (Button)view.findViewById(R.id.BTN_alert_dialog_i_got_it);
+            CircleImageView circleImageView = (CircleImageView)view.findViewById(R.id.circle_image_view_events);
 
             btn_got_it.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,13 +63,22 @@ public class EventInfo {
                 }
             });
 
-            /**I'm testing if github it's detecting changes**/
-            /**
-             *
-             * Here we get each element that we want to display
-             *
-             * **/
-
+            if(event.getType() == ACCIDENT) {
+                txt_name_event.setText("ACCIDENTE");
+                circleImageView.setImageResource(R.drawable.event_accident);
+            }else if(event.getType() == CRIME) {
+                circleImageView.setImageResource(R.drawable.event_crime);
+                txt_name_event.setText("CRIMEN");
+            }else if(event.getType() == FAILURE) {
+                circleImageView.setImageResource(R.drawable.event_failure);
+                txt_name_event.setText("FALLA TÉCNICA");
+            }else if(event.getType() == NATURAL) {
+                circleImageView.setImageResource(R.drawable.event_natural);
+                txt_name_event.setText("EVENTO NATURAL");
+            }else if(event.getType() == BY_USER) {
+                circleImageView.setImageResource(R.drawable.event_by_user);
+                txt_name_event.setText("FALLA CAUSADA POR USUARIOS");
+            }
             //We add all the elements in our Alert Dialog
             alertDialog.setView(view);
             alertDialog.show();

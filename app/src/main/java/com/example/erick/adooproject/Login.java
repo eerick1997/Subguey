@@ -190,9 +190,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                                     preferences.savePreference(SIGNED, true);
                                     preferences.savePreference(NAME_USER, actual.getName());
                                     preferences.savePreference(IMG_PROFILE, actual.getProfile_img());
-
-
-
                                     Intent intent= new Intent(Login.this,Main.class);
                                     startActivity(intent);
 

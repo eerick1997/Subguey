@@ -22,16 +22,13 @@ import Objects.Exit;
 import Objects.Service;
 import Objects.Station;
 
+import static UIElements.EventsUtilities.*;
+
 import static DataBases.Firebase.FirebaseReferences.*;
 
 public class EventsReports {
     //Constants
     private static final String TAG = "EventsReports.java";
-    private static final int ACCIDENT = 0;
-    private static final int CRIME = 1;
-    private static final int FAILURE = 2;
-    private static final int NATURAL = 3;
-    private static final int BY_USER = 4;
     //Variables
     private Activity activity;
 
