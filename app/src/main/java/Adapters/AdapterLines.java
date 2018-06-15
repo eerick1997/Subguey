@@ -51,10 +51,10 @@ public class AdapterLines extends Adapter<AdapterLines.LinesViewHolder> {
                     line.getStations().get(line.getStations().size() - 1).getName();
             TXT_line.setText(line_text);
             TXT_color.setBackgroundColor(Color.parseColor(style.getLineColor(line.getWhichLine())));
-            String txt_replace = "LM";
+            String txt_replace = "metro";
             if (type.equals("Metrobus"))
-                txt_replace = "LMB";
-            String txtL = line.getWhichLine().replace(txt_replace, "");
+                txt_replace = "metrobus";
+            String txtL = line.getWhichLine().replace(txt_replace.trim(), "");
             Log.i(TAG, "Line: " + txtL);
             TXT_color.setText(txtL);
         }

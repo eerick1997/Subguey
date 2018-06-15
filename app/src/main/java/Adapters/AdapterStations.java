@@ -79,7 +79,7 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), activity_station_info.class);
-                intent.putExtra("Station", (Parcelable) station);
+                intent.putExtra("station", (Parcelable) station);
                 v.getContext().startActivity(intent);
             }
         });

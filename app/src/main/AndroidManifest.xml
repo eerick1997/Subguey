@@ -20,8 +20,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:noHistory="true"
         android:theme="@style/AppTheme">
-        <!--android:noHistory="true"-->
+
         <activity
             android:name=".Login"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -61,6 +62,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ActivityStations" android:label="@string/title_activity_stations"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
