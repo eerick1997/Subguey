@@ -89,7 +89,7 @@ public class Station implements Parcelable, Serializable {
     }
 
     public ArrayList<Object> getElelments() {
-        Log.d(TAG, "getNeighborhood() called");
+        //Log.d(TAG, "getNeighborhood() called");
         ArrayList<Object> elements = new ArrayList<>();
         elements.addAll(getExits());
         elements.addAll(getServices());

@@ -62,7 +62,7 @@ public class Main extends AppCompatActivity
         View view = navigationView.getHeaderView(0);
         TextView user_name = view.findViewById(R.id.TXT_nav_header_name);
         CircleImageView user_profile = view.findViewById(R.id.IMG_nav_header_user_profile);
-        Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
+        //Log.i(TAG, "onCreate: img url " + preferences.getProfileURIIMG());
         user_name.setText("");
         user_name.setText(getString(R.string.hello_user) + " " + preferences.getNameUser());
         /**This code downloads an image, and puts in the nav bar circle image**/
@@ -114,7 +114,7 @@ public class Main extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Log.d(TAG, "onNavigationItemSelected() called with: item = [" + item + "]");
+        //Log.d(TAG, "onNavigationItemSelected() called with: item = [" + item + "]");
 
         //Getting a FragmentManager
         fragmentManager = getFragmentManager();
@@ -123,10 +123,10 @@ public class Main extends AppCompatActivity
 
 
         if (id == R.id.nav_lines_subway) {
-            Log.i(TAG, "onNavigationItemSelected: ");
+            //Log.i(TAG, "onNavigationItemSelected: ");
             //justForTesting("Metro");
         } else if (id == R.id.nav_lines_metro_bus) {
-            Log.i(TAG, "onNavigationItemSelected: ");
+            //Log.i(TAG, "onNavigationItemSelected: ");
             //justForTestingMetrobus("Metrobus");
         }
         lastId = id;

@@ -73,8 +73,8 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         /** JUST FOR TESTING **/
         recyclerView = findViewById(R.id.station_info_recycler_view);
         station.getElelments();
-        //AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElements());
-        //recyclerView.setAdapter(adapterStationsInfo);
+        AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElelments());
+        recyclerView.setAdapter(adapterStationsInfo);
         /** END JUST FOR TESTING **/
         recyclerView.setLayoutManager(new LinearLayoutManager(this, DividerItemDecoration.VERTICAL, false));
         recyclerView.addItemDecoration(

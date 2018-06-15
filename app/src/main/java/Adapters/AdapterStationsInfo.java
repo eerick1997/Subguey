@@ -15,13 +15,16 @@ import com.example.erick.adooproject.R;
 import java.util.ArrayList;
 
 import Objects.ElementAdapter;
+import Objects.Exit;
+import Objects.Service;
 
 public class AdapterStationsInfo extends Adapter<AdapterStationsInfo.StationsInfoViewHolder> implements View.OnClickListener{
 
 
     //Variables
     private View.OnClickListener listener;
-    private ArrayList<ElementAdapter> elementsAdapter;
+    private ArrayList<Object> objects;
+    //private ArrayList<ElementAdapter> elementsAdapter;
 
     public static class StationsInfoViewHolder extends RecyclerView.ViewHolder{
 
@@ -40,17 +43,53 @@ public class AdapterStationsInfo extends Adapter<AdapterStationsInfo.StationsInf
 
         //This method sets text in our TextView;
         @SuppressLint("LongLogTag")
-        public void bindName(ElementAdapter elementsAdapter){
-            Log.d(TAG, "bindName() called with: elementsAdapter = [" + elementsAdapter + "]");
-            TXT_title.setText(elementsAdapter.getTitle());
-            TXT_Description.setText(elementsAdapter.getDescription());
-            IV_Icon.setBackgroundResource(R.mipmap.ic_women_module);
+        public void bindName(/**ElementAdapter elementsAdapter**/Object object){
+            //Log.d(TAG, "bindName() called with: elementsAdapter = [" + elementsAdapter + "]");
+            //TXT_title.setText(elementsAdapter.getTitle());
+            //TXT_Description.setText(elementsAdapter.getDescription());
+            Log.d(TAG, "bindName() called with: object = [" + object + "]");
+            if(object instanceof Service){
+                Service service = (Service)object;
+                TXT_title.setText(((Service) object).getName());
+                String title = service.getName().trim();
+                if(title.contains("BICI"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_bici);
+                else if(title.contains("DISCAPACIDAD"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_acces);
+                else if(title.contains("SALUD"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_salud);
+                else if(title.contains("TROLEBUS"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_trolebus);
+                else if(title.contains("INMUJERES"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_inmujeres);
+                else if(title.contains("VITRINA"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_vitrina);
+                else if (title.contains("MURAL"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_murales);
+                else if(title.contains("MINISTERIO"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_mp);
+                else if(title.contains("METROBUS"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_mbus);
+                else if(title.contains("CIBER"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_ciber);
+                else if(title.contains("TROLEBUS"))
+                    IV_Icon.setBackgroundResource(R.mipmap.ic_trolebus);
+                else
+                    IV_Icon.setBackgroundResource(R.mipmap.event_by_user);
+                TXT_Description.setText(((Service) object).getDescription());
+            } else if(object instanceof Exit){
+                TXT_title.setText("Salida " + ((Exit)object).getName());
+                TXT_Description.setText(((Exit)object).getStreets());
+                IV_Icon.setBackgroundResource(R.drawable.comment_arrow_right);
+            }
+            //IV_Icon.setBackgroundResource(R.mipmap.ic_women_module);
         }
     }
 
     //Constructor
-    public AdapterStationsInfo(ArrayList<ElementAdapter> elementsAdapter){
-        this.elementsAdapter = elementsAdapter;
+    public AdapterStationsInfo(ArrayList<Object> objects/**ArrayList<ElementAdapter> elementsAdapter**/){
+        /**this.elementsAdapter = elementsAdapter;**/
+        this.objects = objects;
     }
 
     @Override
@@ -65,13 +104,14 @@ public class AdapterStationsInfo extends Adapter<AdapterStationsInfo.StationsInf
     @Override
     public void onBindViewHolder(StationsInfoViewHolder viewHolder, int position) {
 
-        ElementAdapter elementAdapter = elementsAdapter.get(position);
-        viewHolder.bindName(elementAdapter);
+        //ElementAdapter elementAdapter = elementsAdapter.get(position);
+        Object object = objects.get(position);
+        viewHolder.bindName(/**elementAdapter**/ object);
     }
 
     @Override
     public int getItemCount() {
-        return elementsAdapter.size();
+        return objects.size();
     }
 
     @Override

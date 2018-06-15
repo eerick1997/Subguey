@@ -54,7 +54,7 @@ public class EventInfo {
             TextView txt_message = (TextView)view.findViewById(R.id.TXT_dialog_message);
             Button btn_got_it = (Button)view.findViewById(R.id.BTN_alert_dialog_i_got_it);
             CircleImageView circleImageView = (CircleImageView)view.findViewById(R.id.circle_image_view_events);
-
+            txt_publisher.setText(event.getUser());
             btn_got_it.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

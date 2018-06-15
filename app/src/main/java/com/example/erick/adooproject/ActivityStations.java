@@ -32,7 +32,7 @@ public class ActivityStations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
+        //Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
         setContentView(R.layout.activity_stations);
         ChangeStyle style = new ChangeStyle(ActivityStations.this);
 
@@ -60,7 +60,7 @@ public class ActivityStations extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         String color = intent.getStringExtra("color");
-        Log.i(TAG, "onCreate: color: " + color);
+        //Log.i(TAG, "onCreate: color: " + color);
         style.setColorWindow(color, getWindow());
         style.setColorToolbar(color, toolbar);
     }

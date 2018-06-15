@@ -22,6 +22,7 @@ public class DrawLines {
     }
 
     public void drawLine1(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.416191, -99.074756));
         arrayLatLng.add(new LatLng(19.412380, -99.075168));
@@ -96,6 +97,7 @@ public class DrawLines {
     }
 
     public void drawLine2(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.460473, -99.215817));
         arrayLatLng.add(new LatLng(19.461757, -99.215726));
@@ -183,6 +185,7 @@ public class DrawLines {
     }
 
     public void drawLine3(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.495035, -99.119602));
         arrayLatLng.add(new LatLng(19.492759, -99.120128));
@@ -253,6 +256,7 @@ public class DrawLines {
     }
 
     public void drawLine4(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.484976, -99.104367));
         arrayLatLng.add(new LatLng(19.482199, -99.106306));
@@ -281,6 +285,7 @@ public class DrawLines {
     }
 
     public void drawLine5(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.415019, -99.074254));
         arrayLatLng.add(new LatLng(19.417346, -99.078245));
@@ -348,6 +353,7 @@ public class DrawLines {
     }
 
     public void drawLine6(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.504458, -99.200016));
         arrayLatLng.add(new LatLng(19.494445, -99.195907));
@@ -420,6 +426,7 @@ public class DrawLines {
     }
 
     public void drawLine7(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.504404, -99.200173));
         arrayLatLng.add(new LatLng(19.490574, -99.194986));
@@ -458,6 +465,7 @@ public class DrawLines {
     }
 
     public void drawLine8(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.443203, -99.139321));
         arrayLatLng.add(new LatLng(19.442818, -99.139503));
@@ -556,6 +564,7 @@ public class DrawLines {
     }
 
     public void drawLine9(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.402421, -99.187552));
         arrayLatLng.add(new LatLng(19.402624, -99.187295));
@@ -609,6 +618,7 @@ public class DrawLines {
     }
 
     public void drawLineA(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.414436, -99.072545));
         arrayLatLng.add(new LatLng(19.413924, -99.073022));
@@ -664,6 +674,7 @@ public class DrawLines {
     }
 
     public void drawLineB(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.534339, -99.027506));
         arrayLatLng.add(new LatLng(19.533550, -99.027838));
@@ -730,6 +741,7 @@ public class DrawLines {
     }
 
     public void drawLine12(GoogleMap googleMap){
+
         ArrayList<LatLng> arrayLatLng = new ArrayList<>();
         arrayLatLng.add(new LatLng(19.286829, -99.014480));
         arrayLatLng.add(new LatLng(19.287907, -99.014791));

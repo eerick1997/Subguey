@@ -245,6 +245,11 @@ public class FrameGMap extends Fragment implements LocationListener,
         Log.i(TAG, "onMapReady: Stations drawn");
     }
 
+    private void drawLines(){
+
+
+    }
+
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -468,8 +473,11 @@ public class FrameGMap extends Fragment implements LocationListener,
     public void extract_Events() throws Exception{
         Log.d(TAG, "extract_Events() called");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        database.setPersistenceEnabled(true);
+        try {
+            database.setPersistenceEnabled(true);
+        } catch (Exception e){
 
+        }
         final DatabaseReference events = database.getReference(DB_REFERENCE).child(EVENT_REFERENCE);
         events.keepSynced(true);
         events.orderByValue().limitToLast(100).addChildEventListener(new ChildEventListener() {

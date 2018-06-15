@@ -21,7 +21,7 @@ public class MyImages {
 
     //Constructor
     public MyImages(Activity activity) {
-        Log.d(TAG, "MyImages() called with: activity = [" + activity + "]");
+        //Log.d(TAG, "MyImages() called with: activity = [" + activity + "]");
         //Initializing variables
         this.activity = activity;
     }
