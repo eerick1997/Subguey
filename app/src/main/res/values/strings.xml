@@ -65,5 +65,11 @@
     <string name="event_failure">FALLAS TÉCNICAS</string>
     <string name="event_by_user">FALLAS OCASIONADAS POR USUARIOS</string>
     <string name="event_accident">ACCIDENTES</string>
+    <string name="title_progress_download">Espere un momento...</string>
+    <string name="message_progress_download">Estamos generando su ruta, esto tardará un rato dependiendo de su conexión a internet</string>
+    <string name="help_us">Al seleccionar un marcador de alguna estación tienes la posibilidad de ver información de la estación o bien generar una ruta desde tu posición actual. Elige la opción que necesites</string>
+    <string name="send_me_here">Generar ruta</string>
+    <string name="show_station_info">Ver información</string>
+    <string name="gps_problems">Algo no va bien, asegurate de que el GPS está encendido o intentalo más tarde</string>
 
 </resources>

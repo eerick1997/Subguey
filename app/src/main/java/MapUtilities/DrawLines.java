@@ -804,4 +804,18 @@ public class DrawLines {
         draw.draw(arrayLatLng, style.getLineColor("metro_12"));
     }
 
+    public void drawAllMetroLines(GoogleMap googleMap){
+        drawLine1(googleMap);
+        drawLine2(googleMap);
+        drawLine3(googleMap);
+        drawLine4(googleMap);
+        drawLine5(googleMap);
+        drawLine6(googleMap);
+        drawLine7(googleMap);
+        drawLine8(googleMap);
+        drawLine9(googleMap);
+        drawLineA(googleMap);
+        drawLineB(googleMap);
+        drawLine12(googleMap);
+    }
 }

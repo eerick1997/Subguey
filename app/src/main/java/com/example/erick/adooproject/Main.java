@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import MapUtilities.MLatLng;
+import MapUtilities.SetStations;
 import Objects.Exit;
 import Objects.Line;
 import Objects.Service;
@@ -124,7 +125,8 @@ public class Main extends AppCompatActivity
 
         if (id == R.id.nav_lines_subway) {
             //Log.i(TAG, "onNavigationItemSelected: ");
-            justForTesting("Metro");
+            //justForTesting("Metro");
+            justForTestingMetro();
         } else if (id == R.id.nav_lines_metro_bus) {
             //Log.i(TAG, "onNavigationItemSelected: ");
             justForTestingMetrobus("Metrobus");
@@ -136,6 +138,21 @@ public class Main extends AppCompatActivity
         return true;
     }
 
+    private void justForTestingMetro(){
+        ArrayList<Line> lines = new ArrayList<>();
+        lines.add(new Line("metro 1", new SetStations(Main.this).getStationsLM1()));
+        lines.add(new Line("metro 2", new SetStations(Main.this).getStationsLM2()));
+        lines.add(new Line("metro 3", new SetStations(Main.this).getStationsLM3()));
+        lines.add(new Line("metro 4", new SetStations(Main.this).getStationsLM4()));
+        lines.add(new Line("metro 5", new SetStations(Main.this).getStationsLM5()));
+        lines.add(new Line("metro 6", new SetStations(Main.this).getStationsLM6()));
+        lines.add(new Line("metro 7", new SetStations(Main.this).getStationsLM7()));
+        lines.add(new Line("metro 8", new SetStations(Main.this).getStationsLM8()));
+        Intent intent = new Intent(Main.this, LinesActivity.class);
+        intent.putParcelableArrayListExtra("Lines", lines);
+        intent.putExtra("title", "Metro");
+        startActivity(intent);
+    }
     private void justForTesting(String title) {
         ArrayList<Line> lines = new ArrayList<>();
         /***************************THIS CODE IS JUST FOR TESTING*********************************/
@@ -171,10 +188,10 @@ public class Main extends AppCompatActivity
         stations.add(new Station("Observatorio 3", "metro 3", new MLatLng(19.3982121, -99.2005697), services, exits, /**positions, positions,**/ null));
 
         for (int i = 1; i <= 9; i++)
-            lines.add(new Line("ABC", "metro " + i, stations,null));
-        lines.add(new Line("metro 1", "metro a", stations,null));
-        lines.add(new Line("metro 2", "metro b", stations,null));
-        lines.add(new Line("metro 3", "metro 12", stations,null));
+            lines.add(new Line( "metro " + i, stations));
+        lines.add(new Line("metro a", stations));
+        lines.add(new Line("metro b", stations));
+        lines.add(new Line("metro 12", stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);
@@ -218,7 +235,7 @@ public class Main extends AppCompatActivity
         stations.add(new Station("Observatorio 3", "metrobus 3", new MLatLng(19.3982121, -99.2005697), services, exits, /**positions, positions,**/ null));
 
         for (int i = 1; i <= 6; i++)
-            lines.add(new Line("ABC", "metrobus " + i, stations, null));
+            lines.add(new Line("metrobus " + i, stations));
 
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);

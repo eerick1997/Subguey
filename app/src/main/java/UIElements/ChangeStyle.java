@@ -84,6 +84,7 @@ public class ChangeStyle {
         result = result.replace("ñ", "ni");
         result = result.replace(" ", "_");
         result = result.replace("-", "_");
+        result = result.replace("/", "_");
         Log.d(TAG, "withoutSpecialCharacters() returned: " + result.toLowerCase());
         return result.toLowerCase();
     }

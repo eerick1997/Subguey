@@ -19,11 +19,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import Adapters.AdapterStationsInfo;
+import MapUtilities.MLatLng;
 import Objects.Station;
 import UIElements.ChangeStyle;
 
@@ -109,6 +112,10 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         this.googleMap.setMaxZoomPreference(19);
         this.googleMap.setIndoorEnabled(true);
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(station.getLatLng(), 18));
+        ArrayList<LatLng> points = this.station.getNeighborhoodLatLng();
+        for(int i = 0; i < points.size(); i++){
+            googleMap.addMarker(new MarkerOptions().position(points.get(i)));
+        }
     }
 
 }

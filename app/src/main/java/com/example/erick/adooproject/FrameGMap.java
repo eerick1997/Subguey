@@ -58,6 +58,7 @@ import java.util.ArrayList;
 import MapUtilities.DrawLines;
 import MapUtilities.DrawPolyline;
 import MapUtilities.MLatLng;
+import MapUtilities.MakeARoute;
 import MapUtilities.PermissionUtils;
 import MapUtilities.SetStations;
 import Objects.Event;
@@ -70,6 +71,8 @@ import UIElements.ChangeStyle;
 import UIElements.EventInfo;
 import UIElements.EventsReports;
 import UIElements.MyImages;
+import UIElements.StationOptionCustomAlert;
+import UIElements.customMarkerEvent;
 
 import static DataBases.Firebase.FirebaseReferences.*;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -190,7 +193,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         //Implementing onMarkerClickListener interface
         this.googleMap.setOnMarkerClickListener(this);
         //this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 20));
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 22));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
         //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
@@ -212,42 +215,17 @@ public class FrameGMap extends Fragment implements LocationListener,
         MLatLng MlatLng = new MLatLng(initial_camera.latitude, initial_camera.longitude);
         //marker.setTag(station);
         //Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
-        drawLines.drawLine1(googleMap);
-        Log.i(TAG, "onMapReady: Line 1 drawn");
-        drawLines.drawLine2(googleMap);
-        Log.i(TAG, "onMapReady: Line 2 drawn");
-        drawLines.drawLine3(googleMap);
-        Log.i(TAG, "onMapReady: Line 3 drawn");
-        drawLines.drawLine4(googleMap);
-        Log.i(TAG, "onMapReady: Line 4 drawn");
-        drawLines.drawLine5(googleMap);
-        Log.i(TAG, "onMapReady: Line 5 drawn");
-        drawLines.drawLine6(googleMap);
-        Log.i(TAG, "onMapReady: Line 6 drawn");
-        drawLines.drawLine7(googleMap);
-        Log.i(TAG, "onMapReady: Line 7 drawn");
-        drawLines.drawLine8(googleMap);
-        Log.i(TAG, "onMapReady: Line 8 drawn");
-        drawLines.drawLine9(googleMap);
-        Log.i(TAG, "onMapReady: Line 9 drawn");
-        drawLines.drawLineA(googleMap);
-        Log.i(TAG, "onMapReady: Line A drawn");
-        drawLines.drawLineB(googleMap);
-        Log.i(TAG, "onMapReady: Line B drawn");
-        drawLines.drawLine12(googleMap);
-        Log.i(TAG, "onMapReady: Line 12 drawn");
+
         enableMyLocation();
         try {
-            new SetStations(getActivity()).drawStations(googleMap);
+            SetStations setStations = new SetStations(this.getActivity());
+            drawLines.drawAllMetroLines(googleMap);
+            setStations.setAllMetroMarkers(googleMap);
+            //new SetStations(getActivity()).drawStations(googleMap);
         } catch (Exception e){
             Log.e(TAG, "onMapReady: ", e);
         }
         Log.i(TAG, "onMapReady: Stations drawn");
-    }
-
-    private void drawLines(){
-
-
     }
 
     @SuppressLint("MissingPermission")
@@ -356,12 +334,18 @@ public class FrameGMap extends Fragment implements LocationListener,
             //Marker is an station type
             else {
                 Log.i(TAG, "onMarkerClick: Stations ");
-                Station station = (Station)marker.getTag();
+                StationOptionCustomAlert customAlert = new StationOptionCustomAlert(getActivity());
+                customAlert.showDialog(currentPosition, marker.getPosition(),
+                        (Station) marker.getTag(), googleMap);
+                /**if(currentPosition != null) {
+                    MakeARoute makeARoute = new MakeARoute(getActivity(), currentPosition, marker.getPosition(), googleMap);
+                }
+                /**Station station = (Station)marker.getTag();
                 Intent intent = new Intent(getActivity(), activity_station_info.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("station", station);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);**/
             }
             /**EventInfo eventInfo = new EventInfo(getActivity());
             Event event = new Event(0, "eerick1997", "12:00",

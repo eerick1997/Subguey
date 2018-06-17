@@ -3,6 +3,7 @@ package Adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,10 +15,12 @@ import android.widget.TextView;
 
 import com.example.erick.adooproject.R;
 import com.example.erick.adooproject.activity_station_info;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 import java.util.ArrayList;
 
 import Objects.Station;
+import UIElements.ChangeStyle;
 import UIElements.MyImages;
 
 public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.StationsViewHolder>{
@@ -26,7 +29,6 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
     private static final String TAG = "AdapterStations.java";
 
     //Variables
-    private View.OnClickListener listener;
     private ArrayList<Station> stations;
     private Activity activity;
 
@@ -50,9 +52,12 @@ public class  AdapterStations extends RecyclerView.Adapter<AdapterStations.Stati
             Log.d(TAG, "bindName() called with: station = [" + station + "]");
             TXT_Station.setText(station.getName());
             //This need to be dynamic
-            IMG_Station.setBackgroundResource(R.mipmap.ic_launcher);
-            MyImages images = new MyImages(activity);
-            images.getNameImg(station, "Metro");
+            String id = "ic_" + new ChangeStyle(activity).getStationId(station.getName(), station.getLine());
+            Log.i(TAG, "bindName: id " + id);
+            int res = activity.getResources()
+                    .getIdentifier(id, "mipmap", activity.getPackageName());
+            Log.i(TAG, "bindName: res " + res);
+            IMG_Station.setBackgroundResource(res);
         }
     }
 

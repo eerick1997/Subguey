@@ -16,20 +16,16 @@ public class Line implements Parcelable, Serializable {
     //Constanta
     private static final String TAG = "Line.java";
     //Variables
-    private String line, id;
+    private String line;
     //As we know each line contains stations, so
     private ArrayList<Station> stations;
-    private ArrayList<MLatLng> path;
 
     //Constructor
-    public Line(String id, String line, ArrayList<Station> stations, ArrayList<MLatLng> path) {
-        Log.d(TAG, "Line() called with: id = [" + id + "], line = [" + line + "], " +
-                "stations = [" + stations + "], path = [" + path + "]");
+    public Line(String line, ArrayList<Station> stations) {
+        Log.d(TAG, "Line() called with: line = [" + line + "], stations = [" + stations + "]");
         //Initializing out global variables
-        this.id = id;
         this.line = line;
         this.stations = stations;
-        this.path = path;
     }
 
     /**
@@ -47,27 +43,13 @@ public class Line implements Parcelable, Serializable {
         return this.stations;
     }
 
-    public String getId(){
-        Log.d(TAG, "getId() called");
-        Log.d(TAG, "getId() returned: " + this.id);
-        return this.id;
-    }
-
-    public ArrayList<MLatLng> getPath() {
-        Log.d(TAG, "getPath() called");
-        Log.d(TAG, "getPath() returned: " + this.path);
-        return this.path;
-    }
-
     /**
      * ---------- PARCELABLE METHODS ----------
      **/
 
     protected Line(Parcel in) {
         line = in.readString();
-        id = in.readString();
         stations = in.createTypedArrayList(Station.CREATOR);
-        path = in.createTypedArrayList(MLatLng.CREATOR);
     }
 
     public static final Creator<Line> CREATOR = new Creator<Line>() {
@@ -90,8 +72,6 @@ public class Line implements Parcelable, Serializable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(line);
-        dest.writeString(id);
         dest.writeTypedList(stations);
-        dest.writeTypedList(path);
     }
 }
