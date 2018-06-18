@@ -2979,6 +2979,1411 @@ public class SetStations{
         return stations;
     }
 
+    public ArrayList<Station> getStationsLM9(){
+        Log.d(TAG, "getStationsLM9() called");
+        ArrayList<Service> services = null;
+        ArrayList<Exit> exits = null;
+        ArrayList<MLatLng> neighborhood = null;
+        ArrayList<Station> stations = new ArrayList<>();
+        MLatLng position = null;
+        Station station = null;
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.401892, -99.187310);
+
+        services.add(new Service("CIBERCENTRO","Lunes a viernes de 8:00 a 20:00 horas y sábados de 12:30 a 18:00 horas. \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Escaleras eléctricas sobre Línea 9, ranura guía y placas braille para invidentes sobre Línea 9."));
+        services.add(new Service(" METROBÚS","Línea 2 del Metrobús Tacubaya, ubicado en las avenidas Parque Lira y Jalisco."));
+        services.add(new Service("MÓDULO DE SALUD","De la Red Ángel, el horario de atención es: lunes a viernes de 07:00 a 20:00 horas y sábado de 09:00 a 14:00 horas."));
+        services.add(new Service("MURAL","DEL CÓDICE AL MURAL, Autor: Guillermo Cenicero"));
+        services.add(new Service("VITRINA CULTURAL","Cuatro vitrinas que se localizan cerca de las escaleras de la salida hacia  Av. Jalisco; del lado del andén con dirección a Observatorio."));
+
+        exits.add(new Exit("Nororiente", "Avenida Jalisco e Iturbide, Colonia Tacubaya"));
+        exits.add(new Exit("Suroriente", "Avenida Jalisco y Mártires de la Conquista, Colonia Tacubaya"));
+        exits.add(new Exit("Norponiente", "Avenida Jalisco y Manuel Dublan, Colonia Tacubaya"));
+
+        neighborhood.add(new MLatLng(19.401892, -99.187310));
+        neighborhood.add(new MLatLng(19.401892, -99.187310));
+        neighborhood.add(new MLatLng(19.401892, -99.187310));
+        neighborhood.add(new MLatLng(19.401892, -99.187310));
+        neighborhood.add(new MLatLng(19.401892, -99.187310));
+
+        station = new Station("Tacubaya", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.405808, -99.179016);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Escaleras eléctricas."));
+        services.add(new Service("METROBÚS","Línea 2 del Metrobús Patriotismo, ubicado en Eje 4 Sur Benjamín Franklin y avenida Patriotismo."));
+
+        exits.add(new Exit("Norte", "Benjamin Franklin y General Salvador Alvarado, Colonia Hipódromo Condesa"));
+        exits.add(new Exit("Sur", "Benjamin Franklin y General Salvador Alvarado, Colonia Escandón"));
+
+        neighborhood.add(new MLatLng(19.405808, -99.179016));
+        neighborhood.add(new MLatLng(19.405808, -99.179016));
+        neighborhood.add(new MLatLng(19.405808, -99.179016));
+        neighborhood.add(new MLatLng(19.405808, -99.179016));
+        neighborhood.add(new MLatLng(19.405808, -99.179016));
+
+        station = new Station("Patriotismo", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.405940, -99.168534);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Escaleras eléctricas."));
+        services.add(new Service("METROBÚS","Línea 1 del Metrobús Chilpancingo, ubicado en  avenida Insurgentes y calles Chilpancingo y Tlaxcala."));
+
+        exits.add(new Exit("Nororiente", "Avenida Baja California y Tuxpan e Insurgentes, Colonia Roma Norte"));
+        exits.add(new Exit("Suroriente", "Avenida Baja California y Tuxpan e Insurgentes, Colonia Roma sur"));
+        exits.add(new Exit("Norponiente", "Chilpancingo, Avenida Baja California e Insurgentes, Colonia Hipódromo Condesa"));
+        exits.add(new Exit("Surponiente", "Chilpancingo, Avenida Baja California e Insurgentes, Colonia Hipódromo Condesa"));
+
+        neighborhood.add(new MLatLng(19.405940, -99.168534));
+        neighborhood.add(new MLatLng(19.405940, -99.168534));
+        neighborhood.add(new MLatLng(19.405940, -99.168534));
+        neighborhood.add(new MLatLng(19.405940, -99.168534));
+        neighborhood.add(new MLatLng(19.405940, -99.168534));
+
+        station = new Station("Chilpancingo", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.406547, -99.154984);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, dos sobre Línea 9 y uno sobre Línea 3, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía y placas braille para invidentes."));
+        services.add(new Service("METROBÚS","Línea 3 del Metrobús Centro Médico, ubicado  en Eje 1 Poniente avenida Cuauhtémoc y Eje 3 Sur avenida Baja California."));
+        services.add(new Service("VITRINA CULTURAL","Seis vitrinas, localizadas cerca de las escaleras hacia Tacuba y Pantitlán."));
+        services.add(new Service("MURAL","MEDICINA TRADICONAL Y MEDICINA CONTEMPORÁNEA, Autor: Arturo Estrada."));
+
+        exits.add(new Exit("Nororiente", "Avenida Cuauhtémoc y Avenida Baja California, Colonia Roma Sur"));
+        exits.add(new Exit("Suroriente", "Avenida Cuauhtémoc y Tehuantepec, Colonia Roma Sur"));
+        exits.add(new Exit("Norponiente", "Toluca y Avenida Baja California, Colonia Roma Sur"));
+        exits.add(new Exit("Surponiente", "Tehuantepec y Toluca, Colonia Roma Sur"));
+
+        neighborhood.add(new MLatLng(19.406547, -99.154984));
+        neighborhood.add(new MLatLng(19.406547, -99.154984));
+        neighborhood.add(new MLatLng(19.406547, -99.154984));
+        neighborhood.add(new MLatLng(19.406547, -99.154984));
+        neighborhood.add(new MLatLng(19.406547, -99.154984));
+
+        station = new Station("Centro Médico", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.407053, -99.144352);
+
+        services.add(new Service("CIBERCENTRO","Lunes a viernes de 10:00 a 18:00 horas y sábados de 12:00 a 18:00 horas. \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("LÍNEA DE TROLEBUS","Línea A (corredor cero emisiones Eje Central) dirección norte-sur y sur-norte, sobre el Eje Central Lázaro Cárdenas."));
+
+        exits.add(new Exit("Nororiente", "Eje Lázaro Cárdenas y Eje 3 sur, Colonia Obrera"));
+        exits.add(new Exit("Sur Oriente", "Eje Lázaro Cárdenas y Eje 3 sur, Colonia Algarín"));
+        exits.add(new Exit("Norponiente", "Eje Lázaro Cárdenas y Eje 3 sur, Colonia Doctores"));
+        exits.add(new Exit("Surponiente", "Eje Lázaro Cárdenas y Eje 3 sur, Colonia Buenos Aires"));
+
+        neighborhood.add(new MLatLng(19.407053, -99.144352));
+        neighborhood.add(new MLatLng(19.407053, -99.144352));
+        neighborhood.add(new MLatLng(19.407053, -99.144352));
+        neighborhood.add(new MLatLng(19.407053, -99.144352));
+        neighborhood.add(new MLatLng(19.407053, -99.144352));
+
+        station = new Station("Lázaro Cárdenas", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.409067, -99.135693);
+
+        services.add(new Service("CIBERCENTRO","Lunes a viernes de 10:00 a 18:00 horas y sábados de 12:00 a 18:00 horas. \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Seis elevadores, cuatro sobre Línea 2 y 2 sobre Línea 9, los cuales se usan si cuenta con tarjeta Libre Acceso; rampa de acceso y escaleras eléctricas sobre Línea 9."));
+        services.add(new Service("VITRINA CULTURAL","Tres vitrinas localizadas entre las escaleras de la correspondencia con las Líneas 2, 8 y 9."));
+
+        exits.add(new Exit("Nororiente", "Calzada Chabacano y J. Antonio Torres X, Colonia Vista Alegre"));
+        exits.add(new Exit("Suroriente", "Calzada Chabacano y J. Antonio Torres X, Colonia Vista Alegre"));
+        exits.add(new Exit("Norponiente", "Calzada Chabacano y Francisco Ayala, Colonia Ampliación Asturias"));
+        exits.add(new Exit("Surponiente", "Calzada Chabacano y Francisco Ayala, Colonia Ampliación Asturias"));
+
+        neighborhood.add(new MLatLng(19.409067, -99.135693));
+        neighborhood.add(new MLatLng(19.409067, -99.135693));
+        neighborhood.add(new MLatLng(19.409067, -99.135693));
+        neighborhood.add(new MLatLng(19.409067, -99.135693));
+        neighborhood.add(new MLatLng(19.409067, -99.135693));
+
+        station = new Station("Chabacano", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.408925, -99.122293);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Escaleras eléctricas."));
+        services.add(new Service("VITRINA CULTURAL","Cuatro vitrinas que se localizan después del andén dirección Tacubaya."));
+        exits.add(new Exit("Nororiente", "Avenida Congreso de la Unión y Cincel, Colonia Jamaica"));
+        exits.add(new Exit("Suroriente", "Avenida Congreso de la Unión y Cincel, Colonia Jamaica"));
+        exits.add(new Exit("Norponiente", "Avenida Morelos y Compás, Colonia Sevilla"));
+        exits.add(new Exit("Surponiente", "Avenida Morelos, Colonia Sevilla"));
+
+        neighborhood.add(new MLatLng(19.408925, -99.122293));
+        neighborhood.add(new MLatLng(19.408925, -99.122293));
+        neighborhood.add(new MLatLng(19.408925, -99.122293));
+        neighborhood.add(new MLatLng(19.408925, -99.122293));
+        neighborhood.add(new MLatLng(19.408925, -99.122293));
+
+        station = new Station("Jamaica", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.408196, -99.112884);
+
+        exits.add(new Exit("Nororiente", "Francisco del Paso y Troncoso y Avenida Morelos, Colonia Jardín Balbuena"));
+        exits.add(new Exit("Suroriente", "Francisco del Paso y Troncoso y Avenida Morelos, Colonia Magdalena Mixiuhca"));
+
+        neighborhood.add(new MLatLng(19.408196, -99.112884));
+        neighborhood.add(new MLatLng(19.408196, -99.112884));
+        neighborhood.add(new MLatLng(19.408196, -99.112884));
+        neighborhood.add(new MLatLng(19.408196, -99.112884));
+        neighborhood.add(new MLatLng(19.408196, -99.112884));
+
+        station = new Station("Mixiuhca", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.408510, -99.103089);
+
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea S (Corredor cero emisiones Eje 2 - 2A Sur) dirección oriente-poniente y poniente-oriente, sobre el Eje 2 sur Avenida del Taller."));
+        services.add(new Service("INSTALACIÓN PARA DISCAPACITADOS","Escaleras eléctricas."));
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+
+        exits.add(new Exit("Norte", "Viaducto Río de la Piedad, Colonia Jardín Balbuena"));
+        exits.add(new Exit("Sur", "Viaducto Río de la Piedad, Colonia Granjas México"));
+
+        neighborhood.add(new MLatLng(19.408510, -99.103089));
+        neighborhood.add(new MLatLng(19.408510, -99.103089));
+        neighborhood.add(new MLatLng(19.408510, -99.103089));
+        neighborhood.add(new MLatLng(19.408510, -99.103089));
+        neighborhood.add(new MLatLng(19.408510, -99.103089));
+
+        station = new Station("Velódromo", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.408419, -99.091287);
+
+        services.add(new Service("INSTALACIÓN PARA DISCAPACITADOS","Escaleras eléctricas."));
+        exits.add(new Exit("Norte", "Viaducto Río de la Piedad y 45, Colonia Ignacio Zaragoza"));
+        exits.add(new Exit("Sur", "Viaducto Río de la Piedad, Colonia Granjas México"));
+
+        neighborhood.add(new MLatLng(19.408419, -99.091287));
+        neighborhood.add(new MLatLng(19.408419, -99.091287));
+        neighborhood.add(new MLatLng(19.408419, -99.091287));
+        neighborhood.add(new MLatLng(19.408419, -99.091287));
+        neighborhood.add(new MLatLng(19.408419, -99.091287));
+
+        station = new Station("Ciudad Deportiva", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.407265, -99.082532);
+
+        services.add(new Service("INSTALACIÓN PARA DISCAPACITADOS","Escaleras eléctricas."));
+
+        exits.add(new Exit("Norte", "Viaducto Río de la Piedad, Colonia Puebla"));
+        exits.add(new Exit("Sur", "Viaducto Río de la Piedad, Colonia Granjas México"));
+
+        neighborhood.add(new MLatLng(19.407265, -99.082532));
+        neighborhood.add(new MLatLng(19.407265, -99.082532));
+        neighborhood.add(new MLatLng(19.407265, -99.082532));
+        neighborhood.add(new MLatLng(19.407265, -99.082532));
+        neighborhood.add(new MLatLng(19.407265, -99.082532));
+
+        station = new Station("Puebla", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.415320, -99.072211);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("CIBERCENTRO","Lunes a viernes: 10:00 a 18:00 horas \n Sabado: 12:00 a 18:00 \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("MINISTERIO PÚBLICO","Se ubica sobre la calle Alberto Braniff y Manuel Lebrija s/n, colonia Ampliación Adolfo López Mateos. \n Horario de atención: las 24 horas los 365 días del año. \n Teléfonos: 5242-6569, 5242-6570."));
+        services.add(new Service("MÓDULO DE INMUJERES", "En apoyo al “Programa Viaja Segura en el Transporte Público de la CDMX”, el Metro proporcionó el espacio para el Módulo ubicado en en el pasillo de transferencia de la Línea 1 a la  5. \n Horario de atención es de lunes a viernes de 8:00 a 20:00 horas."));
+        services.add(new Service("VITRINA CULTURAL", "Cuatro vitrinas que se localizan sobre Línea 5, en el pasillo de correspondencia de Línea 1 con las Líneas A y 9, a un costado del Cibercentro."));
+        services.add(new Service("MURAL", "Sobre Línea 5, se ubica el mural \"Alegoría de la Ciudad de México y el Sistema de Transporte Colectivo\" de José Luis Elias Jáuregui."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD", "La estación cuenta con cuatro elevadores, dos sobre Línea 1 y dos sobre Línea A, los cuales se usan si cuenta con tarjeta Libre Acceso. Rampa de acceso, escaleras eléctricas sobre Línea 9, ranura guía y placas braille para invidentes sobre Línea 9 y Línea A."));
+        services.add(new Service("MODULO DE SALUD", "De la Red Ángel, horario de atención: Lunes a viernes, de 7:00 a 20:00 horas y sábado de 9:00 a 14:00 horas."));
+
+        exits.add(new Exit("Poniente", "Río Churubusco, Colonia Ampliación Adolfo López Mateos"));
+        exits.add(new Exit("Oriente", "Manuel Lebrija y 2ª. Cerrada de Río Churubusco, Colonia Pantitlán"));
+
+        neighborhood.add(new MLatLng(19.415320, -99.072211));
+        neighborhood.add(new MLatLng(19.415320, -99.072211));
+        neighborhood.add(new MLatLng(19.415320, -99.072211));
+        neighborhood.add(new MLatLng(19.415320, -99.072211));
+        neighborhood.add(new MLatLng(19.415320, -99.072211));
+
+        station = new Station("Pantitlán", "metro 9", position, services, exits, neighborhood);
+        stations.add(station);
+        return stations;
+    }
+
+    public ArrayList<Station> getStationsLMA(){
+        Log.d(TAG, "getStationsLMA() called");
+        ArrayList<Service> services = null;
+        ArrayList<Exit> exits = null;
+        ArrayList<MLatLng> neighborhood = null;
+        ArrayList<Station> stations = new ArrayList<>();
+        MLatLng position = null;
+        Station station = null;
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.415340, -99.072254);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("CIBERCENTRO","Lunes a viernes: 10:00 a 18:00 horas \n Sabado: 12:00 a 18:00 \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("MINISTERIO PÚBLICO","Se ubica sobre la calle Alberto Braniff y Manuel Lebrija s/n, colonia Ampliación Adolfo López Mateos. \n Horario de atención: las 24 horas los 365 días del año. \n Teléfonos: 5242-6569, 5242-6570."));
+        services.add(new Service("MÓDULO DE INMUJERES", "En apoyo al “Programa Viaja Segura en el Transporte Público de la CDMX”, el Metro proporcionó el espacio para el Módulo ubicado en en el pasillo de transferencia de la Línea 1 a la  5. \n Horario de atención es de lunes a viernes de 8:00 a 20:00 horas."));
+        services.add(new Service("VITRINA CULTURAL", "Cuatro vitrinas que se localizan sobre Línea 5, en el pasillo de correspondencia de Línea 1 con las Líneas A y 9, a un costado del Cibercentro."));
+        services.add(new Service("MURAL", "Sobre Línea 5, se ubica el mural \"Alegoría de la Ciudad de México y el Sistema de Transporte Colectivo\" de José Luis Elias Jáuregui."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD", "La estación cuenta con cuatro elevadores, dos sobre Línea 1 y dos sobre Línea A, los cuales se usan si cuenta con tarjeta Libre Acceso. Rampa de acceso, escaleras eléctricas sobre Línea 9, ranura guía y placas braille para invidentes sobre Línea 9 y Línea A."));
+        services.add(new Service("MODULO DE SALUD", "De la Red Ángel, horario de atención: Lunes a viernes, de 7:00 a 20:00 horas y sábado de 9:00 a 14:00 horas."));
+
+        exits.add(new Exit("Norte", "Avenida Río Churubusco esquina Talleres Gráficos, Colonia Ampliación Adolfo López Mateos"));
+        exits.add(new Exit("Sur", "Avenida Río Churubusco, Colonia Pantitlán"));
+        exits.add(new Exit("Norponiente", "Avenida Río Churubusco y Guadalupe Victoria, Colonia Pantitlán"));
+
+        neighborhood.add(new MLatLng(19.415340, -99.072254));
+        neighborhood.add(new MLatLng(19.415340, -99.072254));
+        neighborhood.add(new MLatLng(19.415340, -99.072254));
+        neighborhood.add(new MLatLng(19.415340, -99.072254));
+        neighborhood.add(new MLatLng(19.415340, -99.072254));
+
+        station = new Station("Pantitlán", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.404705, -99.069529);
+
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza y Calle 1, Colonia Agrícola Oriental"));
+        exits.add(new Exit("Sur", "1er. Retorno de Eje 5 Oriente y Calzada Ignacio Zaragoza, Colonia Agrícola Oriental"));
+
+        neighborhood.add(new MLatLng(19.404705, -99.069529));
+        neighborhood.add(new MLatLng(19.404705, -99.069529));
+        neighborhood.add(new MLatLng(19.404705, -99.069529));
+        neighborhood.add(new MLatLng(19.404705, -99.069529));
+        neighborhood.add(new MLatLng(19.404705, -99.069529));
+
+        station = new Station("Agrícola Oriental", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.398391, -99.059712);
+
+        services.add(new Service("METROBÚS","Línea 2 del Metrobús Canal de San Juan, ubicado en calzada Ignacio Zaragoza y avenida Central."));
+
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza"));
+        exits.add(new Exit("Sur", "1er. Retorno de sur 10 y Avenida Canal de San Juan, Colonia Juárez Pantitlán"));
+
+        neighborhood.add(new MLatLng(19.398391, -99.059712));
+        neighborhood.add(new MLatLng(19.398391, -99.059712));
+        neighborhood.add(new MLatLng(19.398391, -99.059712));
+        neighborhood.add(new MLatLng(19.398391, -99.059712));
+        neighborhood.add(new MLatLng(19.398391, -99.059712));
+
+        station = new Station("Canal de San Juan", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.391256, -99.046247);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Un elevador, el cual se usa si cuenta con tarjeta Libre Acceso."));
+        services.add(new Service("METROBÚS","Línea 2 del Metrobús Tepalcates, ubicado  en calzada Ignacio Zaragoza y avenida General Antonio de León."));
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza y General Baca Calderón, Colonia Juan Escutia"));
+        exits.add(new Exit("Sur", "Calzada Ignacio Zaragoza casi Avenida Telecomunicaciones, Colonia U. Hab. Guelatao de J"));
+
+        neighborhood.add(new MLatLng(19.391256, -99.046247));
+        neighborhood.add(new MLatLng(19.391256, -99.046247));
+        neighborhood.add(new MLatLng(19.391256, -99.046247));
+        neighborhood.add(new MLatLng(19.391256, -99.046247));
+        neighborhood.add(new MLatLng(19.391256, -99.046247));
+
+        station = new Station("Tepalcates", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.385133, -99.035658);
+
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza y General Miguel Lira y Ortega, Colonia Voceadores"));
+        exits.add(new Exit("Sur", "Calzada Ignacio Zaragoza y Batallón de la Zacapoaxtla, Colonia Ejercito de Oriente"));
+
+        neighborhood.add(new MLatLng(19.385133, -99.035658));
+        neighborhood.add(new MLatLng(19.385133, -99.035658));
+        neighborhood.add(new MLatLng(19.385133, -99.035658));
+        neighborhood.add(new MLatLng(19.385133, -99.035658));
+        neighborhood.add(new MLatLng(19.385133, -99.035658));
+
+        station = new Station("Guelatao", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.372907, -99.017258);
+
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza y Marco López Jiménez, Colonia Santa Martha Acatitla Norte"));
+        exits.add(new Exit("Sur", "Calzada Ignacio Zaragoza entre Luis Jasso y República Federal Sur, Colonia Santa Martha Acatitla Sur"));
+
+        neighborhood.add(new MLatLng(19.372907, -99.017258));
+        neighborhood.add(new MLatLng(19.372907, -99.017258));
+        neighborhood.add(new MLatLng(19.372907, -99.017258));
+        neighborhood.add(new MLatLng(19.372907, -99.017258));
+        neighborhood.add(new MLatLng(19.372907, -99.017258));
+
+        station = new Station("Peñón Viejo", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.364628, -99.005553);
+
+        exits.add(new Exit("Norte", "Calzada Ignacio Zaragoza y Sentimientos de la Nación, Colonia Ermita Zaragoza"));
+        exits.add(new Exit("Sur", "Calzada Ignacio Zaragoza y puente vehicular Amador Salázar, Colonia Santa Martha Acatitla"));
+
+        neighborhood.add(new MLatLng(19.364628, -99.005553));
+        neighborhood.add(new MLatLng(19.364628, -99.005553));
+        neighborhood.add(new MLatLng(19.364628, -99.005553));
+        neighborhood.add(new MLatLng(19.364628, -99.005553));
+        neighborhood.add(new MLatLng(19.364628, -99.005553));
+
+        station = new Station("Acatitla", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.359860, -98.995918);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso."));
+
+        exits.add(new Exit("Norponiente", "Generalísimo Morelos y andadores Rocha y Pardiñas, Colonia Ermita Zaragoza"));
+        exits.add(new Exit("Nororiente", "Generalísimo Morelos y Galeana, Colonia Ermita Zaragoza"));
+        exits.add(new Exit("Suroriente", "Calzada Ignacio Zaragoza, Colonia Lomas de Zaragoza"));
+
+        neighborhood.add(new MLatLng(19.359860, -98.995918));
+        neighborhood.add(new MLatLng(19.359860, -98.995918));
+        neighborhood.add(new MLatLng(19.359860, -98.995918));
+        neighborhood.add(new MLatLng(19.359860, -98.995918));
+        neighborhood.add(new MLatLng(19.359860, -98.995918));
+
+        station = new Station("Santa Marta", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.358990, -98.976789);
+
+        exits.add(new Exit("Norte", "Calle Porfirio Díaz, Colonia Los Reyes Acaquilpan"));
+        exits.add(new Exit("Sur", "Calle Pensador Mexicano Juárez, Colonia Valle de los Remedios"));
+
+        neighborhood.add(new MLatLng(19.358990, -98.976789));
+        neighborhood.add(new MLatLng(19.358990, -98.976789));
+        neighborhood.add(new MLatLng(19.358990, -98.976789));
+        neighborhood.add(new MLatLng(19.358990, -98.976789));
+        neighborhood.add(new MLatLng(19.358990, -98.976789));
+
+        station = new Station("Los Reyes", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.350542, -98.960862);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso."));
+        exits.add(new Exit("Norte", "Carretera Federal Mexico- Puebla Norte, Municipio de La Paz"));
+        exits.add(new Exit("Sur", "Carretera Federal Mexico-Puebla sur, Municipio de la Paz"));
+
+        neighborhood.add(new MLatLng(19.350542, -98.960862));
+        neighborhood.add(new MLatLng(19.350542, -98.960862));
+        neighborhood.add(new MLatLng(19.350542, -98.960862));
+        neighborhood.add(new MLatLng(19.350542, -98.960862));
+        neighborhood.add(new MLatLng(19.350542, -98.960862));
+
+        station = new Station("La Paz", "metro A", position, services, exits, neighborhood);
+        stations.add(station);
+        return stations;
+    }
+
+    public ArrayList<Station> getStationsLMB(){
+
+        Log.d(TAG, "getStationsLM8() called");
+        ArrayList<Service> services = null;
+        ArrayList<Exit> exits = null;
+        ArrayList<MLatLng> neighborhood = null;
+        ArrayList<Station> stations = new ArrayList<>();
+        MLatLng position = null;
+        Station station = null;
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.534796, -99.027379);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores los cuales se usan si cuenta con tarjeta Libre Acceso, ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Avenida Central y Boulevard de los Remedios, Colonia Ciudad Azteca"));
+        exits.add(new Exit("Nororiente", " Avenida Central y Boulevard de los Remedios, Colonia Ciudad Azteca"));
+        exits.add(new Exit("Sur", "Avenida Central y Boulevard de los Remedios, Colonia Ciudad Azteca"));
+        exits.add(new Exit("Suroriente", "Avenida Central y Boulevard de los Remedios, Colonia Ciudad Azteca"));
+
+        neighborhood.add(new MLatLng(19.534796, -99.027379));
+        neighborhood.add(new MLatLng(19.534796, -99.027379));
+        neighborhood.add(new MLatLng(19.534796, -99.027379));
+        neighborhood.add(new MLatLng(19.534796, -99.027379));
+        neighborhood.add(new MLatLng(19.534796, -99.027379));
+
+        station = new Station("Ciudad Azteca", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.528224, -99.029847);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, ranura guía y placas braille para invidentes"));
+
+        exits.add(new Exit("Norte", "Avenida Central e Ignacio Zaragoza, Colonia Ignacio Allende"));
+        exits.add(new Exit("Sur", "Avenida Central y Avenida Cegor, Colonia Valle de Santiago"));
+
+        neighborhood.add(new MLatLng(19.528224, -99.029847));
+        neighborhood.add(new MLatLng(19.528224, -99.029847));
+        neighborhood.add(new MLatLng(19.528224, -99.029847));
+        neighborhood.add(new MLatLng(19.528224, -99.029847));
+        neighborhood.add(new MLatLng(19.528224, -99.029847));
+
+        station = new Station("Plaza Aragón", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.521075, -99.032883);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Avenida Central Carlos Hank Gonzales y Valle de Santiago, Colonia Jardines de Aragón"));
+        exits.add(new Exit("Sur", "Avenida Central Carlos Hank Gonzales y Grecia, Colonia La Olímpica II"));
+
+        neighborhood.add(new MLatLng(19.521075, -99.032883));
+        neighborhood.add(new MLatLng(19.521075, -99.032883));
+        neighborhood.add(new MLatLng(19.521075, -99.032883));
+        neighborhood.add(new MLatLng(19.521075, -99.032883));
+        neighborhood.add(new MLatLng(19.521075, -99.032883));
+
+        station = new Station("Olímpica", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.515179, -99.036016);
+
+        exits.add(new Exit("Norte", "Avenida Central y Calle Ciudad Azteca, Colonia U. H. La Alborada"));
+        exits.add(new Exit("Sur", "Avenida Central y Calle Sor Juana Inés de la Cruz, Colonia Valle de Anáhuac sección A"));
+
+        neighborhood.add(new MLatLng(19.515179, -99.036016));
+        neighborhood.add(new MLatLng(19.515179, -99.036016));
+        neighborhood.add(new MLatLng(19.515179, -99.036016));
+        neighborhood.add(new MLatLng(19.515179, -99.036016));
+        neighborhood.add(new MLatLng(19.515179, -99.036016));
+
+        station = new Station("Ecatepec", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.501497, -99.042131);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Avenida Central y Valle del Guadiana, Colonia Valle de Aragón 3a. Sección"));
+        exits.add(new Exit("Nororiente", "Avenida Central y Valle del Henares, Colonia Valle de Aragón 3a. Sección"));
+        exits.add(new Exit("Sur", "Avenida Central y Valle del Guadiana, Colonia Valle de Aragón 3a. Sección"));
+        exits.add(new Exit("Suroriente", "Avenida Central y Valle del Guadiana, Colonia Valle de Aragón 3a. Sección"));
+
+        neighborhood.add(new MLatLng(19.501497, -99.042131));
+        neighborhood.add(new MLatLng(19.501497, -99.042131));
+        neighborhood.add(new MLatLng(19.501497, -99.042131));
+        neighborhood.add(new MLatLng(19.501497, -99.042131));
+        neighborhood.add(new MLatLng(19.501497, -99.042131));
+
+        station = new Station("Múzquiz", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.490371, -99.046906);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Avenida Central y Anillo Periférico, Colonia Valle de Aragón 2a. Sección"));
+        exits.add(new Exit("Sur", "Avenida Central y Boulevard Río de los Remedios, Colonia Valle de Aragón 2a. Sección"));
+
+        neighborhood.add(new MLatLng(19.490371, -99.046906));
+        neighborhood.add(new MLatLng(19.490371, -99.046906));
+        neighborhood.add(new MLatLng(19.490371, -99.046906));
+        neighborhood.add(new MLatLng(19.490371, -99.046906));
+        neighborhood.add(new MLatLng(19.490371, -99.046906));
+
+        station = new Station("Río de los Remedios", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.485618, -99.048960);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", " Avenida Central y Hacienda de Pasteje, Colonia La Impulsora"));
+        exits.add(new Exit("Nororiente", "Avenida Central y Hacienda de la Noria, Colonia La Impulsora"));
+        exits.add(new Exit("Sur", "Avenida Central y Avenida Cinco, Colonia La Impulsora"));
+        exits.add(new Exit("Suroriente", "Avenida Central y Avenida Cinco, Colonia La Impulsora"));
+
+        neighborhood.add(new MLatLng(19.485618, -99.048960));
+        neighborhood.add(new MLatLng(19.485618, -99.048960));
+        neighborhood.add(new MLatLng(19.485618, -99.048960));
+        neighborhood.add(new MLatLng(19.485618, -99.048960));
+        neighborhood.add(new MLatLng(19.485618, -99.048960));
+
+        station = new Station("Impulsora", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.472656, -99.054663);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+        exits.add(new Exit("Norte", "Avenida Central y Boulevard de los Continentes, Colonia Vergel de Guadalupe"));
+        exits.add(new Exit("Nororiente", "Avenida Central y Boulevard de los Continentes, Colonia Vergel de Guadalupe"));
+        exits.add(new Exit("Sur", "Avenida Central y Avenida Jorge Jiménez Cantú, Colonia Vergel de Guadalupe"));
+        exits.add(new Exit("Suroriente", "Avenida Central y Avenida Jorge Jiménez Cantú, Colonia Vergel de Guadalupe"));
+
+        neighborhood.add(new MLatLng(19.472656, -99.054663));
+        neighborhood.add(new MLatLng(19.472656, -99.054663));
+        neighborhood.add(new MLatLng(19.472656, -99.054663));
+        neighborhood.add(new MLatLng(19.472656, -99.054663));
+        neighborhood.add(new MLatLng(19.472656, -99.054663));
+
+        station = new Station("Nezahualcóyotl", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.461686, -99.061218);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampas de acceso, ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Oriente", "Avenida 608, casi esquina Avenida 412, Colonia San Juan de Aragón"));
+        exits.add(new Exit("Poniente", "Avenida 412 y 6ta sección de San Juan de Aragón, Colonia San Juan de Aragón"));
+
+        neighborhood.add(new MLatLng(19.461686, -99.061218));
+        neighborhood.add(new MLatLng(19.461686, -99.061218));
+        neighborhood.add(new MLatLng(19.461686, -99.061218));
+        neighborhood.add(new MLatLng(19.461686, -99.061218));
+        neighborhood.add(new MLatLng(19.461686, -99.061218));
+
+        station = new Station("Villa de Aragón", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.458074, -99.069275);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Oriente", "Avenida 608 esquina Avenida 613, Colonia Unidad San Juan de Aragón"));
+        exits.add(new Exit("Poniente", "Avenida 608 junto Bosque de Aragón, Colonia Unidad San Juan de Aragón"));
+
+        neighborhood.add(new MLatLng(19.458074, -99.069275));
+        neighborhood.add(new MLatLng(19.458074, -99.069275));
+        neighborhood.add(new MLatLng(19.458074, -99.069275));
+        neighborhood.add(new MLatLng(19.458074, -99.069275));
+        neighborhood.add(new MLatLng(19.458074, -99.069275));
+
+        station = new Station("Bosque de Aragón", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.450998, -99.079366);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Oriente", "Avenida 608, casi esquina con Avenida 602, Colonia San Juan de Aragón"));
+        exits.add(new Exit("Poniente", "Avenida 608 entre Avenida 565 y José Loreto Fabela, Colonia San Juan de Aragón"));
+
+        neighborhood.add(new MLatLng(19.450998, -99.079366));
+        neighborhood.add(new MLatLng(19.450998, -99.079366));
+        neighborhood.add(new MLatLng(19.450998, -99.079366));
+        neighborhood.add(new MLatLng(19.450998, -99.079366));
+        neighborhood.add(new MLatLng(19.450998, -99.079366));
+
+        station = new Station("Deportivo Oceanía", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.445818, -99.087171);
+
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea G (Metro Boulevard Puerto Aéreo - Metro El Rosario) dirección oriente-poniente y poniente-oriente, sobre el Circuito Interior Boulevard Puerto Aéreo."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Avenida Río Consulado y Norte 170, Colonia Pensador Mexicano"));
+        exits.add(new Exit("Sur", "Avenida Oceanía y Dinares, Colonia Aquiles Serdán"));
+
+        neighborhood.add(new MLatLng(19.445818, -99.087171));
+        neighborhood.add(new MLatLng(19.445818, -99.087171));
+        neighborhood.add(new MLatLng(19.445818, -99.087171));
+        neighborhood.add(new MLatLng(19.445818, -99.087171));
+        neighborhood.add(new MLatLng(19.445818, -99.087171));
+
+        station = new Station("Oceanía", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.440810, -99.094188);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+        exits.add(new Exit("Oriente", "Avenida del Peñón y Oriente 158, Colonia Moctezuma"));
+        exits.add(new Exit("Poniente", "Calle Marruecos, Colonia Romero Rubio"));
+
+        neighborhood.add(new MLatLng(19.440810, -99.094188));
+        neighborhood.add(new MLatLng(19.440810, -99.094188));
+        neighborhood.add(new MLatLng(19.440810, -99.094188));
+        neighborhood.add(new MLatLng(19.440810, -99.094188));
+        neighborhood.add(new MLatLng(19.440810, -99.094188));
+
+        station = new Station("Romero Rubio", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.436566, -99.103709);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norponiente", "Avenida Oceanía, Colonia Moctezuma, 2da sección"));
+        exits.add(new Exit("Nororiente", "Avenida Oceanía y Norte 24, Colonia Moctezuma 2da sección"));
+        exits.add(new Exit("Surponiente", "Avenida Oceanía y General Francisco Murgía, Colonia Revolución"));
+        exits.add(new Exit("Suroriente", "Avenida Oceanía y General Bonifacio Salinas, Colonia Revolución"));
+
+        neighborhood.add(new MLatLng(19.436566, -99.103709));
+        neighborhood.add(new MLatLng(19.436566, -99.103709));
+        neighborhood.add(new MLatLng(19.436566, -99.103709));
+        neighborhood.add(new MLatLng(19.436566, -99.103709));
+        neighborhood.add(new MLatLng(19.436566, -99.103709));
+
+        station = new Station("Ricardo Flores Magón", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.431922, -99.113827);
+
+        services.add(new Service("CIBERCENTRO","Lunes a viernes de 8:00 a 20:00 horas. \n Sábados de 12:30 a 18:00 horas. \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+        services.add(new Service("CENTRAL CAMIONERA","Acceso del lado norponiente a la Central de Autobuses de Oriente (también conocida como Tapo)."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores sobre Línea B los cuales se usan si cuenta con tarjeta Libre Acceso; ranura guía  y placas braille para invidentes."));
+        services.add(new Service("METROBUS","Línea 4 del Metrobús San Lázaro, ubicado en Eje 3 Oriente avenida. Ing. Eduardo Molina frente a la Terminal de Autobuses de Oriente (TAPO)."));
+        services.add(new Service("MÓDULO DE SALUD","De la Red Ángel, el horario de atención: lunes a viernes de 07:00 a 20:00 horas y sábado de 09:00 a 14:00 horas."));
+        services.add(new Service("VITRINA CULTURAL","Cinco vitrinas que se localizan, en el pasillo de correspondencia con las Líneas 1 y B."));
+
+        exits.add(new Exit("Único", "Avenida Ing. Eduardo Molina, Colonia 7 de julio"));
+
+        neighborhood.add(new MLatLng(19.431922, -99.113827));
+        neighborhood.add(new MLatLng(19.431922, -99.113827));
+        neighborhood.add(new MLatLng(19.431922, -99.113827));
+        neighborhood.add(new MLatLng(19.431922, -99.113827));
+        neighborhood.add(new MLatLng(19.431922, -99.113827));
+
+        station = new Station("San Lázaro", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.439222, -99.120060);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía  y placas braille para invidentes."));
+        services.add(new Service("VITRINA CULTURAL","Localizada  después del andén, dirección Buenavista"));
+        services.add(new Service("METROBÚS","Línea 4 del Metrobús Moleros, ubicado en el Eje 2 Oriente Congreso de la Unión y la calle Héroe de Nacozari. \n Línea 5 del Metrobús San Lázaro, ubicado en Eje 3 Oriente avenida Ing. Eduardo Molina frente a la Terminal de Autobuses de Oriente (TAPO)."));
+
+        exits.add(new Exit("Norte", "Eje 1 Norte y Hojalatería, Colonia Morelos"));
+        exits.add(new Exit("Suroriente", "Nacional y Eje 1 Norte, Colonia Morelos"));
+
+        neighborhood.add(new MLatLng(19.439222, -99.120060));
+        neighborhood.add(new MLatLng(19.439222, -99.120060));
+        neighborhood.add(new MLatLng(19.439222, -99.120060));
+        neighborhood.add(new MLatLng(19.439222, -99.120060));
+        neighborhood.add(new MLatLng(19.439222, -99.120060));
+
+        station = new Station("Morelos", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.442555, -99.123230);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Suroriente", "Eje 1 Norte y Eje 1 Oriente, Colonia Morelos"));
+        exits.add(new Exit("Norponiente", "Eje 1 Norte y Manuel Doblado, Colonia Morelos"));
+        exits.add(new Exit("Surponiente", "Eje 1 Norte y Manuel Doblado, Colonia Morelos"));
+
+        neighborhood.add(new MLatLng(19.442555, -99.123230));
+        neighborhood.add(new MLatLng(19.442555, -99.123230));
+        neighborhood.add(new MLatLng(19.442555, -99.123230));
+        neighborhood.add(new MLatLng(19.442555, -99.123230));
+        neighborhood.add(new MLatLng(19.442555, -99.123230));
+
+        station = new Station("Tepito", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.443000, -99.131073);
+
+        exits.add(new Exit("Nororiente", "Eje 1 Norte, casi esquina con Jesús Carranza, Colonia Morelos"));
+        exits.add(new Exit("Suroriente", "Eje 1 Norte casi esquina con República de Argentina, Colonia Centro"));
+        exits.add(new Exit("Norponiente:", "Eje 1 Norte, casi esquina con República de Brasil, Colonia Centro"));
+        exits.add(new Exit("Surponiente", "Eje 1 Norte, casi esquina con República de Brasil, Colonia Centro"));
+
+        neighborhood.add(new MLatLng(19.443000, -99.131073));
+        neighborhood.add(new MLatLng(19.443000, -99.131073));
+        neighborhood.add(new MLatLng(19.443000, -99.131073));
+        neighborhood.add(new MLatLng(19.443000, -99.131073));
+        neighborhood.add(new MLatLng(19.443000, -99.131073));
+
+        station = new Station("Lagunilla", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.443643, -99.138927);
+
+        services.add(new Service("CIBERCENTRO","De Lunes a viernes de 8:00 a 20:00 horas y sábados de 12:30 a 18:00 horas, el servicio es gratuito con un tiempo máximo de 30 minutos por Cibercentro"));
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea LL (San Felipe de Jesús - Metro Hidalgo) dirección oriente-poniente y poniente-oriente, sobre Paseo de la Reforma."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Ranura guía y placas braille para invidentes."));
+        services.add(new Service("VITRINA CULTURAL","Dos vitrinas, que se localizan en la parte baja de las escaleras, correspondencia con las Líneas 8 y B."));
+
+        exits.add(new Exit("Norte", "Eje 1 Norte, Colonia Morelos"));
+        exits.add(new Exit("Sur", "Eje 1 Norte, calle Allende Sur, Colonia Morelos"));
+
+        neighborhood.add(new MLatLng(19.443643, -99.138927));
+        neighborhood.add(new MLatLng(19.443643, -99.138927));
+        neighborhood.add(new MLatLng(19.443643, -99.138927));
+        neighborhood.add(new MLatLng(19.443643, -99.138927));
+        neighborhood.add(new MLatLng(19.443643, -99.138927));
+
+        station = new Station("Garibaldi-Lagunilla", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.445166, -99.146539);
+
+        services.add(new Service("MINISTERIO PÚBLICO","Ubicado en la calle de Zarco esquina con Violeta, colonia Guerrero, el horario de atención son las 24 horas de los 365 días del año, teléfono 5242-6578."));
+        services.add(new Service("MÓDULO DE INMUJERES","Módulos cerrados para reubicación: Pino Suárez y Guerrero, para continuar con las tareas en la estación Pino Suárez, se llevará durante el primer semestre, jornadas de 12:30 a 15:30 horas los días martes y jueves."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Escaleras eléctricas, ranura guía  y placas braille para invidentes."));
+        services.add(new Service("METROBÚS","Línea 3 del Metrobús Guerrero, ubicado en Eje 1 Poniente Guerrero y Eje 1 Norte Mosqueta."));
+        services.add(new Service("VITRINA CULTURAL","Dos vitrinas ubicadas al pasar los torniquetes, entre las escaleras a Ciudad Azteca y a Buenavista."));
+
+        exits.add(new Exit("Nororiente", "Eje 1 Norte, casi esquina con Héroes, Colonia Guerrero"));
+        exits.add(new Exit("Suroriente", "Eje 1 Norte, casi esquina con Héroes, Colonia Guerrero"));
+        exits.add(new Exit("Norponiente:", "Eje 1 Norte, casi esquina con Guerrero, Colonia Guerrero"));
+        exits.add(new Exit("Surponiente", "Eje 1 Norte, casi esquina con Guerrero, Colonia Guerrero"));
+
+        neighborhood.add(new MLatLng(19.445166, -99.146539));
+        neighborhood.add(new MLatLng(19.445166, -99.146539));
+        neighborhood.add(new MLatLng(19.445166, -99.146539));
+        neighborhood.add(new MLatLng(19.445166, -99.146539));
+        neighborhood.add(new MLatLng(19.445166, -99.146539));
+
+        station = new Station("Guerrero", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.446010, -99.152692);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, ranura guía y placas braille para invidente."));
+        services.add(new Service("METROBÚS","Línea 1 del Metrobús Buenavista, ubicado en avenida Insurgentes Norte y Eje 1 Norte Mosqueta. \n Línea 4 del Metrobús Buenavista, ubicado en la calle Jesús García y Eje 1 Norte Mosqueta."));
+        services.add(new Service("SUBURBANO","Al salir de la estación atravesando la explanada."));
+
+        exits.add(new Exit("Nororiente", "Eje 1 Norte, Mosqueta e Insurgentes, Colonia Buenavista"));
+        exits.add(new Exit("Suroriente", "Eje 1 Norte, Mosqueta y Jesús García, Colonia Buenavista"));
+        exits.add(new Exit("Norponiente:", "Eje 1 Norte, Mosqueta e Insurgentes, Colonia Buenavista"));
+        exits.add(new Exit("Surponiente", "Eje 1 Norte, Mosqueta e Insurgentes, Colonia Buenavista"));
+
+        neighborhood.add(new MLatLng(19.446010, -99.152692));
+        neighborhood.add(new MLatLng(19.446010, -99.152692));
+        neighborhood.add(new MLatLng(19.446010, -99.152692));
+        neighborhood.add(new MLatLng(19.446010, -99.152692));
+        neighborhood.add(new MLatLng(19.446010, -99.152692));
+
+        station = new Station("Buenavista", "metro B", position, services, exits, neighborhood);
+        stations.add(station);
+        return stations;
+    }
+
+    public ArrayList<Station> getStationsLM12(){
+
+        Log.d(TAG, "getStationsLM12() called");
+
+        Log.d(TAG, "getStationsLM8() called");
+        ArrayList<Service> services = null;
+        ArrayList<Exit> exits = null;
+        ArrayList<MLatLng> neighborhood = null;
+        ArrayList<Station> stations = new ArrayList<>();
+        MLatLng position = null;
+        Station station = null;
+
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.286814, -99.014444);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+        services.add(new Service("CIBERCENTRO","Lunes a viernes de 8:00 a 20:00 horas y sábados de 12:30 a 18:00 horas. \n El servicio es gratuito, para su uso favor de presentar una identificación oficial, original y vigente."));
+
+        exits.add(new Exit("Nororiente", "Av. San Rafael Atlixco y Av. Antonio Bejaral, Colonia El Triángulo"));
+        exits.add(new Exit("Norponiente", "AV. San Rafael Atlixco y calle José Bernal, Colonia El Triángulo"));
+
+        neighborhood.add(new MLatLng(19.286814, -99.014444));
+        neighborhood.add(new MLatLng(19.286814, -99.014444));
+        neighborhood.add(new MLatLng(19.286814, -99.014444));
+        neighborhood.add(new MLatLng(19.286814, -99.014444));
+        neighborhood.add(new MLatLng(19.286814, -99.014444));
+
+        station = new Station("Tláhuac", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.294358, -99.023961);
+
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Nororiente", "Av. Canal del Acalote y calle Victoría, Pueblo San Francisco Tlaltenco"));
+        exits.add(new Exit("Norponiente", "Av. Canal del Acalote y calle Zacatenco, Pueblo San Francisco Tlaltenco"));
+
+        neighborhood.add(new MLatLng(19.294358, -99.023961));
+        neighborhood.add(new MLatLng(19.294358, -99.023961));
+        neighborhood.add(new MLatLng(19.294358, -99.023961));
+        neighborhood.add(new MLatLng(19.294358, -99.023961));
+        neighborhood.add(new MLatLng(19.294358, -99.023961));
+
+        station = new Station("Tlaltenco", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.296373, -99.034164);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "sobre la Av. Tláhuac esquina Cesáreo castro, Colonia Santiago Zapotitlán"));
+        exits.add(new Exit("Sur", "sobre Av. Tláhuac y esquina Emilio Laurent, Colonia conchita Zapotitlán"));
+
+        neighborhood.add(new MLatLng(19.296373, -99.034164));
+        neighborhood.add(new MLatLng(19.296373, -99.034164));
+        neighborhood.add(new MLatLng(19.296373, -99.034164));
+        neighborhood.add(new MLatLng(19.296373, -99.034164));
+        neighborhood.add(new MLatLng(19.296373, -99.034164));
+
+        station = new Station("Zapotitlán", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.300292, -99.046094);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Gral. Manuel M. López y Av. Tláhuac, Barrio Santa Ana Zapotitlán"));
+        exits.add(new Exit("Sur", "Av. Tláhuac y calle Las bodas de Fígaro, Colonia Miguel Hidalgo"));
+
+        neighborhood.add(new MLatLng(19.300292, -99.046094));
+        neighborhood.add(new MLatLng(19.300292, -99.046094));
+        neighborhood.add(new MLatLng(19.300292, -99.046094));
+        neighborhood.add(new MLatLng(19.300292, -99.046094));
+        neighborhood.add(new MLatLng(19.300292, -99.046094));
+
+        station = new Station("Nopalera", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.304241, -99.059323);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac entre Cerrada del Pino y Calle del Panal, Colonia Ampliación Los Olivos"));
+        exits.add(new Exit("Sur", "Av. Tláhuac y calle Olivos, Colonia Granjas San Jerónimo"));
+
+        neighborhood.add(new MLatLng(19.304241, -99.059323));
+        neighborhood.add(new MLatLng(19.304241, -99.059323));
+        neighborhood.add(new MLatLng(19.304241, -99.059323));
+        neighborhood.add(new MLatLng(19.304241, -99.059323));
+        neighborhood.add(new MLatLng(19.304241, -99.059323));
+
+        station = new Station("Olivos", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.306140, -99.065605);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac y Av. Zacatlán, Colonia Pueblo San Lorenzo Tezonco"));
+        exits.add(new Exit("Sur", "Av. Tláhuac entre la calle de Ignacio Ma. Barrera y Ambrosio Del Pino, Colonia Granjas San Jerónimo"));
+
+        neighborhood.add(new MLatLng(19.306140, -99.065605));
+        neighborhood.add(new MLatLng(19.306140, -99.065605));
+        neighborhood.add(new MLatLng(19.306140, -99.065605));
+        neighborhood.add(new MLatLng(19.306140, -99.065605));
+        neighborhood.add(new MLatLng(19.306140, -99.065605));
+
+        station = new Station("Tezonco", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.317693, -99.074370);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac y Periférico Oriente, Colonia Año de Juárez"));
+        exits.add(new Exit("Sur", "Av. Tláhuac esquina con incorporación Periférico, Colonia Barrio Guadalupe"));
+
+        neighborhood.add(new MLatLng(19.317693, -99.074370));
+        neighborhood.add(new MLatLng(19.317693, -99.074370));
+        neighborhood.add(new MLatLng(19.317693, -99.074370));
+        neighborhood.add(new MLatLng(19.317693, -99.074370));
+        neighborhood.add(new MLatLng(19.317693, -99.074370));
+
+        station = new Station("Periférico Oriente", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.320497, -99.085764);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac y Av. 11 Colonia Privada Estrella"));
+        exits.add(new Exit("Sur", "Av. Tláhuac y calle Técnicos y Manuales, Colonia Unidad Habitacional Villas Estrella"));
+
+        neighborhood.add(new MLatLng(19.320497, -99.085764));
+        neighborhood.add(new MLatLng(19.320497, -99.085764));
+        neighborhood.add(new MLatLng(19.320497, -99.085764));
+        neighborhood.add(new MLatLng(19.320497, -99.085764));
+        neighborhood.add(new MLatLng(19.320497, -99.085764));
+
+        station = new Station("Calle 11", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.322259, -99.096107);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac y calle Lesina, Colonia Lomas Estrella 1ra Secc"));
+        exits.add(new Exit("Sur", "Av. Tláhuac y calle Tiberlandes, Colonia Lomas Estrella 2da Secc"));
+
+        neighborhood.add(new MLatLng(19.322259, -99.096107));
+        neighborhood.add(new MLatLng(19.322259, -99.096107));
+        neighborhood.add(new MLatLng(19.322259, -99.096107));
+        neighborhood.add(new MLatLng(19.322259, -99.096107));
+        neighborhood.add(new MLatLng(19.322259, -99.096107));
+
+        station = new Station("Lomas Estrella", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.328131, -99.104861);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac casi esquina con la calle Hermanos Wright, Colonia San Andrés Tomatlán"));
+        exits.add(new Exit("Sur", "AV. Tláhuac y calle Bugambilia, Pueblo Santa María Tomatlán"));
+
+        neighborhood.add(new MLatLng(19.328131, -99.104861));
+        neighborhood.add(new MLatLng(19.328131, -99.104861));
+        neighborhood.add(new MLatLng(19.328131, -99.104861));
+        neighborhood.add(new MLatLng(19.328131, -99.104861));
+        neighborhood.add(new MLatLng(19.328131, -99.104861));
+
+        station = new Station("San Andrés Tomatlán", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.336898, -99.109089);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Av. Tláhuac casi esquina con calle Independencia, Pueblo Culhuacán"));
+        exits.add(new Exit("Sur", "Av. Tláhuac y cerrada Benito Juárez, Pueblo Culhuacán"));
+
+        neighborhood.add(new MLatLng(19.336898, -99.109089));
+        neighborhood.add(new MLatLng(19.336898, -99.109089));
+        neighborhood.add(new MLatLng(19.336898, -99.109089));
+        neighborhood.add(new MLatLng(19.336898, -99.109089));
+        neighborhood.add(new MLatLng(19.336898, -99.109089));
+
+        station = new Station("Culhuacán", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.352883, -99.106396);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Dos elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso; escaleras eléctricas, acera Móvil, rampa de acceso, ranura guía y placas braille para invidentes."));
+
+        exits.add(new Exit("Norte", "Calzada Ermita Iztapalapa, Colonia Santa Isabel Industrial"));
+        exits.add(new Exit("Suroriente", "Calzada Ermita Iztapalapa, Colonia Santa Isabel Industrial"));
+        exits.add(new Exit("Surponiente", "Calzada Ermita Iztapalapa, Colonia Santa Isabel Industrial"));
+
+        neighborhood.add(new MLatLng(19.352883, -99.106396));
+        neighborhood.add(new MLatLng(19.352883, -99.106396));
+        neighborhood.add(new MLatLng(19.352883, -99.106396));
+        neighborhood.add(new MLatLng(19.352883, -99.106396));
+        neighborhood.add(new MLatLng(19.352883, -99.106396));
+
+        station = new Station("Atlalilco", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.358084, -99.122316);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norponiente", "Calzada Ermita Iztapalapa, ColoniaUnidad Habitacional Xopa"));
+        exits.add(new Exit("Suroriente", "Calzada Ermita Iztapalapa, Colonia Unidad Habitacional Ermita"));
+        exits.add(new Exit("Surponiente", "Calzada Ermita Iztapalapa casi esquina con Eje 2 oriente, Calzada de la Viga, Colonia Unidad Habitacional Ermita"));
+        exits.add(new Exit("Nororiente", "Calzada Ermita Iztapalapa casi esquina con Eje 2 oriente, Calzada de la Viga, Colonia Unidad Habitacional Xopa"));
+
+        neighborhood.add(new MLatLng(19.358084, -99.122316));
+        neighborhood.add(new MLatLng(19.358084, -99.122316));
+        neighborhood.add(new MLatLng(19.358084, -99.122316));
+        neighborhood.add(new MLatLng(19.358084, -99.122316));
+        neighborhood.add(new MLatLng(19.358084, -99.122316));
+
+        station = new Station("Mexicaltzingo", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.359733, -99.142873);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea D (Corredor cero emisiones EJE 7 - 7A Sur) sentido Poniente-Oriente."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Cinco elevadores, uno sobre Línea 2, y cuatro sobre Línea 12, los cuales  se  usan si cuenta con tarjeta Libre Acceso; rampa de acceso, escaleras eléctricas, ranura guía  y placas braille para invidentes."));
+        services.add(new Service("MÓDULO DE SALUD","De la Red Ángel, el horario de atención: lunes a viernes, de 07:00 a 20:00 horas y sábado de 09:00 a 14:00 horas."));
+
+        exits.add(new Exit("Oriente", "Entre Avenida Pirineos, Avenida Repúblicas y Calzada de Tlalpan, Colonia Miravalle"));
+        exits.add(new Exit("Poniente", "Entre Avenida Pirineos, Avenida Repúblicas y Calzada de Tlalpan, Colonia Portales"));
+
+        neighborhood.add(new MLatLng(19.359733, -99.142873));
+        neighborhood.add(new MLatLng(19.359733, -99.142873));
+        neighborhood.add(new MLatLng(19.359733, -99.142873));
+        neighborhood.add(new MLatLng(19.359733, -99.142873));
+        neighborhood.add(new MLatLng(19.359733, -99.142873));
+
+        station = new Station("Ermita", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.361353, -99.151359);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+        services.add(new Service("METROBÚS","Línea 4 del Metrobús Eje Central, ubicado en calle Ayuntamiento y Eje Central Lázaro Cárdenas."));
+
+        exits.add(new Exit("Norponiente", "Eje Central Lázaro Cárdenas y Eje 8 Sur, Av. Popocatépetl, Colonia Portales"));
+        exits.add(new Exit("Suroriente", "Eje Central Lázaro Cárdenas y Eje 8 Sur, Av. Popocatépetl, Colonia General Anaya"));
+        exits.add(new Exit("Surponiente", "Eje Central Lázaro Cárdenas y Eje 8 Sur, Av. Popocatépetl, Colonia General Anaya"));
+        exits.add(new Exit("Nororiente", "Eje Central Lázaro Cárdenas y Eje 8 Sur, Av. Popocatépetl, Colonia Portales"));
+
+        neighborhood.add(new MLatLng(19.361353, -99.151359));
+        neighborhood.add(new MLatLng(19.361353, -99.151359));
+        neighborhood.add(new MLatLng(19.361353, -99.151359));
+        neighborhood.add(new MLatLng(19.361353, -99.151359));
+        neighborhood.add(new MLatLng(19.361353, -99.151359));
+
+        station = new Station("Eje central", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.370731, -99.158234);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norponiente", "Eje 7 Sur, Municipio Libre y Uxmal, Colonia Santa Cruz Atoyac"));
+        exits.add(new Exit("Surponiente", "Eje 7 Sur, Municipio Libre y Uxmal, Colonia Residencial Emperadores"));
+        exits.add(new Exit("Nororiente", "Eje 7 Sur, Municipio Libre y Uxmal, Colonia Santa Cruz Atoyac"));
+
+        neighborhood.add(new MLatLng(19.370731, -99.158234));
+        neighborhood.add(new MLatLng(19.370731, -99.158234));
+        neighborhood.add(new MLatLng(19.370731, -99.158234));
+        neighborhood.add(new MLatLng(19.370731, -99.158234));
+        neighborhood.add(new MLatLng(19.370731, -99.158234));
+
+        station = new Station("Parque de los venados", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.370589, -99.165242);
+
+        services.add(new Service("BICIESTACINAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea D (Corredor cero emisiones EJE 7 - 7A Sur) dirección oriente-poniente y poniente-oriente, sobre el Eje 7 sur Félix Cuevas."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, escaleras eléctricas, rampa de acceso, ranura guía  y placas braille para invidentes."));
+        services.add(new Service("VITRINA CULTURAL","Ubicada entre el andén y los torniquetes, dirección Universidad."));
+
+        exits.add(new Exit("Norponiente", "Avenida Universidad, Colonia Santa Cruz Atoyac"));
+        exits.add(new Exit("Surponiente", "Heriberto Frías y Eje 7 sur Félix Cuevas, Colonia del Valle"));
+        exits.add(new Exit("Oriente", "Avenida Universidad y Eje 7 Sur Félix Cuevas, Colonia Santa Cruz Atoyac"));
+
+        neighborhood.add(new MLatLng(19.370589, -99.165242));
+        neighborhood.add(new MLatLng(19.370589, -99.165242));
+        neighborhood.add(new MLatLng(19.370589, -99.165242));
+        neighborhood.add(new MLatLng(19.370589, -99.165242));
+        neighborhood.add(new MLatLng(19.370589, -99.165242));
+
+        station = new Station("Zapata", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.371923, -99.171140);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, rampa de acceso, escaleras eléctricas, ranura guía, placas braille para invidentes."));
+
+        exits.add(new Exit("Norponiente", "Félix Cuevas y Av. Coyoacán, Colonia Tlacoquemécatl del Valle"));
+        exits.add(new Exit("Surponiente", "Félix Cuevas y Av. Coyoacán, Colonia Actipan"));
+        exits.add(new Exit("Nororiente", "Félix Cuevas y Av. Coyoacán, Colonia Tlacoquemécatl del Valle"));
+
+        neighborhood.add(new MLatLng(19.371923, -99.171140));
+        neighborhood.add(new MLatLng(19.371923, -99.171140));
+        neighborhood.add(new MLatLng(19.371923, -99.171140));
+        neighborhood.add(new MLatLng(19.371923, -99.171140));
+        neighborhood.add(new MLatLng(19.371923, -99.171140));
+
+        station = new Station("Hospital 20 de Noviembre", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.373588, -99.178581);
+
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores, los cuales se usan si cuenta con tarjeta Libre Acceso, escaleras eléctricas, rampa de acceso, ranura guía y placas braille para invidentes."));
+        services.add(new Service("METROBÚS","Línea 1 del Metrobús Félix Cuevas, ubicado en avenida Insurgentes Sur y calle de Empresa."));
+
+        exits.add(new Exit("Norponiente", "Av. Insurgentes Sur con Félix Cuevas, Colonia Tlacoquemécatl del Valle"));
+        exits.add(new Exit("Surponiente", "Av. Insurgentes Sur con Félix Cuevas, Colonia Actipan"));
+        exits.add(new Exit("Nororiente", "Félix Cuevas y Cerrada Tejocotes, Colonia Tlacoquemécatl del Valle"));
+        exits.add(new Exit("Surponiente", "Av. Patriotismo Y calle de Dónatelo, Colonia Actipan"));
+
+        neighborhood.add(new MLatLng(19.373588, -99.178581));
+        neighborhood.add(new MLatLng(19.373588, -99.178581));
+        neighborhood.add(new MLatLng(19.373588, -99.178581));
+        neighborhood.add(new MLatLng(19.373588, -99.178581));
+        neighborhood.add(new MLatLng(19.373588, -99.178581));
+
+        station = new Station("Insurgentes Sur", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        services = new ArrayList<>();
+        exits = new ArrayList<>();
+        neighborhood = new ArrayList<>();
+
+        position = new MLatLng(19.376391, -99.187775);
+
+        services.add(new Service("MÓDULO DE INMUJERES","En apoyo al “Programa Viaja Segura en el Transporte Público de la CDMX”, el Metro proporcionó el espacio para el Módulo ubicado en el pasillo de salida e ingreso de Línea 12. \n Horario de atención es de lunes a viernes de 8:00 a 20:00 horas"));
+        services.add(new Service("BICIESTACIONAMIENTO","Para estacionar bicicletas, bajo tu responsabilidad."));
+        services.add(new Service("LÍNEA DE TROLEBÚS","Línea D (corredor Cero emisiones EJE 7 - 7A Sur) dirección oriente-poniente y poniente-oriente, sobre el Eje 7 sur Félix Cuevas."));
+        services.add(new Service("INSTALACIÓN PARA PERSONAS CON DISCAPACIDAD","Tres elevadores (los cuales se usan si cuenta con tarjeta Libre Acceso), rampa de acceso, escaleras eléctricas, ranura guía  y placas braille para invidentes."));
+        services.add(new Service("MÓDULO DE SALUD","De la Red Ángel, el horario de atención es, de lunes a viernes, de 07:00 a 20:00 horas y sábado de 09:00 a 14:00 horas."));
+
+        exits.add(new Exit("Poniente", "Avenida Revolución entre Andrea del Sarto y Benvenuto Cellini, Colonia Insurgentes Mixcoac"));
+        exits.add(new Exit("Oriente", "Avenida Revolución entre Av. Extremadura y calle de Empresa, Colonia Mixcoac"));
+
+        neighborhood.add(new MLatLng(19.376391, -99.187775));
+        neighborhood.add(new MLatLng(19.376391, -99.187775));
+        neighborhood.add(new MLatLng(19.376391, -99.187775));
+        neighborhood.add(new MLatLng(19.376391, -99.187775));
+        neighborhood.add(new MLatLng(19.376391, -99.187775));
+
+        station = new Station("Mixcoac", "metro 12", position, services, exits, neighborhood);
+        stations.add(station);
+
+        return stations;
+    }
+
     public void setMapStationsLM1(GoogleMap googleMap){
 
         for (Station station: getStationsLM1()) {
@@ -3061,6 +4466,46 @@ public class SetStations{
         }
     }
 
+    public void setMapStationsLM9(GoogleMap googleMap){
+        for (Station station: getStationsLM9()) {
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+                    .title(station.getName())
+                    .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+            marker.setTag(station);
+        }
+    }
+
+    public void setMapStationsLMA(GoogleMap googleMap){
+        for (Station station: getStationsLMA()) {
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+                    .title(station.getName())
+                    .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+            marker.setTag(station);
+        }
+    }
+
+    public void setMapStationsLMB(GoogleMap googleMap){
+        for (Station station: getStationsLMB()) {
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+                    .title(station.getName())
+                    .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+            marker.setTag(station);
+        }
+    }
+
+    public void setMapStationsLM12(GoogleMap googleMap){
+        for (Station station: getStationsLM12()) {
+            Marker marker = googleMap.addMarker(new MarkerOptions().position(station.getLatLng())
+                    .title(station.getName())
+                    .snippet(station.getLine()));
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+            marker.setTag(station);
+        }
+    }
+
 
 
     public void setAllMetroMarkers(GoogleMap googleMap){
@@ -3072,6 +4517,10 @@ public class SetStations{
         setMapStationsLM6(googleMap);
         setMapStationsLM7(googleMap);
         setMapStationsLM8(googleMap);
+        setMapStationsLM9(googleMap);
+        setMapStationsLMA(googleMap);
+        setMapStationsLMB(googleMap);
+        setMapStationsLM12(googleMap);
     }
 
 

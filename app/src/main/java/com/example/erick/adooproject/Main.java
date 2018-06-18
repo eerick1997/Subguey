@@ -90,28 +90,6 @@ public class Main extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -148,57 +126,14 @@ public class Main extends AppCompatActivity
         lines.add(new Line("metro 6", new SetStations(Main.this).getStationsLM6()));
         lines.add(new Line("metro 7", new SetStations(Main.this).getStationsLM7()));
         lines.add(new Line("metro 8", new SetStations(Main.this).getStationsLM8()));
+        lines.add(new Line("metro 9", new SetStations(Main.this).getStationsLM9()));
+        lines.add(new Line("metro a", new SetStations(Main.this).getStationsLMA()));
+        lines.add(new Line("metro b", new SetStations(Main.this).getStationsLMB()));
+        lines.add(new Line("metro 12", new SetStations(Main.this).getStationsLM12()));
         Intent intent = new Intent(Main.this, LinesActivity.class);
         intent.putParcelableArrayListExtra("Lines", lines);
         intent.putExtra("title", "Metro");
         startActivity(intent);
-    }
-    private void justForTesting(String title) {
-        ArrayList<Line> lines = new ArrayList<>();
-        /***************************THIS CODE IS JUST FOR TESTING*********************************/
-
-        /*********** JUST FOR TESTING **********/
-
-        ArrayList<Service> services = new ArrayList<>();
-        services.add(new Service("Biciestacionamiento",
-                "lunes a viernes de 9:00 a 19:00 horas"));
-
-        services.add(new Service("Central camionera", ""));
-
-        services.add(new Service("Instalación para personas con discapacidad", ""));
-
-        services.add(new Service("Ministerio público", "lunes a viernes de 9:00 a 19:00 horas"));
-
-        ArrayList<Exit> exits = new ArrayList<>();
-        exits.add(new Exit("Nororiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
-        exits.add(new Exit("Norponiente", "Avenida Minas de Arena, Colonia Pino Suárez"));
-        exits.add(new Exit("Suroriente", "Real del Monte, Colonia Pino Suárez"));
-        exits.add(new Exit("Surponiente", "Real del Monte, Colonia Pino Suárez"));
-
-        ArrayList<Station> stations = new ArrayList<>();
-        ArrayList<MLatLng> positions = new ArrayList<>();
-        Double lat = 19.3982121;
-        Double lng = -99.2005697;
-
-        for (int i = 0; i < 5; i++)
-            positions.add(new MLatLng(lat += 0.05, lng += 0.05));
-
-        stations.add(new Station("Observatorio 1", "metro 1", new MLatLng(19.3982121, -99.2005697), services, exits, /**positions, positions,**/ null));
-        stations.add(new Station("Observatorio 2", "metro 2", new MLatLng(19.3982121, -99.2005697), services, exits, /**positions, positions,**/ null));
-        stations.add(new Station("Observatorio 3", "metro 3", new MLatLng(19.3982121, -99.2005697), services, exits, /**positions, positions,**/ null));
-
-        for (int i = 1; i <= 9; i++)
-            lines.add(new Line( "metro " + i, stations));
-        lines.add(new Line("metro a", stations));
-        lines.add(new Line("metro b", stations));
-        lines.add(new Line("metro 12", stations));
-
-        Intent intent = new Intent(Main.this, LinesActivity.class);
-        intent.putParcelableArrayListExtra("Lines", lines);
-        intent.putExtra("title", title);
-        startActivity(intent);
-
-        /******************************* END JUST FOR TESTING ******************************************/
     }
 
     private void justForTestingMetrobus(String title) {

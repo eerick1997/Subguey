@@ -194,7 +194,7 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.setOnMarkerClickListener(this);
         //this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 22));
-        this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+        this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
         //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
 
@@ -337,22 +337,7 @@ public class FrameGMap extends Fragment implements LocationListener,
                 StationOptionCustomAlert customAlert = new StationOptionCustomAlert(getActivity());
                 customAlert.showDialog(currentPosition, marker.getPosition(),
                         (Station) marker.getTag(), googleMap);
-                /**if(currentPosition != null) {
-                    MakeARoute makeARoute = new MakeARoute(getActivity(), currentPosition, marker.getPosition(), googleMap);
-                }
-                /**Station station = (Station)marker.getTag();
-                Intent intent = new Intent(getActivity(), activity_station_info.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("station", station);
-                intent.putExtras(bundle);
-                startActivity(intent);**/
             }
-            /**EventInfo eventInfo = new EventInfo(getActivity());
-            Event event = new Event(0, "eerick1997", "12:00",
-                    new MLatLng(initial_camera.latitude, initial_camera.longitude));
-            eventInfo.showDialog(event);**/
-
-
         } catch (Exception e) {
             Log.e(TAG, "onMarkerClick: ", e);
         }

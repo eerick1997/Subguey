@@ -59,11 +59,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             startActivity(intent);
         }
 
-        //Event event = new Event(1, "Erick", "12:00", new LatLng(-1.232423, 1.421311));
-        //new EventInfo(Login.this).showDialog(event);
-        //new EventsReports(Login.this).showDialog(event);
-        //new EventsReports(Login.this).showDialog(new Event(0, "eerick1997", "12:43:59", new LatLng(-1.42324,1.13421213)));
-
         /*We create a GoogleSignInOptions to configure Google Sign-in to request users ID
         and get basic information using the DEFAULT_SIGN_IN parameter*/
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder
@@ -85,21 +80,21 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             @Override
             public void onClick(View v) {
                 /*Here we set the action when SignInButton is pressed*/
-                Snackbar.make(v, "Sign-in button pressed", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(v, getString(R.string.login_please_wait), Snackbar.LENGTH_LONG).show();
                 signIn();
             }
         });
 
         //DON'T ERASE THIS
         /*We create a Button to revoke access*/
-        Button button = findViewById(R.id.BTN_revoke);
+        /**Button button = findViewById(R.id.BTN_revoke);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar.make(v, "Revoke access button pressed", Snackbar.LENGTH_LONG).show();
                 revokeAccess();
             }
-        });
+        });**/
 
     }
 
@@ -133,8 +128,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     private void signIn() {
         Log.d(TAG, "signIn() called");
         //Creating an Intent object
-
-
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -172,7 +165,6 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                             1.0f, 10.0f, str_photo,
                              1);
 
-
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     final DatabaseReference users = database.getReference(DB_REFERENCE).child(USER_REFERENCE);
                     users.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -184,7 +176,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                                 final User actual = objSnapshot.getValue(User.class);
                                 if (user.getEmail().equals(actual.getEmail())) {
                                     bool=true;
-                                    Toast.makeText(Login.this, "La cuenta de correo gmail: " + user.getEmail() + " ya se encuentra asociada, Subgüey usará estos datos", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this, "La cuenta de correo " + user.getEmail() + " ya se encuentra asociada, Subgüey usará estos datos", Toast.LENGTH_LONG).show();
                                     preferences.savePreference(NICK_USER, actual.getNick_name());
                                     preferences.savePreference(EMAIL, actual.getEmail());
                                     preferences.savePreference(SIGNED, true);
@@ -200,19 +192,11 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                                 nick_alert.showDialog(user);
                             }
                         }
-
                         @Override
                         public void onCancelled(DatabaseError firebaseError) {
                             Log.e("Read failed", firebaseError.getMessage());
                         }
                     });
-
-
-
-
-
-
-
                     Log.i(TAG, "handleSignInResult: " + user_name + " " + user_given_name + " "
                             + user_family_name + " " + user_email + " " + user_id + " " + user_photo);
                     //Getting account data and storing in preferences

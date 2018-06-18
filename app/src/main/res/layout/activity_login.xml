@@ -43,13 +43,13 @@
             android:layout_marginTop="20dp"
             android:foregroundGravity="center" />
 
-        <Button
+        <!--Button
             android:id="@+id/BTN_revoke"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#FFFFFF"
-            android:text="Revoke" />
+            android:text="Revoke" /-->
 
     </LinearLayout>
 

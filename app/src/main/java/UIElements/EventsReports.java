@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.erick.adooproject.R;
 import com.google.firebase.database.DatabaseReference;
@@ -56,6 +57,8 @@ public class EventsReports {
                     Log.i(TAG, "onClick: ACCIDENT");
                     event.setType(ACCIDENT);
                     sendEvent(event);
+                    Toast.makeText(activity, activity.getString(R.string.event_sent), Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
                 }
             });
 
@@ -67,6 +70,8 @@ public class EventsReports {
                     //Event event = new Event(CRIME, "Erick", "12:00", new LatLng(-1.342432, 1.3423));
                     event.setType(CRIME);
                     sendEvent(event);
+                    Toast.makeText(activity, activity.getString(R.string.event_sent), Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
                 }
             });
 
@@ -78,6 +83,8 @@ public class EventsReports {
                     //Event event = new Event(FAILURE, "Erick", "12:00", new LatLng(-1.342432, 1.3423));
                     event.setType(FAILURE);
                     sendEvent(event);
+                    Toast.makeText(activity, activity.getString(R.string.event_sent), Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
                 }
             });
 
@@ -89,6 +96,8 @@ public class EventsReports {
                     //Event event = new Event(NATURAL, "Erick", "12:00", new LatLng(-1.342432, 1.3423));
                     event.setType(NATURAL);
                     sendEvent(event);
+                    Toast.makeText(activity, activity.getString(R.string.event_sent), Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
                 }
             });
 
@@ -100,6 +109,8 @@ public class EventsReports {
                     //Event event = new Event(ACCIDENT, "Erick", "12:00", new LatLng(-1.342432, 1.3423));
                     event.setType(BY_USER);
                     sendEvent(event);
+                    Toast.makeText(activity, activity.getString(R.string.event_sent), Toast.LENGTH_LONG).show();
+                    alertDialog.dismiss();
                 }
             });
 

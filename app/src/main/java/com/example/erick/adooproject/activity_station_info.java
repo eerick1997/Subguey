@@ -73,12 +73,11 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(station.getName());
 
-        /** JUST FOR TESTING **/
         recyclerView = findViewById(R.id.station_info_recycler_view);
         station.getElelments();
         AdapterStationsInfo adapterStationsInfo = new AdapterStationsInfo(station.getElelments());
         recyclerView.setAdapter(adapterStationsInfo);
-        /** END JUST FOR TESTING **/
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this, DividerItemDecoration.VERTICAL, false));
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(this, UIElements.DividerItemDecoration.VERTICAL_LIST));
@@ -91,7 +90,6 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
                 if (googleMap.getMapType() != GoogleMap.MAP_TYPE_SATELLITE)
                     googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 else googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                Snackbar.make(v, "Probando FAB", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -100,8 +98,8 @@ public class activity_station_info extends AppCompatActivity implements OnMapRea
         collapsingToolbarLayout.setTitle(station.getName());
 
         //Changing the color
-        style.setColorCollapsingToolbar(station.getLine(), collapsingToolbarLayout);
-        style.setColorWindow(station.getLine(), getWindow());
+        style.setColorCollapsingToolbar(station.getLine().toLowerCase(), collapsingToolbarLayout);
+        style.setColorWindow(station.getLine().toLowerCase(), getWindow());
     }
 
     @Override

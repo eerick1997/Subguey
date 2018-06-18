@@ -61,6 +61,7 @@ public class ChangeStyle {
     public String getLineColor(String str_line){
         //Log.d(TAG, "getLineColor() called with: str_line = [" + str_line + "]");
         String str_color = str_line.replace(" ", "_");
+
         //Log.i(TAG, "getLineColor: str_color " + str_color);
         int color = activity.getResources()
                 .getIdentifier(str_color, "string", activity.getPackageName());
