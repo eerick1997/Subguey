@@ -48,12 +48,12 @@ public class EventInfo {
             View view = inflater.inflate(R.layout.dialog_event_info, null);
             //We make an instance of an alertDialog
             alertDialog = new AlertDialog.Builder(context).create();
-            TextView txt_name_event = (TextView)view.findViewById(R.id.TXT_dialog_event_name);
-            TextView txt_publisher = (TextView)view.findViewById(R.id.TXT_dialog_event_user);
-            TextView txt_hour = (TextView)view.findViewById(R.id.TXT_dialog_event_hour);
-            TextView txt_message = (TextView)view.findViewById(R.id.TXT_dialog_message);
-            Button btn_got_it = (Button)view.findViewById(R.id.BTN_alert_dialog_i_got_it);
-            CircleImageView circleImageView = (CircleImageView)view.findViewById(R.id.circle_image_view_events);
+            TextView txt_name_event = view.findViewById(R.id.TXT_dialog_event_name);
+            TextView txt_publisher = view.findViewById(R.id.TXT_dialog_event_user);
+            TextView txt_hour = view.findViewById(R.id.TXT_dialog_event_hour);
+            TextView txt_message = view.findViewById(R.id.TXT_dialog_message);
+            Button btn_got_it = view.findViewById(R.id.BTN_alert_dialog_i_got_it);
+            CircleImageView circleImageView = view.findViewById(R.id.circle_image_view_events);
             txt_publisher.setText(event.getUser());
             btn_got_it.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,21 +63,27 @@ public class EventInfo {
                 }
             });
 
+            txt_hour.setText(event.getHour());
             if(event.getType() == ACCIDENT) {
-                txt_name_event.setText("ACCIDENTE");
+                txt_name_event.setText(context.getString(R.string.accident_title));
                 circleImageView.setImageResource(R.drawable.event_accident);
+                txt_message.setText(context.getString(R.string.accident_message));
             }else if(event.getType() == CRIME) {
+                txt_name_event.setText(context.getString(R.string.crime_title));
                 circleImageView.setImageResource(R.drawable.event_crime);
-                txt_name_event.setText("CRIMEN");
+                txt_message.setText(context.getString(R.string.crime_message));
             }else if(event.getType() == FAILURE) {
+                txt_name_event.setText(context.getString(R.string.failure_title));
                 circleImageView.setImageResource(R.drawable.event_failure);
-                txt_name_event.setText("FALLA TÉCNICA");
+                txt_message.setText(context.getString(R.string.failure_message));
             }else if(event.getType() == NATURAL) {
+                txt_name_event.setText(context.getString(R.string.natural_title));
                 circleImageView.setImageResource(R.drawable.event_natural);
-                txt_name_event.setText("EVENTO NATURAL");
+                txt_message.setText(context.getString(R.string.accident_message));
             }else if(event.getType() == BY_USER) {
+                txt_name_event.setText(context.getString(R.string.by_user_title));
                 circleImageView.setImageResource(R.drawable.event_by_user);
-                txt_name_event.setText("FALLA CAUSADA POR USUARIOS");
+                txt_message.setText(context.getString(R.string.by_user_message));
             }
             //We add all the elements in our Alert Dialog
             alertDialog.setView(view);

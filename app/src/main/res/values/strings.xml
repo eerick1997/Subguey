@@ -73,5 +73,14 @@
     <string name="gps_problems">Algo no va bien, asegurate de que el GPS está encendido o intentalo más tarde</string>
     <string name="login_please_wait">Se iniciará sesión, espere un momento porfavor...</string>
     <string name="event_sent">El reporte se ha realizado</string>
+    <string name="accident_title">Accidente</string>
+    <string name="crime_title">Crimen</string>
+    <string name="failure_title">Falla técnica</string>
+    <string name="natural_title">Evento natural</string>
+    <string name="by_user_title">Falla por usuario(s)</string>
+    <string name="failure_message">Se ha detectado una falla técnica la cual retrasará el viaje en esta línea. Tomar precauciones</string>
+    <string name="accident_message">Ha ocurrido un accidente el cual retrasará el viaje en esta línea. Tomar precauciones</string>
+    <string name="crime_message">Ha ocurrido un crimen el cual retrasará el viaje en esta línea. Tomar precauciones</string>
+    <string name="by_user_message">Algún usuario está ocacionando que se retrase el viaje en esta línea. Tomar precauciones</string>
 
 </resources>

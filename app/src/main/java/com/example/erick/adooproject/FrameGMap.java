@@ -54,6 +54,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import MapUtilities.DrawLines;
 import MapUtilities.DrawPolyline;
@@ -135,7 +136,9 @@ public class FrameGMap extends Fragment implements LocationListener,
             public void onClick(View v) {
                 //Snackbar.make(v, "Send event FAB pressed ", Snackbar.LENGTH_SHORT).show();
                 if (!(currentPosition == null)) {
-                    Event event = new Event(1, preferences.getNickUser(), "12:00", new MLatLng(currentPosition.latitude, currentPosition.longitude));
+                    Calendar calendar = Calendar.getInstance();
+                    String time = (calendar.get(Calendar.HOUR_OF_DAY)) + ":" + calendar.get(Calendar.MINUTE);
+                    Event event = new Event(1, preferences.getNickUser(), time, new MLatLng(currentPosition.latitude, currentPosition.longitude));
                     new EventsReports(getActivity()).showDialog(event);
                 } else {
                     Snackbar.make(v, "Parece que algo va mal, verifica si el GPS está encendido", Toast.LENGTH_LONG).show();
@@ -192,36 +195,20 @@ public class FrameGMap extends Fragment implements LocationListener,
         this.googleMap.setBuildingsEnabled(true);
         //Implementing onMarkerClickListener interface
         this.googleMap.setOnMarkerClickListener(this);
-        //this.googleMap.setLatLngBoundsForCameraTarget(CDMX);
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 22));
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initial_camera, 21));
         this.googleMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
         this.googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(view.getContext(), R.raw.map_style_night));
-        //new customMarkerEvent(getActivity(), this.googleMap).set(initial_camera);
-
-        /**MyImages images = new MyImages(getActivity());
-
-        //If we need to add a marker we can use the code below
-        Marker marker = googleMap.addMarker(new MarkerOptions().position(initial_camera)
-                .title("Observatorio")
-                .snippet("Metro"));
-        marker.setIcon(BitmapDescriptorFactory.fromBitmap(images.createIconMarker("observatorio1")));**/
-
         ArrayList<Service> services = new ArrayList<>();
         ArrayList<Exit> exits = new ArrayList<>();
         for (int i = 0; i < 2; i++){
             services.add(new Service("Something", "desc"));
             exits.add(new Exit("Name"+i,"Street"+i));
         }
-        MLatLng MlatLng = new MLatLng(initial_camera.latitude, initial_camera.longitude);
-        //marker.setTag(station);
-        //Log.d(TAG, ">>>>> onMapReady: " + marker.getTag().getClass());
-
         enableMyLocation();
         try {
             SetStations setStations = new SetStations(this.getActivity());
             drawLines.drawAllMetroLines(googleMap);
             setStations.setAllMetroMarkers(googleMap);
-            //new SetStations(getActivity()).drawStations(googleMap);
         } catch (Exception e){
             Log.e(TAG, "onMapReady: ", e);
         }

@@ -76,7 +76,7 @@
                 android:id="@+id/TXT_dialog_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Se ha detectado una falla técnica la cual retrasará el viaje en esta línea. Tomar precauciones" />
+                android:text="message" />
 
             <LinearLayout
                 android:layout_width="match_parent"
