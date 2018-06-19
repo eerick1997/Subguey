@@ -45,8 +45,11 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
     private GoogleSignInClient googleSignInClient;
     //This is our own object, here we store information about this user
     private User user;
+    //To revoke access
+    private boolean button_state = false;
     //We gonna use preferences so we make an instance of this object
     SubgueyPreferences preferences = new SubgueyPreferences(Login.this);
+    SignInButton signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         /*Making an instance of our button to sign in an user*/
-        SignInButton signInButton = findViewById(R.id.btn_sign_in_button);
+        signInButton = findViewById(R.id.btn_sign_in_button);
         //Setting size
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         /*Setting on click listener event*/
@@ -81,7 +84,11 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
             public void onClick(View v) {
                 /*Here we set the action when SignInButton is pressed*/
                 Snackbar.make(v, getString(R.string.login_please_wait), Snackbar.LENGTH_LONG).show();
-                signIn();
+                revokeAccess();
+
+                /*if(!button_state)*/ signIn();
+                //else revokeAccess();
+                signInButton.setEnabled(false);
             }
         });
 
@@ -129,6 +136,7 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
         Log.d(TAG, "signIn() called");
         //Creating an Intent object
         Intent signInIntent = googleSignInClient.getSignInIntent();
+        signInButton.setEnabled(true);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
@@ -232,9 +240,10 @@ public class Login extends AppCompatActivity implements OnConnectionFailedListen
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "Access revoked", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.attepting), Toast.LENGTH_LONG).show();
                         Log.i(TAG, "onComplete: Cleaning preferences...");
                         preferences.cleanPreferences();
+                        signIn();
                     }
                 });
     }

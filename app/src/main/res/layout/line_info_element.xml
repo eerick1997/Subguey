@@ -9,8 +9,10 @@
         android:id="@+id/line_info_color"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:textColor="#FFFFFF"
         android:gravity="center_vertical|center_horizontal"
+        android:text="A"
+        android:textAlignment="center"
+        android:textColor="#FFF"
         android:textSize="25sp"
         android:textStyle="bold" />
 

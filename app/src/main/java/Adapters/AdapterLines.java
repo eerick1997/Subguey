@@ -56,7 +56,7 @@ public class AdapterLines extends Adapter<AdapterLines.LinesViewHolder> {
                 txt_replace = "metrobus";
             String txtL = line.getWhichLine().replace(txt_replace.trim(), "");
             Log.i(TAG, "Line: " + txtL);
-            TXT_color.setText(txtL);
+            TXT_color.setText(txtL.toUpperCase().replace(" ", ""));
         }
     }
 

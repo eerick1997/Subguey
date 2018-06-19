@@ -60,7 +60,7 @@
     <string name="text_events">¿Algo qué reportar?</string>
     <string name="cerrar_event">CERRAR</string>
 
-    <string name="event_crime">DÉLITOS EN LOS ÁNDENES</string>
+    <string name="event_crime">DELITOS EN LOS ÁNDENES</string>
     <string name="event_natural">EVENTOS NATURALES</string>
     <string name="event_failure">FALLAS TÉCNICAS</string>
     <string name="event_by_user">FALLAS OCASIONADAS POR USUARIOS</string>
@@ -82,5 +82,8 @@
     <string name="accident_message">Ha ocurrido un accidente el cual retrasará el viaje en esta línea. Tomar precauciones</string>
     <string name="crime_message">Ha ocurrido un crimen el cual retrasará el viaje en esta línea. Tomar precauciones</string>
     <string name="by_user_message">Algún usuario está ocacionando que se retrase el viaje en esta línea. Tomar precauciones</string>
+    <string name="attepting">Reintentando iniciar sesión, espere un momento porfavor...</string>
+    <string name="not_null_username">El nombre de usuario no puede ir vacío</string>
+    <string name="username_size">El nombre d eusuario debe tener almenos 5 caracteres</string>
 
 </resources>
